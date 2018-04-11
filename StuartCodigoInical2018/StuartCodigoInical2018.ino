@@ -11,8 +11,8 @@
 //
 //*********PINOS PARA SENSORES REFLETANCIA*********//
 
-#define PNEU_ANDA 40
-#define PNEU_VOLTA -45
+#define PNEU_ANDA 45
+#define PNEU_VOLTA -40
 
 float valor_sensor_dir;
 float valor_sensor_mais_dir;
