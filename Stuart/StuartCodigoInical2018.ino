@@ -19,7 +19,7 @@ float valor_sensor_mais_dir;
 float valor_sensor_esq;
 float valor_sensor_mais_esq;
 
-// VARIAVEIS DE CALIBRACAO
+// VARIAVEIS DE CALIBRACAO GGGGGGG
 
 int caliPretoEsquerdo, caliPretoMaisEsquerdo, caliPretoDireito, caliPretoMaisDireito;
 int caliBrancoEsquerdo, caliBrancoMaisEsquerdo, caliBrancoDireito, caliBrancoMaisDireito; 
