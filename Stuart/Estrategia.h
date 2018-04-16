@@ -3,6 +3,8 @@
 class Estrategia{
 
 	private:
+  Sensores sensores;
+  
 	void seguirLinha();
 	void desviarObstaculo();
 	void identificarVerde();

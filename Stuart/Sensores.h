@@ -16,10 +16,10 @@ class Sensores{
   
   // Funcoes para definir o branco
   
-  boolean ehBrancoMaisEsquerdo(){return (valor_sensor_mais_esq > mediaMaisEsquerdo);}
-  boolean ehBrancoEsquerdo()    {return (valor_sensor_esq > mediaEsquerdo);}
-  boolean ehBrancoDireito()     {return (valor_sensor_dir > mediaDireito);}
-  boolean ehBrancoMaisDireito() {return (valor_sensor_mais_dir > mediaMaisDireito);}
+ // boolean ehBrancoMaisEsquerdo(){return (robo.lerSensorLinhaMaisEsq() > mediaMaisEsquerdo);}
+  boolean ehBrancoEsquerdo()    {return (robo.lerSensorLinhaEsq() > mediaEsquerdo);}
+  boolean ehBrancoDireito()     {return (robo.lerSensorLinhaDir() > mediaDireito);}
+//  boolean ehBrancoMaisDireito() {return (robo.lerSensorLinhaMaisDir() > mediaMaisDireito);}
 
 	public:
 
