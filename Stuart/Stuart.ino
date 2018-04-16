@@ -4,7 +4,8 @@
 Estrategia e;
 
 void setup() {
-  e.executar();
+  robo.configurar(false);
 }
 void loop() {
+  e.executar();
 }
