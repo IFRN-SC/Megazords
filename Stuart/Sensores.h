@@ -7,9 +7,9 @@ class Sensores{
   float valor_sensor_esq;
   float valor_sensor_mais_esq;
   
-  int mediaEsquerdo = 45;
-  int mediaDireito = 45;
-  int mediaMaisDireito = 45;
+  int mediaEsquerdo = 43;
+  int mediaDireito = 37;
+  int mediaMaisDireito = 47;
   int mediaMaisEsquerdo = 45;
 
   private:
@@ -30,6 +30,6 @@ class Sensores{
 	boolean branco_preto_branco_branco(){	 return (ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && ehBrancoDireito() && ehBrancoMaisDireito());} //BPBB
 	boolean branco_branco_preto_branco(){	 return (ehBrancoMaisEsquerdo() && ehBrancoEsquerdo() && !ehBrancoDireito() && ehBrancoMaisDireito());} //BBPB
 	boolean branco_branco_branco_preto(){	 return (ehBrancoMaisEsquerdo() && ehBrancoEsquerdo() && ehBrancoDireito() && !ehBrancoMaisDireito());} //BBBP
-  boolean branco_preto_preto_branco(){    return (ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && !ehBrancoDireito() && ehBrancoMaisDireito());}//BPPB
+  boolean branco_preto_preto_branco(){   return (ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && !ehBrancoDireito() && ehBrancoMaisDireito());}//BPPB
   
 };
