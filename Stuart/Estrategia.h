@@ -1,9 +1,11 @@
 #include "Sensores.h"
+#include "Movimento.h"
 
 class Estrategia{
 
 	private:
   Sensores sensores;
+  Movimento movimento;
   
 	void seguirLinha();
 	void desviarObstaculo();
