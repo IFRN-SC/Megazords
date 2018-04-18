@@ -14,5 +14,7 @@ class Movimento{
     robo.acionarMotores(PNEU_ANDA, PNEU_VOLTA);
   }int parar(){
     robo.acionarMotores(0,0);
+  }int voltar(){
+    robo.acionarMotores(PNEU_VOLTA, PNEU_VOLTA);
   }
 };
