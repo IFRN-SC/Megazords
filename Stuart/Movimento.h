@@ -12,7 +12,12 @@ class Movimento{
 	}
   int girarParaDireita(){
     robo.acionarMotores(PNEU_ANDA, PNEU_VOLTA);
-  }int parar(){
+  }
+  int voltar(){
+     robo.acionarMotores(PNEU_VOLTA,PNEU_VOLTA);
+  }
+  int parar(){
     robo.acionarMotores(0,0);
   }
+  
 };
