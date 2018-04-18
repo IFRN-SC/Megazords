@@ -1,8 +1,5 @@
 #include "Estrategia.h"
 
-#define PNEU_ANDA 40
-#define PNEU_VOLTA -40
-
   void Estrategia::seguirLinha(){
 
 	   if(sensores.branco_branco_branco_branco()){            //BBBB    
@@ -19,7 +16,10 @@
       
      }else if(sensores.branco_branco_branco_preto()){       //BBBP
      	 movimento.girarParaDireita(); 
-      
+       
+     }else if(branco_preto_preto_branco()){                 //BPPB
+       movimento.voltar();
+       
      }else{
      	 movimento.parar();  	
      }
