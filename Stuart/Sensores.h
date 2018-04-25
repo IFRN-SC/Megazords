@@ -1,18 +1,16 @@
 #include <robo_hardware2.h>
+#include "Calibracao.h"
 
 class Sensores{
 
-  float valor_sensor_dir;
-  float valor_sensor_mais_dir;
-  float valor_sensor_esq;
-  float valor_sensor_mais_esq;
-  
-  int mediaEsquerdo = 43;
-  int mediaDireito = 37;
+  int mediaEsquerdo = 52;
+  int mediaDireito = 44;
   int mediaMaisDireito = 47;
-  int mediaMaisEsquerdo = 45;
+  int mediaMaisEsquerdo = 48;
 
   private:
+  
+  Calibracao calibracao;
   
   // Funcoes para definir o branco
   
