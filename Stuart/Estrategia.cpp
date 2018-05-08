@@ -17,7 +17,7 @@
      }else if(sensores.branco_branco_branco_preto()){       //BBBP
      	 movimento.girarParaDireita(); 
        
-     }else if(branco_preto_preto_branco()){                 //BPPB
+     }else if(sensores.branco_preto_preto_branco()){        //BPPB
        movimento.voltar();
        
      }else{
@@ -39,9 +39,9 @@
     else{
       seguirLinha();
     }
-
+	}
 
     
-	}
+	
 
 
