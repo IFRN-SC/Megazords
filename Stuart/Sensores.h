@@ -1,6 +1,7 @@
 #include <robo_hardware2.h>
 #include "Calibracao.h"
 
+
 class Sensores{
 
   private:
@@ -9,6 +10,9 @@ class Sensores{
   int mediaDireito = 44;
   int mediaMaisDireito = 47;
   int mediaMaisEsquerdo = 48;
+  
+  #define CINZAESQ 38
+  #define CINZADIR 42
   
   float valor_sensor_frontal;
   
@@ -34,9 +38,11 @@ class Sensores{
 	boolean branco_branco_branco_preto(){	 return (ehBrancoMaisEsquerdo() && ehBrancoEsquerdo() && ehBrancoDireito() && !ehBrancoMaisDireito());} //BBBP
   boolean branco_preto_preto_branco(){   return (ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && !ehBrancoDireito() && ehBrancoMaisDireito());}//BPPB
 
-  // Sensorares
+  // Sonares
 
-  if(robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1){
+  int detectouObstaculo(){
+    
+    if(robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1){
     robo.acionarMotores(0, 0);
       delay(300);
     robo.acionarMotores(-30, -30);
@@ -82,8 +88,7 @@ class Sensores{
 
         while(!(robo.lerSensorLinhaEsq() > CINZAESQ && robo.lerSensorLinhaDir() > CINZADIR)){
           robo.acionarMotores(30, -30);    
-        }
-             
+        }       
+     }
   }
-  
-};
+ };
