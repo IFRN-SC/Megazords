@@ -11,9 +11,6 @@ class Sensores{
   int mediaMaisDireito = 47;
   int mediaMaisEsquerdo = 48;
   
-  #define CINZAESQ 38
-  #define CINZADIR 42
-  
   float valor_sensor_frontal;
   
   Calibracao calibracao;
@@ -23,11 +20,12 @@ class Sensores{
   // Funcoes para definir o branco
   
   boolean ehBrancoMaisEsquerdo(){return (robo.lerSensorLinhaMaisEsq() > mediaMaisEsquerdo);}
-  boolean ehBrancoEsquerdo()    {return (robo.lerSensorLinhaEsq() > mediaEsquerdo);}
-  boolean ehBrancoDireito()     {return (robo.lerSensorLinhaDir() > mediaDireito);}
   boolean ehBrancoMaisDireito() {return (robo.lerSensorLinhaMaisDir() > mediaMaisDireito);}
 
 	public:
+ 
+  boolean ehBrancoEsquerdo()    {return (robo.lerSensorLinhaEsq() > mediaEsquerdo);}
+  boolean ehBrancoDireito()     {return (robo.lerSensorLinhaDir() > mediaDireito);}
 
   // Funcoes para condicoes
   
@@ -40,55 +38,6 @@ class Sensores{
 
   // Sonares
 
-  int detectouObstaculo(){
-    
-    if(robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1){
-    robo.acionarMotores(0, 0);
-      delay(300);
-    robo.acionarMotores(-30, -30);
-      delay(300);
-    
-     while(robo.lerSensorLinhaEsq() > CINZAESQ){
-       robo.acionarMotores(30, -30); 
-     }
-        robo.acionarMotores(0, 0);
-          delay(300);
-          
-     while(robo.lerSensorLinhaDir() > CINZADIR){
-       robo.acionarMotores(0, -30); 
-     }
-        robo.acionarMotores(0, 0);
-          delay(300);
-          
-        robo.acionarMotores(50, 50);
-          delay(700);
-        robo.acionarMotores(0, 0);
-          delay(300);
-          
-        robo.acionarMotores(-30, 30);
-          delay(500);
-        robo.acionarMotores(0, 0);  
-          delay(300);
-          
-        robo.acionarMotores(50, 50);
-          delay(1500);
-        robo.acionarMotores(0, 0);
-          delay(300);
-          
-        robo.acionarMotores(-30, 30);
-          delay(500);
-        robo.acionarMotores(0, 0);
-          delay(300);
-
-        while(robo.lerSensorLinhaEsq() > CINZAESQ && robo.lerSensorLinhaDir() > CINZADIR){
-          robo.acionarMotores(50, 50);  
-        }
-        robo.acionarMotores(0, 0);  
-          delay(300);
-
-        while(!(robo.lerSensorLinhaEsq() > CINZAESQ && robo.lerSensorLinhaDir() > CINZADIR)){
-          robo.acionarMotores(30, -30);    
-        }       
-     }
+  bool detectouObstaculo(){return (robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1);
   }
  };
