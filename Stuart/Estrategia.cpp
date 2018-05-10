@@ -26,52 +26,52 @@
 	}
 	void Estrategia::desviarObstaculo(){
     
-      robo.acionarMotores(0, 0);
-      delay(300);
-    robo.acionarMotores(-30, -30);
-      delay(300);
+     robo.acionarMotores(0, 0);
+     delay(300);
+     robo.acionarMotores(-30, -30);
+     delay(300);
     
      while(sensores.ehBrancoEsquerdo()){
        robo.acionarMotores(30, -30); 
      }
-        robo.acionarMotores(0, 0);
-          delay(300);
+       robo.acionarMotores(0, 0);
+       delay(300);
           
      while(sensores.ehBrancoDireito()){
        robo.acionarMotores(0, -30); 
      }
-        robo.acionarMotores(0, 0);
-          delay(300);
+     robo.acionarMotores(0, 0);
+     delay(300);
           
-        robo.acionarMotores(50, 50);
-          delay(700);
-        robo.acionarMotores(0, 0);
-          delay(300);
+     robo.acionarMotores(50, 50);
+     delay(700);
+     robo.acionarMotores(0, 0);
+     delay(300);
           
-        robo.acionarMotores(-30, 30);
-          delay(500);
-        robo.acionarMotores(0, 0);  
-          delay(300);
+     robo.acionarMotores(-30, 30);
+     delay(500);
+     robo.acionarMotores(0, 0);  
+     delay(300);
           
-        robo.acionarMotores(50, 50);
-          delay(1500);
-        robo.acionarMotores(0, 0);
-          delay(300);
+     robo.acionarMotores(50, 50);
+     delay(1500);
+     robo.acionarMotores(0, 0);
+     delay(300);
           
-        robo.acionarMotores(-30, 30);
-          delay(500);
-        robo.acionarMotores(0, 0);
-          delay(300);
+     robo.acionarMotores(-30, 30);
+     delay(500);
+     robo.acionarMotores(0, 0);
+     delay(300);
 
-        while(sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito()){
-          robo.acionarMotores(50, 50);  
-        }
-        robo.acionarMotores(0, 0);  
-          delay(300);
+     while(sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito()){
+       robo.acionarMotores(50, 50);  
+     }
+     robo.acionarMotores(0, 0);  
+     delay(300);
 
-        while(!(sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito())){
-          robo.acionarMotores(30, -30);    
-        }       
+     while(!(sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito())){
+       robo.acionarMotores(30, -30);    
+     }       
     
 	}
 	void Estrategia::identificarVerde(){
@@ -83,6 +83,7 @@
 	void Estrategia::executar(){
 
     if(sensores.detectouObstaculo()){
+      desviarObstaculo();
     }
     else{
       seguirLinha();
