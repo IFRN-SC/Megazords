@@ -6,10 +6,10 @@ class Sensores{
 
   private:
   
-  int mediaEsquerdo = 57;
-  int mediaDireito = 46;
+  int mediaEsquerdo = 56;
+  int mediaDireito = 43;
   int mediaMaisDireito = 45;
-  int mediaMaisEsquerdo = 53;
+  int mediaMaisEsquerdo = 49;
   
   float valor_sensor_frontal;
   
