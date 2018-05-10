@@ -6,10 +6,10 @@ class Sensores{
 
   private:
   
-  int mediaEsquerdo = 52;
-  int mediaDireito = 44;
-  int mediaMaisDireito = 47;
-  int mediaMaisEsquerdo = 48;
+  int mediaEsquerdo = 57;
+  int mediaDireito = 46;
+  int mediaMaisDireito = 45;
+  int mediaMaisEsquerdo = 53;
   
   float valor_sensor_frontal;
   
@@ -38,6 +38,5 @@ class Sensores{
 
   // Sonares
 
-  bool detectouObstaculo(){return (robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1);
-  }
+  bool detectouObstaculo(){return (robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1);}
  };
