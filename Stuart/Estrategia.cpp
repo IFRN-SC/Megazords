@@ -48,51 +48,52 @@
 	}
 	void Estrategia::desviarObstaculo(){
     movimento.parar();
-      delay(300);
+      delay(500);
     movimento.voltar();
-      delay(200);
+      delay(100);
     
      while(sensores.ehBrancoMaisEsquerdo()){
        movimento.girarParaDireita(); 
      }
         movimento.parar();
-          delay(300);
+          delay(500);
           
      while(sensores.ehBrancoMaisDireito()){
        movimento.girarSoDireita(); 
      }
         movimento.parar();
-          delay(300);
+          delay(500);
           
         movimento.seguir();
-          delay(450);
+          delay(550);
         movimento.parar();
-          delay(300);
+          delay(500);
           
         movimento.girarParaEsquerda();
           delay(400);
         movimento.parar();  
-          delay(300);
+          delay(500);
           
         movimento.seguir();
-          delay(650);
+          delay(850);
         movimento.parar();
-          delay(300);
+          delay(500);
           
         movimento.girarParaEsquerda();
           delay(400);
         movimento.parar();
-          delay(300);
+          delay(500);
 
         while(!sensores.ehBrancoMaisEsquerdo() && !sensores.ehBrancoEsquerdo() && !sensores.ehBrancoDireito() && !sensores.ehBrancoMaisDireito()){
           movimento.seguir();  
         }
         movimento.parar();  
-          delay(300);
+          delay(500);
 
         while(!(sensores.ehBrancoMaisEsquerdo() && sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito() && sensores.ehBrancoMaisDireito())){
           movimento.girarParaDireita();    
         }
+          delay(500);
 	}
 	void Estrategia::identificarVerde(){
 	}
