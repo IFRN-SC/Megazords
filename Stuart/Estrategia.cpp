@@ -47,51 +47,51 @@
      }
 	}
 	void Estrategia::desviarObstaculo(){
-    robo.acionarMotores(0, 0);
-      delay(1000);
-    /*robo.acionarMotores(-30, -30);
-      delay(300);*/
+    movimento.parar();
+      delay(300);
+    movimento.voltar();
+      delay(200);
     
-     while(!sensores.ehBrancoMaisEsquerdo()){
-       robo.acionarMotores(30, -30); 
+     while(sensores.ehBrancoMaisEsquerdo()){
+       movimento.girarParaDireita(); 
      }
-        robo.acionarMotores(0, 0);
+        movimento.parar();
           delay(300);
           
-     while(!sensores.ehBrancoMaisDireito()){
-       robo.acionarMotores(0, -30); 
+     while(sensores.ehBrancoMaisDireito()){
+       movimento.girarSoDireita(); 
      }
-        robo.acionarMotores(0, 0);
+        movimento.parar();
           delay(300);
           
-        robo.acionarMotores(50, 50);
+        movimento.seguir();
+          delay(450);
+        movimento.parar();
+          delay(300);
+          
+        movimento.girarParaEsquerda();
           delay(400);
-        robo.acionarMotores(0, 0);
-          delay(100);
+        movimento.parar();  
+          delay(300);
           
-        robo.acionarMotores(-30, 30);
-          delay(200);
-        robo.acionarMotores(0, 0);  
-          delay(100);
+        movimento.seguir();
+          delay(650);
+        movimento.parar();
+          delay(300);
           
-        robo.acionarMotores(50, 50);
-          delay(600);
-        robo.acionarMotores(0, 0);
-          delay(100);
-          
-        robo.acionarMotores(-30, 30);
-          delay(200);
-        robo.acionarMotores(0, 0);
-          delay(100);
+        movimento.girarParaEsquerda();
+          delay(400);
+        movimento.parar();
+          delay(300);
 
         while(!sensores.ehBrancoMaisEsquerdo() && !sensores.ehBrancoEsquerdo() && !sensores.ehBrancoDireito() && !sensores.ehBrancoMaisDireito()){
-          robo.acionarMotores(50, 50);  
+          movimento.seguir();  
         }
-        robo.acionarMotores(0, 0);  
-          delay(100);
+        movimento.parar();  
+          delay(300);
 
         while(!(sensores.ehBrancoMaisEsquerdo() && sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito() && sensores.ehBrancoMaisDireito())){
-          robo.acionarMotores(30, -30);    
+          movimento.girarParaDireita();    
         }
 	}
 	void Estrategia::identificarVerde(){
@@ -102,7 +102,7 @@
 	}
 	void Estrategia::executar(){
 
-    if((robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1)){
+    if((robo.lerSensorSonarFrontal() < 5 && robo.lerSensorSonarFrontal() >= 1)){
       desviarObstaculo();
     }
     else{
