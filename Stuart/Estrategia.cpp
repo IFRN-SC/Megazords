@@ -103,15 +103,15 @@
 	}
 	void Estrategia::executar(){
 
-    if((robo.lerSensorSonarFrontal() < 5 && robo.lerSensorSonarFrontal() >= 1)){
+    if(sensores.detectouObstaculo()){
       desviarObstaculo();
     }
     else{
       seguirLinha();
     }
-
+	}
 
     
-	}
+	
 
 

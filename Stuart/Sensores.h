@@ -1,4 +1,6 @@
 #include <robo_hardware2.h>
+#include "Calibracao.h"
+
 
 class Sensores{
   private:
@@ -34,4 +36,7 @@ class Sensores{
   boolean preto_preto_preto_branco(){   return (!ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && !ehBrancoDireito() && ehBrancoMaisDireito());} //PPPB
   boolean preto_preto_preto_preto(){   return (!ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && !ehBrancoDireito() && !ehBrancoMaisDireito());} //PPPP
   
+  // Sonares
+
+  bool detectouObstaculo(){return (robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1);}
 };
