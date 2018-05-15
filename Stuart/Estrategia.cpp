@@ -88,12 +88,12 @@
           movimento.seguir();  
         }
         movimento.parar();  
-          delay(500);
+          delay(300);
 
         while(!(sensores.ehBrancoMaisEsquerdo() && sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito() && sensores.ehBrancoMaisDireito())){
           movimento.girarParaDireita();    
         }
-          delay(500);
+       
 	}
 	void Estrategia::identificarVerde(){
 	}
