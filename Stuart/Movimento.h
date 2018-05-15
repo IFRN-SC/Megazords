@@ -1,6 +1,6 @@
 class Movimento{
   #define PNEU_ANDA 45
-  #define PNEU_VOLTA -50
+  #define PNEU_VOLTA -45
 
 	public:
 	
@@ -12,9 +12,19 @@ class Movimento{
 	}
   int girarParaDireita(){
     robo.acionarMotores(PNEU_ANDA, PNEU_VOLTA);
-  }int parar(){
+  }
+  int parar(){
     robo.acionarMotores(0,0);
-  }int voltar(){
+  }
+  int voltar(){
     robo.acionarMotores(PNEU_VOLTA, PNEU_VOLTA);
+  }
+  
+
+  int girarSoEsquerda(){
+    robo.acionarMotores(PNEU_VOLTA, 0); 
+  }
+  int girarSoDireita(){
+    robo.acionarMotores(0, PNEU_VOLTA); 
   }
 };
