@@ -15,7 +15,7 @@
   int caliPretoEsquerdo, caliPretoMaisEsquerdo, caliPretoDireito, caliPretoMaisDireito;
   int caliBrancoEsquerdo, caliBrancoMaisEsquerdo, caliBrancoDireito, caliBrancoMaisDireito; 
 
-void calibracao(){
+void Calibracao::calibrar(){
   char controle = 't';
   Serial.println("CALIBRE BRANCO");
   while(1){
