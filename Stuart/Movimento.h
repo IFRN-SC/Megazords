@@ -1,6 +1,6 @@
 class Movimento{
-  #define PNEU_ANDA 45
-  #define PNEU_VOLTA -45
+  #define PNEU_ANDA 35
+  #define PNEU_VOLTA -35
 
 	public:
 	
