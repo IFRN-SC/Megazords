@@ -1,4 +1,4 @@
-#include "Estrategia.h"
+  #include "Estrategia.h"
 
   void Estrategia::seguirLinha(){
 
@@ -50,7 +50,7 @@
     movimento.parar();
       delay(500);
     movimento.voltar();
-      delay(100);
+      delay(150);
     
      while(sensores.ehBrancoMaisEsquerdo()){
        movimento.girarParaDireita(); 
@@ -65,7 +65,7 @@
           delay(500);
           
         movimento.seguir();
-          delay(550);
+          delay(600);
         movimento.parar();
           delay(500);
           
@@ -75,22 +75,30 @@
           delay(500);
           
         movimento.seguir();
-          delay(850);
+          delay(900);
         movimento.parar();
           delay(500);
           
         movimento.girarParaEsquerda();
-          delay(400);
+          delay(300);
         movimento.parar();
           delay(500);
-
-        while(!sensores.ehBrancoMaisEsquerdo() && !sensores.ehBrancoEsquerdo() && !sensores.ehBrancoDireito() && !sensores.ehBrancoMaisDireito()){
-          movimento.seguir();  
+          
+        while(sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito()){
+          robo.acionarMotores(20,20);  
         }
-        movimento.parar();  
-          delay(300);
+       /* movimento.parar();  
+          delay(300);*/
 
-        while(!(sensores.ehBrancoMaisEsquerdo() && sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito() && sensores.ehBrancoMaisDireito())){
+        
+          movimento.parar();  
+          delay(2000);
+          robo.acionarMotores(20,20); 
+          delay(350); 
+          movimento.parar();  
+          delay(500);
+
+        while(sensores.ehBrancoEsquerdo()){
           movimento.girarParaDireita();    
         }
        
@@ -98,6 +106,30 @@
 	void Estrategia::identificarVerde(){
 	}
 	void Estrategia::subirRampa(){
+     if(sensores.branco_branco_branco_branco()){            //BBBB    
+        robo.acionarMotores(50,50);  
+     }
+     else if(sensores.preto_branco_branco_branco()){       //PBBB
+       robo.acionarMotores(40,50);      
+     }
+     else if(sensores.branco_preto_branco_branco()){       //BPBB
+       robo.acionarMotores(40,50); 
+     }
+     else if(sensores.branco_branco_preto_branco()){       //BBPB
+       robo.acionarMotores(50,40);
+     }
+     else if(sensores.branco_branco_branco_preto()){       //BBBP
+       robo.acionarMotores(50,40); 
+     }
+     else if(sensores.preto_preto_preto_preto()){         //PPPP
+       robo.acionarMotores(50,50);
+       delay(700);
+       movimento.girarParaDireita();
+       delay(360);    
+
+       while(1){movimento.parar();}
+     }
+    
 	}
 	void Estrategia::calibracao(){
 	}
@@ -105,6 +137,9 @@
 
     if(sensores.detectouObstaculo()){
       desviarObstaculo();
+    }
+    else if((robo.lerSensorSonarEsq() < 15 ) && (robo.lerSensorSonarDir() < 15)){
+      subirRampa();  
     }
     else{
       seguirLinha();
