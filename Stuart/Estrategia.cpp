@@ -1,4 +1,4 @@
-  #include "Estrategia.h"
+   #include "Estrategia.h"
 
   void Estrategia::seguirLinha(){
 
@@ -47,13 +47,12 @@
      }
 	}
 	void Estrategia::desviarObstaculo(){
-    movimento.parar();
-      delay(500);
-    movimento.voltar();
-      delay(150);
-    
+       movimento.parar();
+        delay(500);
+        movimento.voltar();
+        delay(500);  
      while(sensores.ehBrancoMaisEsquerdo()){
-       movimento.girarParaDireita(); 
+        movimento.girarParaDireita(); 
      }
         movimento.parar();
           delay(500);
@@ -61,28 +60,48 @@
      while(sensores.ehBrancoMaisDireito()){
        movimento.girarSoDireita(); 
      }
-        movimento.parar();
-          delay(500);
-          
+     while(robo.lerSensorSonarEsq() >= 10){
+        robo.ligarLed(1);    
         movimento.seguir();
-          delay(600);
+     }robo.desligarLed(1);
+     movimento.parar();
+       delay(500);    
+     while(robo.lerSensorSonarEsq() <= 10){
+         robo.ligarLed(3);
+        movimento.seguir(); 
+     } robo.desligarLed(3);
+        movimento.seguir();
+          delay(150);
         movimento.parar();
           delay(500);
           
         movimento.girarParaEsquerda();
-          delay(400);
+          delay(360);
         movimento.parar();  
           delay(500);
           
+     while(robo.lerSensorSonarEsq() >= 10){
+        robo.ligarLed(1);    
         movimento.seguir();
-          delay(900);
+     }robo.desligarLed(1);
+     movimento.parar();
+       delay(500); 
+     while(robo.lerSensorSonarEsq() <= 10){
+         robo.ligarLed(3);
+        movimento.seguir(); 
+     }robo.desligarLed(3);
+        movimento.seguir();
+          delay(150);
+    
         movimento.parar();
           delay(500);
-          
+              
         movimento.girarParaEsquerda();
-          delay(300);
+          delay(360);
         movimento.parar();
           delay(500);
+        movimento.seguir();
+          delay(200);  
           
         while(sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito()){
           robo.acionarMotores(20,20);  
@@ -92,7 +111,7 @@
 
         
           movimento.parar();  
-          delay(2000);
+          delay(500);
           robo.acionarMotores(20,20); 
           delay(350); 
           movimento.parar();  
@@ -135,10 +154,10 @@
 	}
 	void Estrategia::executar(){
 
-    if((robo.lerSensorSonarFrontal() < 5 && robo.lerSensorSonarFrontal() >= 1)){
+    if((robo.lerSensorSonarFrontal() <= 6 && robo.lerSensorSonarFrontal() >= 1)){
       desviarObstaculo();
     }
-    else if((robo.lerSensorSonarEsq() < 15 ) && (robo.lerSensorSonarDir() < 15)){
+    else if((robo.lerSensorSonarEsq() <= 20 ) && (robo.lerSensorSonarDir() <= 20)){
       subirRampa();  
     }
     else{
