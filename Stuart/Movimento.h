@@ -22,9 +22,9 @@ class Movimento{
   
 
   int girarSoEsquerda(){
-    robo.acionarMotores(PNEU_VOLTA, 0); 
+    robo.acionarMotores(-20, 0); 
   }
   int girarSoDireita(){
-    robo.acionarMotores(0, PNEU_VOLTA); 
+    robo.acionarMotores(0, -20); 
   }
 };
