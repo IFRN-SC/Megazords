@@ -105,12 +105,16 @@ void Calibracao::calibrar(){
   }
 
   // Faz a média de acordo com os valores "capturados"
-  
-  mediaEsquerdo = (caliBrancoEsquerdo + caliPretoEsquerdo) / 2;
-  mediaMaisEsquerdo = (caliBrancoMaisEsquerdo + caliPretoMaisEsquerdo) / 2;
-  mediaDireito = (caliBrancoDireito + caliPretoDireito) / 2;
-  mediaMaisDireito = 45;
 
+  mediaMaisEsquerdo = (caliBrancoMaisEsquerdo + caliPretoMaisEsquerdo) / 2;
+  mediaEsquerdo = (caliBrancoEsquerdo + caliPretoEsquerdo) / 2;
+  mediaDireito = (caliBrancoDireito + caliPretoDireito) / 2;
+  //mediaMaisDireito = (caliBrancoMaisDireito + caliPretoMaisDireito) / 2;
+  
+  int Calibracao::int mediaEsquerdo(){
+    return (caliBrancoMaisEsquerdo + caliPretoMaisEsquerdo) / 2;
+  }
+ 
   Serial.println(" ");
   // Imprime os valores das médias
   Serial.println("Valores finais: ");
