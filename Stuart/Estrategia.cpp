@@ -1,4 +1,5 @@
   #include "Estrategia.h"
+  #include "Calibracao.h"
 
   void Estrategia::seguirLinha(){
 
@@ -134,7 +135,8 @@
 	void Estrategia::calibracao(){
 	}
 	void Estrategia::executar(){
-
+    cali.calibrar();
+    
     if(sensores.detectouObstaculo()){
       desviarObstaculo();
     }
