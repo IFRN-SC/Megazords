@@ -2,7 +2,7 @@
 #include "Calibracao.h"
 
 
-class Sensores{
+class Sensores: public Calibracao{
   private:
   
   float valor_sensor_dir;
@@ -10,11 +10,12 @@ class Sensores{
   float valor_sensor_esq;
   float valor_sensor_mais_esq;
   
+/*
   int mediaEsquerdo = 50;
   int mediaDireito = 20;
   int mediaMaisDireito = 45;
   int mediaMaisEsquerdo = 50; 
-
+*/
 	public:
 
   // Funcoes para definir o branco
