@@ -8,10 +8,10 @@ class Sensores{
   float valor_sensor_esq;
   float valor_sensor_mais_esq;
   
-  int mediaEsquerdo = 50;
-  int mediaDireito = 20;
-  int mediaMaisDireito = 45;
-  int mediaMaisEsquerdo = 50; 
+  int mediaEsquerdo = 15;
+  int mediaDireito = 15;
+  int mediaMaisDireito = 15;
+  int mediaMaisEsquerdo = 15; 
 
 	public:
 
@@ -20,6 +20,9 @@ class Sensores{
   boolean ehBrancoEsquerdo()    {return (robo.lerSensorLinhaEsq() > mediaEsquerdo);}
   boolean ehBrancoDireito()     {return (robo.lerSensorLinhaDir() > mediaDireito);}
   boolean ehBrancoMaisDireito() {return (robo.lerSensorLinhaMaisDir() > mediaMaisDireito);}
+  boolean procuraVerde();
+  boolean ehVerdeEsquerdo()     {return (robo.getHSVEsquerdo().v < 330);}
+  boolean ehVerdeDireito();
 
   // Funcoes para condicoes
 	boolean branco_branco_branco_branco(){ return (ehBrancoMaisEsquerdo() && ehBrancoEsquerdo() && ehBrancoDireito() && ehBrancoMaisDireito());}   //BBBB
