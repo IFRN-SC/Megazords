@@ -7,10 +7,7 @@
   float valor_sensor_esq;
   float valor_sensor_mais_esq;
   */
-  int mediaEsquerdo = 47;
-  int mediaDireito = 47;
-  int mediaMaisDireito = 47;
-  int mediaMaisEsquerdo = 47;
+  
 
   int caliPretoEsquerdo, caliPretoMaisEsquerdo, caliPretoDireito, caliPretoMaisDireito;
   int caliBrancoEsquerdo, caliBrancoMaisEsquerdo, caliBrancoDireito, caliBrancoMaisDireito; 
@@ -109,16 +106,16 @@ void Calibracao::calibrar(){
   mediaMaisEsquerdo = (caliBrancoMaisEsquerdo + caliPretoMaisEsquerdo) / 2;
   mediaEsquerdo = (caliBrancoEsquerdo + caliPretoEsquerdo) / 2;
   mediaDireito = (caliBrancoDireito + caliPretoDireito) / 2;
-  //mediaMaisDireito = (caliBrancoMaisDireito + caliPretoMaisDireito) / 2;
-  
-  int Calibracao::int mediaEsquerdo(){
+  mediaMaisDireito = (caliBrancoMaisDireito + caliPretoMaisDireito) / 2;
+  /*
+  int Calibracao::mediaEsquerdo(){
     return (caliBrancoMaisEsquerdo + caliPretoMaisEsquerdo) / 2;
-  }
+  }*/
  
   Serial.println(" ");
   // Imprime os valores das médias
   Serial.println("Valores finais: ");
-  Serial.print("MAIS ESQUERDO : ");
+  Serial.print(F("MAIS ESQUERDO : "));
     Serial.print(mediaMaisEsquerdo);
     Serial.print("  ||  ESQUERDO : ");
     Serial.print(mediaEsquerdo);
@@ -126,4 +123,24 @@ void Calibracao::calibrar(){
     Serial.print(mediaDireito);
     Serial.print("  ||  MAIS DIREITO : ");
     Serial.println(mediaMaisDireito);
+
+    // Salvar dados da Calibracao na EEPROM
+
+    calibracao_dados cd;
+
+    cd.refletancia_dir = mediaDireito; 
+    cd.refletancia_esq = mediaEsquerdo;
+    cd.refletancia_mais_dir = mediaMaisDireito;
+    cd.refletancia_mais_esq = mediaMaisEsquerdo;
+
+    robo.salvarCalibracao(cd);
+
+    robo.lerCalibracao(cd);
+    
+    mediaDireito = cd.refletancia_dir;
+    mediaEsquerdo = cd.refletancia_esq;
+    mediaMaisDireito  = cd.refletancia_mais_dir;
+    mediaMaisEsquerdo = cd.refletancia_mais_esq;
+
+    
 }
