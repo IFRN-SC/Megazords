@@ -13,8 +13,9 @@ class Estrategia{
 	void desviarObstaculo();
 	void identificarVerde();
 	void subirRampa(); 
-	void calibracao();
+	
 
 	public:
+  void calibracao();
 	void executar();
 };
