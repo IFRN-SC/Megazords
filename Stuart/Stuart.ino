@@ -5,6 +5,7 @@ Estrategia e;
 
 void setup() {
   robo.configurar(false);
+  robo.habilitaTCS34();
 }
 void loop() {
   e.executar();
