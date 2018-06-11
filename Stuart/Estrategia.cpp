@@ -133,9 +133,12 @@
     
 	}
 	void Estrategia::calibracao(){
+    
+    cali.calibrar();
+    
 	}
 	void Estrategia::executar(){
-    cali.calibrar();
+    
     
     if(sensores.detectouObstaculo()){
       desviarObstaculo();
