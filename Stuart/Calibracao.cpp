@@ -1,28 +1,34 @@
 #include <robo_hardware2.h> 
 #include "Calibracao.h"
 
-  /*
-  float valor_sensor_dir;
-  float valor_sensor_mais_dir;
-  float valor_sensor_esq;
-  float valor_sensor_mais_esq;
-  */
-  
+int caliPretoEsquerdo, caliPretoMaisEsquerdo, caliPretoDireito, caliPretoMaisDireito;
+int caliBrancoEsquerdo, caliBrancoMaisEsquerdo, caliBrancoDireito, caliBrancoMaisDireito; 
 
-  int caliPretoEsquerdo, caliPretoMaisEsquerdo, caliPretoDireito, caliPretoMaisDireito;
-  int caliBrancoEsquerdo, caliBrancoMaisEsquerdo, caliBrancoDireito, caliBrancoMaisDireito; 
+  Calibracao:: Calibracao(){
+    
+    calibracao_dados cd;
+
+    robo.lerCalibracao(cd);
+    
+    mediaDireito = cd.refletancia_dir;
+    mediaEsquerdo = cd.refletancia_esq;
+    mediaMaisDireito  = cd.refletancia_mais_dir;
+    mediaMaisEsquerdo = cd.refletancia_mais_esq;
+  }
 
 void Calibracao::calibrar(){
+  
   char controle = 't';
+  
   Serial.println("CALIBRE BRANCO");
   while(1){
     Serial.print("MAIS ESQUERDO : ");
     Serial.print(robo.lerSensorLinhaMaisEsq());
-    Serial.print("  ||  ESQUERDO : ");
+    Serial.print("  |  ESQUERDO : ");
     Serial.print(robo.lerSensorLinhaEsq());
-    Serial.print("  ||  DIREITO : ");
+    Serial.print("  |  DIREITO : ");
     Serial.print(robo.lerSensorLinhaDir());
-    Serial.print("  ||  MAIS DIREITO : ");
+    Serial.print("  |  MAIS DIREITO : ");
     Serial.println(robo.lerSensorLinhaMaisDir());
     
  // Verifica se o testador  quer terminar ou não a calibração para esse sensor
@@ -87,7 +93,7 @@ void Calibracao::calibrar(){
   }
    Serial.println("CALIBRE PRETO MAIS DIREITO");
   while(1){
-    Serial.print("MAIS DIREITO : ");
+    Serial.print(F("MAIS DIREITO : "));
     Serial.println(robo.lerSensorLinhaMaisDir());
     
     if(Serial.available()){
@@ -111,20 +117,8 @@ void Calibracao::calibrar(){
   int Calibracao::mediaEsquerdo(){
     return (caliBrancoMaisEsquerdo + caliPretoMaisEsquerdo) / 2;
   }*/
- 
-  Serial.println(" ");
-  // Imprime os valores das médias
-  Serial.println("Valores finais: ");
-  Serial.print(F("MAIS ESQUERDO : "));
-    Serial.print(mediaMaisEsquerdo);
-    Serial.print("  ||  ESQUERDO : ");
-    Serial.print(mediaEsquerdo);
-    Serial.print("  ||  DIREITO : ");
-    Serial.print(mediaDireito);
-    Serial.print("  ||  MAIS DIREITO : ");
-    Serial.println(mediaMaisDireito);
 
-    // Salvar dados da Calibracao na EEPROM
+   // Salvar dados da Calibracao na EEPROM
 
     calibracao_dados cd;
 
@@ -135,12 +129,21 @@ void Calibracao::calibrar(){
 
     robo.salvarCalibracao(cd);
 
-    robo.lerCalibracao(cd);
-    
-    mediaDireito = cd.refletancia_dir;
-    mediaEsquerdo = cd.refletancia_esq;
-    mediaMaisDireito  = cd.refletancia_mais_dir;
-    mediaMaisEsquerdo = cd.refletancia_mais_esq;
 
+  Serial.println(" ");
+  
+  // Imprime os valores das médias
+  
+  Serial.print(F("Valores finais: "));
+  Serial.print(F("MAIS ESQUERDO : "));
+    Serial.print(mediaMaisEsquerdo);
+    Serial.print(F("  |  ESQUERDO : "));
+    Serial.print(mediaEsquerdo);
+    Serial.print(F("  |  DIREITO : "));
+    Serial.print(mediaDireito);
+    Serial.print(F("  |  MAIS DIREITO : "));
+    Serial.println(mediaMaisDireito);
+
+   
     
 }

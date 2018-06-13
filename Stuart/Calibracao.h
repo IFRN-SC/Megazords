@@ -4,8 +4,10 @@
 #include <robo_hardware2.h>
 
 class Calibracao{
-  
+
   public:
+
+  Calibracao(); 
   /*
   int mediaEsquerdo();
   int mediaDireito();
@@ -15,9 +17,9 @@ class Calibracao{
 
   protected: 
 
-  int mediaEsquerdo = 47;
-  int mediaDireito = 47;
-  int mediaMaisDireito = 47;
-  int mediaMaisEsquerdo = 47;
+  int mediaEsquerdo;
+  int mediaDireito;
+  int mediaMaisDireito;
+  int mediaMaisEsquerdo;
 };
 #endif
