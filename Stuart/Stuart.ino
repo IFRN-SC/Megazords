@@ -6,7 +6,7 @@ Estrategia e;
 void setup() {
   robo.configurar(false);
   e.calibracao();
-  Serial.print("sbdfsdjf");
+  Serial.print("Deu Certo!");
 }
 void loop() {
   e.executar();
