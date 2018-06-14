@@ -143,7 +143,17 @@ void Calibracao::calibrar(){
     Serial.print(mediaDireito);
     Serial.print(F("  |  MAIS DIREITO : "));
     Serial.println(mediaMaisDireito);
-
-   
-    
 }
+
+    Calibracao:: dadosCalibracao(){
+      
+      calibracao_dados cd;
+
+      robo.lerCalibracao(cd);
+    
+      mediaDireito = cd.refletancia_dir;
+      mediaEsquerdo = cd.refletancia_esq;
+      mediaMaisDireito  = cd.refletancia_mais_dir;
+      mediaMaisEsquerdo = cd.refletancia_mais_esq;
+    }
+    
