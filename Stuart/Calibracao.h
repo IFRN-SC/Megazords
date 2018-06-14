@@ -8,12 +8,9 @@ class Calibracao{
   public:
 
   Calibracao(); 
-  /*
-  int mediaEsquerdo();
-  int mediaDireito();
-  int mediaMaisDireito();
-  int mediaMaisEsquerdo();*/
+
   void calibrar();
+  int dadosCalibracao();
 
   protected: 
 
