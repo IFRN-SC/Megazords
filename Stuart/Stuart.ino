@@ -5,8 +5,7 @@ Estrategia e;
 
 void setup() {
   robo.configurar(false);
-  //e.calibracao();             // Comentar quando não quiser fazer calibração
-  Serial.print("Deu Certo!");
+  e.calibracao();             
 }
 void loop() {
   e.executar();
