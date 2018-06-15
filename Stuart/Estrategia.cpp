@@ -21,7 +21,7 @@
        movimento.seguir(); 
         
      }else if(sensores.preto_preto_branco_branco()){       //PPBB
-       while(!(sensores.ehBrancoMaisEsquerdo() && sensores.ehBrancoMaisDireito())){
+       while(!sensores.ehBrancoMaisEsquerdo()){
          movimento.seguir();   
        }
        while(sensores.ehBrancoMaisEsquerdo()){
@@ -32,7 +32,7 @@
        }
      
      }else if(sensores.branco_branco_preto_preto()){       //BBPP
-       while(!(sensores.ehBrancoMaisEsquerdo() && sensores.ehBrancoMaisDireito())){
+       while(!sensores.ehBrancoMaisDireito()){
          movimento.seguir();   
        }
        while(sensores.ehBrancoMaisDireito()){
@@ -43,10 +43,26 @@
        }
       
      }else if(sensores.branco_preto_preto_preto()){        //BPPP
-       movimento.girarParaDireita();
+       while(!sensores.ehBrancoMaisDireito()){
+         movimento.seguir();   
+       }
+       while(sensores.ehBrancoMaisDireito()){
+         movimento.girarParaDireita(); 
+       }
+       while(!sensores.ehBrancoMaisDireito()){
+         movimento.girarParaDireita(); 
+       }
       
      }else if(sensores.preto_preto_preto_branco()){        //PPPB
-       movimento.girarParaEsquerda();
+       while(!sensores.ehBrancoMaisEsquerdo()){
+         movimento.seguir();   
+       }
+       while(sensores.ehBrancoMaisEsquerdo()){
+         movimento.girarParaEsquerda(); 
+       }
+        while(!sensores.ehBrancoMaisEsquerdo()){
+         movimento.girarParaEsquerda(); 
+       }
       
      }else if(sensores.preto_preto_preto_preto()){         //PPPP
      	 movimento.seguir();  	
@@ -113,22 +129,22 @@
 	}
 	void Estrategia::subirRampa(){
      if(sensores.branco_branco_branco_branco()){            //BBBB    
-        robo.acionarMotores(50,50);  
+        robo.acionarMotores(60,60);  
      }
      else if(sensores.preto_branco_branco_branco()){       //PBBB
-       robo.acionarMotores(40,50);      
+       robo.acionarMotores(50,60);      
      }
      else if(sensores.branco_preto_branco_branco()){       //BPBB
-       robo.acionarMotores(40,50); 
+       robo.acionarMotores(50,60); 
      }
      else if(sensores.branco_branco_preto_branco()){       //BBPB
-       robo.acionarMotores(50,40);
+       robo.acionarMotores(60,50);
      }
      else if(sensores.branco_branco_branco_preto()){       //BBBP
-       robo.acionarMotores(50,40); 
+       robo.acionarMotores(60,50); 
      }
      else if(sensores.preto_preto_preto_preto()){         //PPPP
-       robo.acionarMotores(50,50);
+       robo.acionarMotores(60,60);
        delay(700);
        movimento.girarParaDireita();
        delay(360);    
