@@ -139,16 +139,17 @@
 	void Estrategia::calibracao(){
     Serial.println(F("Pressione o Botão para Calibrar!"));
     Serial.println();
-    robo.ligarLed(3);
-    
     for(int i = 1; i <= 10; i++){
+      robo.ligarLed(3);
       if(robo.botao1Pressionado()){
-        
-        cali.calibrar();
+        robo.desligarLed(3);
+        robo.ligarLed(2);
+        cali.menuCalibrar();
       }
+      robo.desligarLed(2);
       Serial.println(F("Tentativa:"));
       Serial.println(i);
-      delay(500);   
+      delay(500); 
 	  }
     robo.desligarLed(3);
     sensores.dadosCalibracao();
