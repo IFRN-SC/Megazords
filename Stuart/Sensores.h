@@ -8,10 +8,10 @@ class Sensores{
   float valor_sensor_esq;
   float valor_sensor_mais_esq;
   
-  int mediaEsquerdo = 15;
-  int mediaDireito = 15;
-  int mediaMaisDireito = 15;
-  int mediaMaisEsquerdo = 15; 
+  int mediaEsquerdo = 10;
+  int mediaDireito = 10;
+  int mediaMaisDireito = 10;
+  int mediaMaisEsquerdo = 10; 
 
 	public:
 
