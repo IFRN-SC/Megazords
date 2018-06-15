@@ -9,7 +9,7 @@ class Calibracao{
 
   Calibracao(); 
 
-  void calibrar();
+  void menuCalibrar();
   int dadosCalibracao();
 
   protected: 
