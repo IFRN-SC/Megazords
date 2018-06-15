@@ -21,18 +21,24 @@
        movimento.seguir(); 
         
      }else if(sensores.preto_preto_branco_branco()){       //PPBB
-       while(!sensores.branco_branco_branco_branco()){
+       while(!(sensores.ehBrancoMaisEsquerdo() && sensores.ehBrancoMaisDireito())){
          movimento.seguir();   
        }
-       while(!sensores.branco_branco_preto_branco()){
+       while(sensores.ehBrancoMaisEsquerdo()){
+         movimento.girarParaEsquerda(); 
+       }
+        while(!sensores.ehBrancoMaisEsquerdo()){
          movimento.girarParaEsquerda(); 
        }
      
      }else if(sensores.branco_branco_preto_preto()){       //BBPP
-       while(!sensores.branco_branco_branco_branco()){
+       while(!(sensores.ehBrancoMaisEsquerdo() && sensores.ehBrancoMaisDireito())){
          movimento.seguir();   
        }
-       while(!sensores.branco_preto_branco_branco()){
+       while(sensores.ehBrancoMaisDireito()){
+         movimento.girarParaDireita(); 
+       }
+       while(!sensores.ehBrancoMaisDireito()){
          movimento.girarParaDireita(); 
        }
       
