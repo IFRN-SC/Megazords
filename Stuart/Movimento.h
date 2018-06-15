@@ -4,27 +4,26 @@ class Movimento{
 
 	public:
 	
-	int seguir(){
+	void seguir(){
 		robo.acionarMotores(PNEU_ANDA, PNEU_ANDA);
 	}
-	int girarParaEsquerda(){
+	void girarParaEsquerda(){
 		robo.acionarMotores(PNEU_VOLTA, PNEU_ANDA);
 	}
-  int girarParaDireita(){
+  void girarParaDireita(){
     robo.acionarMotores(PNEU_ANDA, PNEU_VOLTA);
   }
-  int parar(){
+  void parar(){
     robo.acionarMotores(0,0);
   }
-  int voltar(){
+  void voltar(){
     robo.acionarMotores(PNEU_VOLTA, PNEU_VOLTA);
   }
   
-
-  int girarSoEsquerda(){
+  void girarSoEsquerda(){
     robo.acionarMotores(PNEU_VOLTA, 0); 
   }
-  int girarSoDireita(){
+  void girarSoDireita(){
     robo.acionarMotores(0, PNEU_VOLTA); 
   }
 };
