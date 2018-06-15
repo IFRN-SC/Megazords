@@ -16,7 +16,7 @@ int caliBrancoEsquerdo, caliBrancoMaisEsquerdo, caliBrancoDireito, caliBrancoMai
     mediaMaisEsquerdo = cd.refletancia_mais_esq;
   }
 
-void Calibracao::calibrar(){
+void Calibracao::menuCalibrar(){
   
   char controle = 't';
   
@@ -144,8 +144,7 @@ void Calibracao::calibrar(){
     Serial.print(F("  |  MAIS DIREITO : "));
     Serial.println(mediaMaisDireito);
 }
-
-    Calibracao:: dadosCalibracao(){
+    Calibracao::dadosCalibracao(){
       
       calibracao_dados cd;
 
