@@ -5,6 +5,7 @@ Estrategia e;
 
 void setup() {
   robo.configurar(false);
+  e.calibracao();             
 }
 void loop() {
   e.executar();

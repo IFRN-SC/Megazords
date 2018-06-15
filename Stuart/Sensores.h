@@ -1,6 +1,8 @@
 #include <robo_hardware2.h>
+#include "Calibracao.h"
 
-class Sensores{
+class Sensores: public Calibracao{
+  
   private:
   
   float valor_sensor_dir;
@@ -8,20 +10,21 @@ class Sensores{
   float valor_sensor_esq;
   float valor_sensor_mais_esq;
   
-  int mediaEsquerdo = 10;
-  int mediaDireito = 10;
-  int mediaMaisDireito = 10;
-  int mediaMaisEsquerdo = 10; 
-
 	public:
 
   // Funcoes para definir o branco
-  boolean ehBrancoMaisEsquerdo(){return (robo.lerSensorLinhaMaisEsq() > mediaMaisEsquerdo);}
-  boolean ehBrancoEsquerdo()    {return (robo.lerSensorLinhaEsq() > mediaEsquerdo);}
-  boolean ehBrancoDireito()     {return (robo.lerSensorLinhaDir() > mediaDireito);}
-  boolean ehBrancoMaisDireito() {return (robo.lerSensorLinhaMaisDir() > mediaMaisDireito);}
+  
+  boolean ehBrancoMaisEsquerdo(){
+    return (robo.lerSensorLinhaMaisEsq() > mediaMaisEsquerdo);}
+  boolean ehBrancoEsquerdo()    {
+    return (robo.lerSensorLinhaEsq() > mediaEsquerdo);}
+  boolean ehBrancoDireito()     {
+    return (robo.lerSensorLinhaDir() > mediaDireito);}
+  boolean ehBrancoMaisDireito() {
+    return (robo.lerSensorLinhaMaisDir() > mediaMaisDireito);}
 
   // Funcoes para condicoes
+  
 	boolean branco_branco_branco_branco(){ return (ehBrancoMaisEsquerdo() && ehBrancoEsquerdo() && ehBrancoDireito() && ehBrancoMaisDireito());}   //BBBB
 	boolean preto_branco_branco_branco(){	 return (!ehBrancoMaisEsquerdo() && ehBrancoEsquerdo() && ehBrancoDireito() && ehBrancoMaisDireito());}  //PBBB
 	boolean branco_preto_branco_branco(){	 return (ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && ehBrancoDireito() && ehBrancoMaisDireito());}  //BPBB
@@ -34,4 +37,9 @@ class Sensores{
   boolean preto_preto_preto_branco(){   return (!ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && !ehBrancoDireito() && ehBrancoMaisDireito());} //PPPB
   boolean preto_preto_preto_preto(){   return (!ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && !ehBrancoDireito() && !ehBrancoMaisDireito());} //PPPP
   
+  // Sonares
+
+  bool detectouObstaculo(){return (robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1);}
+  bool identificouRampa(){return (robo.lerSensorSonarEsq() < 15 ) && (robo.lerSensorSonarDir() < 15);}
+
 };

@@ -1,4 +1,5 @@
   #include "Estrategia.h"
+  #include "Calibracao.h"
 
   void Estrategia::seguirLinha(){
 
@@ -61,8 +62,7 @@
          movimento.girarParaEsquerda(); 
        }
         while(!sensores.ehBrancoMaisEsquerdo()){
-         movimento.girarParaEsquerda(); 
-       }
+       movimento.girarParaEsquerda();
       
      }else if(sensores.preto_preto_preto_preto()){         //PPPP
      	 movimento.seguir();  	
@@ -149,26 +149,50 @@
        movimento.girarParaDireita();
        delay(360);    
 
+       while(1){
        while(1){movimento.parar();}
+       robo.desligarLed(1);
+       robo.ligarLed(3);
+       }
      }
     
 	}
 	void Estrategia::calibracao(){
+    Serial.println(F("Pressione o Botão para Calibrar!"));
+    Serial.println();
+    for(int i = 1; i <= 10; i++){
+      robo.ligarLed(3);
+      if(robo.botao1Pressionado()){
+        robo.desligarLed(3);
+        robo.ligarLed(2);
+        cali.menuCalibrar();
+      }
+      robo.desligarLed(2);
+      Serial.println(F("Tentativa:"));
+      Serial.println(i);
+      delay(500); 
+	  }
+    robo.desligarLed(3);
+    sensores.dadosCalibracao();
+    Serial.println(F("Robô Calibrado!"));
 	}
 	void Estrategia::executar(){
-
-    if((robo.lerSensorSonarFrontal() < 5 && robo.lerSensorSonarFrontal() >= 1)){
+    if(sensores.detectouObstaculo()){
+      robo.ligarLed(2);
       desviarObstaculo();
     }
-    else if((robo.lerSensorSonarEsq() < 15 ) && (robo.lerSensorSonarDir() < 15)){
+    else if(sensores.identificouRampa()){
+      robo.ligarLed(1);
       subirRampa();  
     }
     else{
+      robo.desligarLed(2);
       seguirLinha();
     }
-
+   
+	}
 
     
-	}
+	
 
 
