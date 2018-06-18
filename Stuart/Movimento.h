@@ -20,10 +20,11 @@ class Movimento{
     robo.acionarMotores(PNEU_VOLTA, PNEU_VOLTA);
   }
   
-  void girarSoEsquerda(){
-    robo.acionarMotores(PNEU_VOLTA, 0); 
+
+  int girarSoEsquerda(){
+    robo.acionarMotores(-30, 0); 
   }
-  void girarSoDireita(){
-    robo.acionarMotores(0, PNEU_VOLTA); 
+  int girarSoDireita(){
+    robo.acionarMotores(0, -30); 
   }
 };
