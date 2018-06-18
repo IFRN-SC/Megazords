@@ -72,7 +72,7 @@
     movimento.parar();
       delay(500);
     movimento.voltar();
-      delay(150);
+      delay(100);
     
      while(sensores.ehBrancoMaisEsquerdo()){
        movimento.girarParaDireita(); 
@@ -92,35 +92,38 @@
           delay(500);
           
         movimento.girarParaEsquerda();
-          delay(400);
+          delay(350);
         movimento.parar();  
           delay(500);
           
         movimento.seguir();
-          delay(900);
+          delay(850);
         movimento.parar();
           delay(500);
           
         movimento.girarParaEsquerda();
-          delay(300);
+          delay(350);
         movimento.parar();
           delay(500);
           
         while(sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito()){
-          robo.acionarMotores(20,20);  
+          robo.acionarMotores(30,30);  
         }
        /* movimento.parar();  
           delay(300);*/
 
         
           movimento.parar();  
-          delay(2000);
-          robo.acionarMotores(20,20); 
-          delay(350); 
+          delay(500);
+          robo.acionarMotores(30,30); 
+          delay(100); 
           movimento.parar();  
           delay(500);
 
-        while(sensores.ehBrancoEsquerdo()){
+        while(sensores.ehBrancoDireito()){
+          movimento.girarParaDireita();    
+        }
+        while(!sensores.ehBrancoDireito()){
           movimento.girarParaDireita();    
         }
        
