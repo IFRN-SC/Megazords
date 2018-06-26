@@ -7,9 +7,14 @@ class Calibracao{
 
   public:
 
-  Calibracao(); 
+  Calibracao(); // Construtor
 
   void menuCalibrar();
+  void calibrarTodosBrancos();
+  void calibrarPretoMaisEsquerdo();
+  void calibrarPretoEsquerdo();
+  void calibrarPretoMaisDireito();
+  void calibrarPretoDireito();
   int dadosCalibracao();
 
   protected: 
