@@ -63,7 +63,7 @@
        }
         while(!sensores.ehBrancoMaisEsquerdo()){
        movimento.girarParaEsquerda();
-      
+        }
      }else if(sensores.preto_preto_preto_preto()){         //PPPP
      	 movimento.seguir();  	
      }
