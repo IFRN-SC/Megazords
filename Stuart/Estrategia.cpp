@@ -27,7 +27,7 @@
        }
        while(sensores.ehBrancoMaisEsquerdo()){
          movimento.girarParaEsquerda(); 
-       }
+       } 
         while(!sensores.ehBrancoMaisEsquerdo()){
          movimento.girarParaEsquerda(); 
        }
@@ -61,9 +61,9 @@
        while(sensores.ehBrancoMaisEsquerdo()){
          movimento.girarParaEsquerda(); 
        }
-        while(!sensores.ehBrancoMaisEsquerdo()){
+       while(!sensores.ehBrancoMaisEsquerdo()){
        movimento.girarParaEsquerda();
-      
+       }
      }else if(sensores.preto_preto_preto_preto()){         //PPPP
      	 movimento.seguir();  	
      }
@@ -75,7 +75,7 @@
       delay(100);
     
      while(sensores.ehBrancoMaisEsquerdo()){
-       movimento.girarParaDireita(); 
+       movimento.girarParaDireitaOb(); 
      }
         movimento.parar();
           delay(500);
@@ -86,23 +86,23 @@
         movimento.parar();
           delay(500);
           
-        movimento.seguir();
-          delay(600);
+        movimento.seguirOb();
+          delay(650);
         movimento.parar();
           delay(500);
           
-        movimento.girarParaEsquerda();
+        movimento.girarParaEsquerdaOb();
           delay(350);
         movimento.parar();  
           delay(500);
           
-        movimento.seguir();
+        movimento.seguirOb();
           delay(850);
         movimento.parar();
           delay(500);
           
-        movimento.girarParaEsquerda();
-          delay(350);
+        movimento.girarParaEsquerdaOb();
+          delay(300);
         movimento.parar();
           delay(500);
           
@@ -121,10 +121,10 @@
           delay(500);
 
         while(sensores.ehBrancoDireito()){
-          movimento.girarParaDireita();    
+          movimento.girarParaDireitaOb();    
         }
         while(!sensores.ehBrancoDireito()){
-          movimento.girarParaDireita();    
+          movimento.girarParaDireitaOb();    
         }
        
 	}
@@ -184,7 +184,7 @@
       robo.ligarLed(2);
       desviarObstaculo();
     }
-    else if(sensores.identificouRampa()){
+    else if(sensores.identificouRampa()){ 
       robo.ligarLed(1);
       subirRampa();  
     }
