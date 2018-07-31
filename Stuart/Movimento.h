@@ -1,6 +1,8 @@
 class Movimento{
-  #define PNEU_ANDA 35
-  #define PNEU_VOLTA -35
+  #define PNEU_ANDA 40
+  #define PNEU_VOLTA -40
+  #define PNEU_ANDA_OBSTACULO 40
+  #define PNEU_VOLTA_OBSTACULO -40
 
 	public:
 	
@@ -21,10 +23,19 @@ class Movimento{
   }
   
 
-  int girarSoEsquerda(){
-    robo.acionarMotores(-30, 0); 
+  void girarSoEsquerda(){
+    robo.acionarMotores(-25, 0); 
   }
-  int girarSoDireita(){
-    robo.acionarMotores(0, -30); 
+  void girarSoDireita(){
+    robo.acionarMotores(0, -25); 
+  }
+  void seguirOb(){
+    robo.acionarMotores(PNEU_ANDA_OBSTACULO, PNEU_ANDA_OBSTACULO);
+  }
+  void girarParaEsquerdaOb(){
+    robo.acionarMotores(PNEU_VOLTA_OBSTACULO, PNEU_ANDA_OBSTACULO);
+  }
+  void girarParaDireitaOb(){
+    robo.acionarMotores(PNEU_ANDA_OBSTACULO, PNEU_VOLTA_OBSTACULO);
   }
 };
