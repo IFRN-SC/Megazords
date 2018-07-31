@@ -11,6 +11,7 @@ class Calibracao{
 
   void menuCalibrar();
   int dadosCalibracao();
+  int calibreBrancos();
 
   protected: 
 
