@@ -152,11 +152,12 @@
        movimento.girarParaDireita();
        delay(360);    
 
-       while(1){
-       while(1){movimento.parar();}
+       while(1){movimento.parar();
        robo.desligarLed(3);
        robo.ligarLed(1);
        }
+       
+       
      }
     
 	}
