@@ -154,8 +154,8 @@
 
        while(1){
        while(1){movimento.parar();}
-       robo.desligarLed(1);
-       robo.ligarLed(3);
+       robo.desligarLed(3);
+       robo.ligarLed(1);
        }
      }
     
@@ -185,7 +185,7 @@
       desviarObstaculo();
     }
     else if(sensores.identificouRampa()){ 
-      robo.ligarLed(1);
+      robo.ligarLed(3);
       subirRampa();  
     }
     else{
