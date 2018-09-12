@@ -21,8 +21,8 @@ class Sensores{
   boolean ehBrancoDireito()     {return (robo.lerSensorLinhaDir() > mediaDireito);}
   boolean ehBrancoMaisDireito() {return (robo.lerSensorLinhaMaisDir() > mediaMaisDireito);}
   boolean procuraVerde();
-  boolean ehVerdeEsquerdo()     {return (robo.getHSVEsquerdo().v < 330);}
-  boolean ehVerdeDireito();
+  boolean ehVerdeEsquerdo()     {return (robo.getHSVEsquerdo().v < 210);}
+  boolean ehVerdeDireito()    {return (robo.getHSVDireito().v < 210);}
 
   // Funcoes para condicoes
 	boolean branco_branco_branco_branco(){ return (ehBrancoMaisEsquerdo() && ehBrancoEsquerdo() && ehBrancoDireito() && ehBrancoMaisDireito());}   //BBBB
