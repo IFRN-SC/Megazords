@@ -10,10 +10,10 @@ int caliBrancoEsquerdo, caliBrancoMaisEsquerdo, caliBrancoDireito, caliBrancoMai
 
     robo.lerCalibracao(cd);
     
-    mediaDireito = cd.refletancia_dir;
-    mediaEsquerdo = cd.refletancia_esq;
-    mediaMaisDireito  = cd.refletancia_mais_dir;
-    mediaMaisEsquerdo = cd.refletancia_mais_esq;
+    mediaDireito = cd.refletanciaDir;
+    mediaEsquerdo = cd.refletanciaEsq;
+    mediaMaisDireito  = cd.refletanciaMaisDir;
+    mediaMaisEsquerdo = cd.refletanciaMaisEsq;
   }
 
 void Calibracao::menuCalibrar(){
@@ -122,10 +122,10 @@ void Calibracao::menuCalibrar(){
 
     calibracao_dados cd;
 
-    cd.refletancia_dir = mediaDireito; 
-    cd.refletancia_esq = mediaEsquerdo;
-    cd.refletancia_mais_dir = mediaMaisDireito;
-    cd.refletancia_mais_esq = mediaMaisEsquerdo;
+    cd.refletanciaDir = mediaDireito; 
+    cd.refletanciaEsq = mediaEsquerdo;
+    cd.refletanciaMaisDir = mediaMaisDireito;
+    cd.refletanciaMaisEsq = mediaMaisEsquerdo;
 
     robo.salvarCalibracao(cd);
 
@@ -150,9 +150,9 @@ void Calibracao::menuCalibrar(){
 
       robo.lerCalibracao(cd);
     
-      mediaDireito = cd.refletancia_dir;
-      mediaEsquerdo = cd.refletancia_esq;
-      mediaMaisDireito  = cd.refletancia_mais_dir;
-      mediaMaisEsquerdo = cd.refletancia_mais_esq;
+      mediaDireito = cd.refletanciaDir;
+      mediaEsquerdo = cd.refletanciaEsq;
+      mediaMaisDireito  = cd.refletanciaMaisDir;
+      mediaMaisEsquerdo = cd.refletanciaMaisEsq;
     }
     
