@@ -72,7 +72,7 @@
     movimento.parar();
       delay(500);
     movimento.voltar();
-      delay(100);
+      delay(50);
     
      while(sensores.ehBrancoMaisEsquerdo()){
        movimento.girarParaDireitaOb(); 
@@ -87,7 +87,7 @@
           delay(500);
           
         movimento.seguirOb();
-          delay(650);
+          delay(620);
         movimento.parar();
           delay(500);
           
@@ -97,7 +97,7 @@
           delay(500);
           
         movimento.seguirOb();
-          delay(850);
+          delay(700);
         movimento.parar();
           delay(500);
           
