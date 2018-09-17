@@ -22,7 +22,7 @@
        movimento.seguir(); 
         
      }else if(sensores.preto_preto_branco_branco()){       //PPBB
-       while(!sensores.ehBrancoMaisEsquerdo()){
+       /*while(!sensores.ehBrancoMaisEsquerdo()){
          movimento.seguir();   
        }
        while(sensores.ehBrancoMaisEsquerdo()){
@@ -30,7 +30,7 @@
        } 
         while(!sensores.ehBrancoMaisEsquerdo()){
          movimento.girarParaEsquerda(); 
-       }
+       }*/
      
      }else if(sensores.branco_branco_preto_preto()){       //BBPP
        while(!sensores.ehBrancoMaisDireito()){
@@ -129,6 +129,27 @@
        
 	}
 	void Estrategia::identificarVerde(){
+    movimento.parar();
+    delay(100);
+    movimento.seguir();
+    delay(100);
+    movimento.parar();
+    delay(100);
+    while(sensores.ehBrancoEsquerdo()){
+      robo.acionarMotores(-20, -20);
+    }
+    movimento.parar();
+    delay(100);
+    if (sensores.ehVerdeEsquerdo()) {
+      robo.acionarMotores(20, 20);
+      delay(500);
+      while(sensores.ehBrancoMaisEsquerdo()){
+         movimento.girarParaEsquerda(); 
+      } 
+      while(!sensores.ehBrancoMaisEsquerdo()){
+         movimento.girarParaEsquerda(); 
+      }
+    }
 	}
 	void Estrategia::subirRampa(){
      if(sensores.branco_branco_branco_branco()){            //BBBB    
@@ -180,7 +201,11 @@
     Serial.println(F("Robô Calibrado!"));
 	}
 	void Estrategia::executar(){
-    if(sensores.detectouObstaculo()){
+    if(sensores.testarVerde()){
+      robo.ligarLed(3);
+      identificarVerde();
+    }
+    else if(sensores.detectouObstaculo()){
       robo.ligarLed(2);
       desviarObstaculo();
     }
