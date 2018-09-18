@@ -21,8 +21,8 @@
      }else if(sensores.branco_preto_preto_branco()){       //BPPB
        movimento.seguir(); 
         
-     }else if(sensores.preto_preto_branco_branco()){       //PPBB
-       /*while(!sensores.ehBrancoMaisEsquerdo()){
+     }/*else if(sensores.preto_preto_branco_branco()){       //PPBB
+       while(!sensores.ehBrancoMaisEsquerdo()){
          movimento.seguir();   
        }
        while(sensores.ehBrancoMaisEsquerdo()){
@@ -30,7 +30,7 @@
        } 
         while(!sensores.ehBrancoMaisEsquerdo()){
          movimento.girarParaEsquerda(); 
-       }*/
+       }
      
      }else if(sensores.branco_branco_preto_preto()){       //BBPP
        while(!sensores.ehBrancoMaisDireito()){
@@ -66,7 +66,7 @@
        }
      }else if(sensores.preto_preto_preto_preto()){         //PPPP
      	 movimento.seguir();  	
-     }
+     }*/
 	}
 	void Estrategia::desviarObstaculo(){
     movimento.parar();
@@ -142,7 +142,7 @@
     delay(100);
     if (sensores.ehVerdeEsquerdo()) {
       robo.acionarMotores(20, 20);
-      delay(500);
+      delay(300);
       while(sensores.ehBrancoMaisEsquerdo()){
          movimento.girarParaEsquerda(); 
       } 
