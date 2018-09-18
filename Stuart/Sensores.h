@@ -47,6 +47,5 @@ class Sensores: public Calibracao{
   bool identificouRampa(){return (robo.lerSensorSonarEsq() < 15 ) && (robo.lerSensorSonarDir() < 15);}
   bool testarVerde(){return (preto_preto_branco_branco()
   || branco_branco_preto_preto() || preto_preto_preto_preto()
-  || preto_preto_preto_branco() || branco_preto_preto_preto() 
-  || branco_branco_branco_preto() || preto_branco_branco_branco());}
+  || preto_preto_preto_branco() || branco_preto_preto_preto());}
 };
