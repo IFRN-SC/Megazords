@@ -43,7 +43,7 @@
          movimento.girarParaDireita(); 
        }
       
-     }else if(sensores.branco_preto_preto_preto()){        //BPPP
+     }*/else if(sensores.branco_preto_preto_preto()){        //BPPP
        while(!sensores.ehBrancoMaisDireito()){
          movimento.seguir();   
        }
@@ -64,7 +64,7 @@
        while(!sensores.ehBrancoMaisEsquerdo()){
        movimento.girarParaEsquerda();
        }
-     }else if(sensores.preto_preto_preto_preto()){         //PPPP
+     }/*else if(sensores.preto_preto_preto_preto()){         //PPPP
      	 movimento.seguir();  	
      }*/
 	}
@@ -130,17 +130,23 @@
 	}
 	void Estrategia::identificarVerde(){
     movimento.parar();
-    delay(100);
+    delay(200);
     movimento.seguir();
-    delay(100);
+    delay(150);
     movimento.parar();
     delay(100);
-    while(sensores.ehBrancoEsquerdo()){
+    while(sensores.ehBrancoMaisDireito() && sensores.ehBrancoMaisEsquerdo()){
       robo.acionarMotores(-20, -20);
     }
     movimento.parar();
     delay(100);
-    if (sensores.ehVerdeEsquerdo()) {
+    if (sensores.ehVerdeEsquerdo()) { 
+      for(int led = 1; led <= 3; led++){
+           robo.ligarLed(led);
+           delay(200);
+           robo.desligarLed(led);
+           delay(200); 
+         }
       robo.acionarMotores(20, 20);
       delay(300);
       while(sensores.ehBrancoMaisEsquerdo()){
@@ -150,7 +156,29 @@
          movimento.girarParaEsquerda(); 
       }
     }
-	}
+        if(!sensores.ehBrancoMaisEsquerdo()){
+          while(!sensores.ehBrancoMaisEsquerdo()){
+            movimento.seguir();   
+          }
+          while(sensores.ehBrancoMaisEsquerdo()){
+            movimento.girarParaEsquerda(); 
+          } 
+          while(!sensores.ehBrancoMaisEsquerdo()){
+            movimento.girarParaEsquerda(); 
+          }  
+        }
+        else if(!sensores.ehBrancoMaisDireito()){
+          while(!sensores.ehBrancoMaisDireito()){
+            movimento.seguir();   
+          }
+          while(sensores.ehBrancoMaisDireito()){
+            movimento.girarParaDireita(); 
+          }
+          while(!sensores.ehBrancoMaisDireito()){
+            movimento.girarParaDireita(); 
+          }  
+        }
+    }   
 	void Estrategia::subirRampa(){
      if(sensores.branco_branco_branco_branco()){            //BBBB    
         robo.acionarMotores(60,60);  
