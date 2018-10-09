@@ -140,21 +140,12 @@
     }
     movimento.parar();
     delay(100);
-    if (sensores.ehVerdeEsquerdo()) { 
-      for(int led = 1; led <= 3; led++){
-           robo.ligarLed(led);
-           delay(200);
-           robo.desligarLed(led);
-           delay(200); 
-         }
-      robo.acionarMotores(20, 20);
-      delay(300);
-      while(sensores.ehBrancoMaisEsquerdo()){
-         movimento.girarParaEsquerda(); 
-      } 
-      while(!sensores.ehBrancoMaisEsquerdo()){
-         movimento.girarParaEsquerda(); 
-      }
+    if (sensores.verde_beco()) {
+      movimento.girarVerdeBeco();   
+    }else if (sensores.verde_esquedo()){
+      movimento.girarVerdeEsquerdo();
+    }else if (sensores.verde_direito()){
+      movimento.girarVerdeDireito();
     }
         if(!sensores.ehBrancoMaisEsquerdo()){
           while(!sensores.ehBrancoMaisEsquerdo()){
