@@ -36,45 +36,4 @@ class Movimento{
   void girarParaDireitaOb(){
     robo.acionarMotores(PNEU_ANDA_OBSTACULO, PNEU_VOLTA_OBSTACULO);
   }
-  void girarVerdeEsquerdo(){
-    for(int i = 0; i < 3; i++){
-           robo.ligarLed(1);
-           delay(200);
-           robo.desligarLed(1);
-           delay(200); 
-         }
-      robo.acionarMotores(20, 20);
-      delay(300);
-      while(sensores.ehBrancoMaisEsquerdo()){
-         movimento.girarParaEsquerda(); 
-      } 
-      while(!sensores.ehBrancoMaisEsquerdo()){
-         movimento.girarParaEsquerda(); 
-      }  
-  }
-  void girarVerdeDireito(){
-    for(int i = 0; i < 3; i++){
-           robo.ligarLed(2);
-           delay(200);
-           robo.desligarLed(2);
-           delay(200); 
-         }
-      robo.acionarMotores(20, 20);
-      delay(300); 
-      while(sensores.ehBrancoMaisDireito()){
-         movimento.girarParaDireita(); 
-      }
-      while(!sensores.ehBrancoMaisDireito()){
-         movimento.girarParaDireita(); 
-      } 
-  }
-  void girarVerdeBeco(){
-    for(int i = 0; i < 3; i++){
-           robo.ligarLed(3);
-           delay(200);
-           robo.desligarLed(3);
-           delay(200); 
-         }
-      
-  }
 };
