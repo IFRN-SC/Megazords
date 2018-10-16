@@ -12,7 +12,10 @@ class Estrategia{
 	void seguirLinha();
 	void desviarObstaculo();
 	void identificarVerde();
-	void subirRampa(); 
+	void subirRampa();
+  void girarVerdeEsquerdo();
+  void girarVerdeDireito();
+  void girarVerdeBeco(); 
 	
 
 	public:
