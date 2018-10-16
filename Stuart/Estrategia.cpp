@@ -132,7 +132,7 @@
     movimento.parar();
     delay(200);
     movimento.seguir();
-    delay(150);
+    delay(50);
     movimento.parar();
     delay(100);
     while(sensores.ehBrancoMaisDireito() && sensores.ehBrancoMaisEsquerdo()){
@@ -140,9 +140,9 @@
     }
     movimento.parar();
     delay(100);
-    if (sensores.verde_beco()) {
+    /*if (sensores.verde_beco()) {
       girarVerdeBeco();   
-    }else if (sensores.verde_esquedo()){
+    }else */if (sensores.verde_esquedo()){
       girarVerdeEsquerdo();
     }else if (sensores.verde_direito()){
       girarVerdeDireito();
@@ -151,23 +151,17 @@
           while(!sensores.ehBrancoMaisEsquerdo()){
             movimento.seguir();   
           }
-          while(sensores.ehBrancoMaisEsquerdo()){
+          while(sensores.ehBrancoDireito()){
             movimento.girarParaEsquerda(); 
-          } 
-          while(!sensores.ehBrancoMaisEsquerdo()){
-            movimento.girarParaEsquerda(); 
-          }  
+          }   
         }
         else if(!sensores.ehBrancoMaisDireito()){
           while(!sensores.ehBrancoMaisDireito()){
             movimento.seguir();   
           }
-          while(sensores.ehBrancoMaisDireito()){
+          while(sensores.ehBrancoEsquerdo()){
             movimento.girarParaDireita(); 
           }
-          while(!sensores.ehBrancoMaisDireito()){
-            movimento.girarParaDireita(); 
-          }  
         }
     }
   void Estrategia::girarVerdeEsquerdo(){
@@ -235,18 +229,8 @@
        robo.acionarMotores(60,50); 
      }
      else if(sensores.preto_preto_preto_preto()){         //PPPP
-       robo.acionarMotores(60,60);
-       delay(700);
-       movimento.girarParaDireita();
-       delay(360);    
-
-       while(1){
-       while(1){movimento.parar();}
-       robo.desligarLed(1);
-       robo.ligarLed(3);
+       robo.acionarMotores(60,60);  
        }
-     }
-    
 	}
 	void Estrategia::calibracao(){
     Serial.println(F("Pressione o Botão para Calibrar!"));
