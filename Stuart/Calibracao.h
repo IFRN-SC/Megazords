@@ -13,10 +13,18 @@ class Calibracao{
   int dadosCalibracao();
 
   protected: 
-
+  
+  // Refletancia
+  
   int mediaEsquerdo;
   int mediaDireito;
   int mediaMaisDireito;
   int mediaMaisEsquerdo;
+
+  //Cor
+
+  int mediaVerdeEsquerdo;
+  int mediaVerdeDireito;
+  
 };
 #endif
