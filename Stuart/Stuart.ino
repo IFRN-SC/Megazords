@@ -9,6 +9,5 @@ void setup() {
   e.calibracao();             
 }
 void loop() {
-  //Serial.println("Miro é o mito");
   e.executar();
 }
