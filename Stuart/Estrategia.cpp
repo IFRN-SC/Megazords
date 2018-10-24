@@ -132,22 +132,22 @@
 	}
 	void Estrategia::subirRampa(){
      if(sensores.branco_branco_branco_branco()){            //BBBB    
-        robo.acionarMotores(60,60);  
+        robo.acionarMotores(55,55);  
      }
      else if(sensores.preto_branco_branco_branco()){       //PBBB
-       robo.acionarMotores(50,60);      
+       robo.acionarMotores(45,55);      
      }
      else if(sensores.branco_preto_branco_branco()){       //BPBB
-       robo.acionarMotores(50,60); 
+       robo.acionarMotores(45,55); 
      }
      else if(sensores.branco_branco_preto_branco()){       //BBPB
-       robo.acionarMotores(60,50);
+       robo.acionarMotores(55,45);
      }
      else if(sensores.branco_branco_branco_preto()){       //BBBP
-       robo.acionarMotores(60,50); 
+       robo.acionarMotores(55,45); 
      }
      else if(sensores.preto_preto_preto_preto()){         //PPPP
-       robo.acionarMotores(60,60);
+       robo.acionarMotores(55,55);
        delay(700);
        movimento.girarParaDireita();
        delay(360);    
