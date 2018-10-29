@@ -75,7 +75,7 @@
       delay(50);
     
      while(sensores.ehBrancoMaisEsquerdo()){
-       movimento.girarParaDireitaOb(); 
+       movimento.girarParaDireita(); 
      }
         movimento.parar();
           delay(500);
@@ -86,33 +86,29 @@
         movimento.parar();
           delay(500);
           
-        movimento.seguirOb();
-          delay(620);
+        movimento.seguir();
+          delay(600);
         movimento.parar();
           delay(500);
           
-        movimento.girarParaEsquerdaOb();
+        movimento.girarParaEsquerda();
           delay(350);
         movimento.parar();  
           delay(500);
           
-        movimento.seguirOb();
-          delay(700);
+        movimento.seguir();
+          delay(730);
         movimento.parar();
           delay(500);
           
-        movimento.girarParaEsquerdaOb();
-          delay(300);
+        movimento.girarParaEsquerda();
+          delay(320);
         movimento.parar();
           delay(500);
           
         while(sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito()){
           robo.acionarMotores(30,30);  
-        }
-       /* movimento.parar();  
-          delay(300);*/
-
-        
+        }        
           movimento.parar();  
           delay(500);
           robo.acionarMotores(30,30); 
@@ -121,10 +117,10 @@
           delay(500);
 
         while(sensores.ehBrancoDireito()){
-          movimento.girarParaDireitaOb();    
+          movimento.girarParaDireita();    
         }
         while(!sensores.ehBrancoDireito()){
-          movimento.girarParaDireitaOb();    
+          movimento.girarParaDireita();    
         }
        
 	}
@@ -151,12 +147,10 @@
        delay(700);
        movimento.girarParaDireita();
        delay(360);    
-
-       while(1){
+       
        while(1){movimento.parar();}
        robo.desligarLed(1);
        robo.ligarLed(3);
-       }
      }
     
 	}
