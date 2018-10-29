@@ -48,6 +48,5 @@ class Sensores: public Calibracao{
 
   bool detectouObstaculo(){return (robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1);}
   bool identificouRampa(){return (robo.lerSensorSonarEsq() < 15 ) && (robo.lerSensorSonarDir() < 15);}
-  bool testarVerde(){return (preto_preto_branco_branco()
-  || branco_branco_preto_preto() || branco_preto_preto_preto() || preto_preto_preto_branco());}
+  bool testarVerde(){return (preto_preto_branco_branco() || branco_branco_preto_preto() || branco_preto_preto_preto() || preto_preto_preto_branco());}
 };
