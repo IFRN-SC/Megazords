@@ -231,16 +231,16 @@
        robo.acionarMotores(60,50); 
      }
      else if(sensores.preto_preto_preto_preto()){         //PPPP
-       robo.acionarMotores(70,70);  
-       //break;
+       robo.acionarMotores(60,60);  
+       break;
        }
     }
-    /*robo.acionarMotores(50, 50);
+    robo.acionarMotores(50, 50);
     delay(1000);
     robo.acionarMotores(0,0);
     robo.ligarLed(2);
     
-    while(1);*/
+    while(1);s
 	}
 	void Estrategia::calibracao(){
     Serial.println(F("Pressione o Botão para Calibrar!"));
