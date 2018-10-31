@@ -25,44 +25,44 @@
        while(!sensores.ehBrancoMaisEsquerdo()){
          movimento.seguir();   
        }
-       while(sensores.ehBrancoMaisEsquerdo()){
+       while(sensores.ehBrancoDireito()){
          movimento.girarParaEsquerda(); 
        } 
-        while(!sensores.ehBrancoMaisEsquerdo()){
-         movimento.girarParaEsquerda(); 
+        while(!sensores.ehBrancoDireito()){
+         movimento.girarParaDireita(); 
        }
      
      }else if(sensores.branco_branco_preto_preto()){       //BBPP
        while(!sensores.ehBrancoMaisDireito()){
          movimento.seguir();   
        }
-       while(sensores.ehBrancoMaisDireito()){
+       while(sensores.ehBrancoEsquerdo()){
          movimento.girarParaDireita(); 
        }
-       while(!sensores.ehBrancoMaisDireito()){
-         movimento.girarParaDireita(); 
+       while(!sensores.ehBrancoEsquerdo()){
+         movimento.girarParaEsquerda(); 
        }
       
      }else if(sensores.branco_preto_preto_preto()){        //BPPP
        while(!sensores.ehBrancoMaisDireito()){
          movimento.seguir();   
        }
-       while(sensores.ehBrancoMaisDireito()){
+       while(sensores.ehBrancoEsquerdo()){
          movimento.girarParaDireita(); 
        }
-       while(!sensores.ehBrancoMaisDireito()){
-         movimento.girarParaDireita(); 
+       while(!sensores.ehBrancoEsquerdo()){
+         movimento.girarParaEsquerda(); 
        }
       
      }else if(sensores.preto_preto_preto_branco()){        //PPPB
        while(!sensores.ehBrancoMaisEsquerdo()){
          movimento.seguir();   
        }
-       while(sensores.ehBrancoMaisEsquerdo()){
+       while(sensores.ehBrancoDireito()){
          movimento.girarParaEsquerda(); 
-       }
-       while(!sensores.ehBrancoMaisEsquerdo()){
-       movimento.girarParaEsquerda();
+       } 
+        while(!sensores.ehBrancoDireito()){
+         movimento.girarParaDireita(); 
        }
      }else if(sensores.preto_preto_preto_preto()){         //PPPP
      	 movimento.seguir();  	
@@ -128,22 +128,22 @@
 	}
 	void Estrategia::subirRampa(){
      if(sensores.branco_branco_branco_branco()){            //BBBB    
-        robo.acionarMotores(55,55);  
+        robo.acionarMotores(60,60);  
      }
      else if(sensores.preto_branco_branco_branco()){       //PBBB
-       robo.acionarMotores(45,55);      
+       robo.acionarMotores(50,60);      
      }
      else if(sensores.branco_preto_branco_branco()){       //BPBB
-       robo.acionarMotores(45,55); 
+       robo.acionarMotores(50,60); 
      }
      else if(sensores.branco_branco_preto_branco()){       //BBPB
-       robo.acionarMotores(55,45);
+       robo.acionarMotores(60,50);
      }
      else if(sensores.branco_branco_branco_preto()){       //BBBP
-       robo.acionarMotores(55,45); 
+       robo.acionarMotores(60,50); 
      }
      else if(sensores.preto_preto_preto_preto()){         //PPPP
-       robo.acionarMotores(55,55);
+       robo.acionarMotores(60,60);
        delay(700);
        movimento.girarParaDireita();
        delay(360);    
