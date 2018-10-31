@@ -102,7 +102,7 @@
           delay(500);
           
         movimento.girarParaEsquerda();
-          delay(320);
+          delay(300);
         movimento.parar();
           delay(500);
           
