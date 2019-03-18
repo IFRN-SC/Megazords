@@ -10,12 +10,12 @@
        movimento.girarParaEsquerda();
         
    	 }else if(sensores.branco_preto_branco_branco()){       //BPBB
-     	 robo.acionarMotores(20, 40);
-     	 //movimento.girarParaEsquerda();
+     	 //robo.acionarMotores(20, 40);
+     	 movimento.girarParaEsquerda();
       
    	 }else if(sensores.branco_branco_preto_branco()){       //BBPB
-       robo.acionarMotores(40, 20);
-       //movimento.girarParaDireita();
+       //robo.acionarMotores(40, 20);
+       movimento.girarParaDireita();
       
      }else if(sensores.branco_branco_branco_preto()){       //BBBP
      	 movimento.girarParaDireita(); 
@@ -95,22 +95,22 @@
           delay(500);
           
         movimento.seguir();
-          delay(600);
+          delay(700);
         movimento.parar();
           delay(500);
           
         movimento.girarParaEsquerda();
-          delay(350);
+          delay(450);
         movimento.parar();  
           delay(500);
           
         movimento.seguir();
-          delay(730);
+          delay(850);
         movimento.parar();
           delay(500);
           
         movimento.girarParaEsquerda();
-          delay(300);
+          delay(450);
         movimento.parar();
           delay(500);
           
@@ -136,25 +136,46 @@
 	}
 	void Estrategia::subirRampa(){
      if(sensores.branco_branco_branco_branco()){            //BBBB    
-        robo.acionarMotores(60,60);  
+        robo.acionarMotores(50,50);  
      }
      else if(sensores.preto_branco_branco_branco()){       //PBBB
-       robo.acionarMotores(50,60);      
+       robo.acionarMotores(40,50);      
      }
      else if(sensores.branco_preto_branco_branco()){       //BPBB
-       robo.acionarMotores(50,60); 
+       robo.acionarMotores(40,50); 
      }
      else if(sensores.branco_branco_preto_branco()){       //BBPB
-       robo.acionarMotores(60,50);
+       robo.acionarMotores(50,40);
      }
      else if(sensores.branco_branco_branco_preto()){       //BBBP
-       robo.acionarMotores(60,50); 
+       robo.acionarMotores(50,40); 
      }
      else if(sensores.preto_preto_preto_preto()){         //PPPP
-       robo.acionarMotores(60,60);
+       robo.acionarMotores(50,50);
        delay(700);
        movimento.girarParaDireita();
-       delay(360);    
+       delay(450);    
+       for(int i = 0; i < 1; i++){
+          movimento.voltar();
+          delay(700);
+          movimento.seguir();
+          delay(300);
+          movimento.voltar();
+          delay(700); 
+       }
+          movimento.seguir();
+          delay(1000);
+          movimento.girarParaEsquerda();
+          delay(450);
+          
+       for(int i = 0; i < 1; i++){
+          movimento.voltar();
+          delay(700);
+          movimento.seguir();
+          delay(300);
+          movimento.voltar();
+          delay(700); 
+       }
        
        while(1){movimento.parar();}
        robo.desligarLed(1);
