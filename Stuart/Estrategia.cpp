@@ -50,7 +50,7 @@ void Estrategia::desviarObstaculo() {
   movimento.parar();
   delay(500);
   movimento.voltar();
-  delay(100);
+  delay(50);
   while (sensores.ehBrancoMaisEsquerdo()) {
     movimento.girarParaDireita();
   }
@@ -61,52 +61,52 @@ void Estrategia::desviarObstaculo() {
     movimento.girarSoDireita();
   }
   movimento.parar();
-  delay(1000);
+  delay(500);
   while (robo.lerSensorSonarEsq() >= 10) {
     robo.ligarLed(1);
-    movimento.seguir();
+    robo.acionarMotores(30,30);
   } robo.desligarLed(1);
   movimento.parar();
-  delay(1000);
+  delay(500);
   while (robo.lerSensorSonarEsq() <= 10) {
     robo.ligarLed(3);
-    movimento.seguir();
+    robo.acionarMotores(30,30);
   } robo.desligarLed(3);
   movimento.seguir();
   delay(150);
   movimento.parar();
-  delay(1000);
+  delay(500);
 
   movimento.girarParaEsquerda();
-  delay(360);
+  delay(450);
   movimento.parar();
   delay(500);
 
   while (robo.lerSensorSonarEsq() >= 10) {
     robo.ligarLed(1);
-    movimento.seguir();
+    robo.acionarMotores(30,30);
   } robo.desligarLed(1);
   movimento.parar();
-  delay(1000);
+  delay(500);
   while (robo.lerSensorSonarEsq() <= 10) {
     robo.ligarLed(3);
-    movimento.seguir();
+    robo.acionarMotores(30,30);
   } robo.desligarLed(3);
-  /*movimento.seguir();
-     delay(150);*/
+  movimento.seguir();
+     delay(150);
 
   movimento.parar();
-  delay(1000);
+  delay(500);
 
   movimento.girarParaEsquerda();
-  delay(360);
+  delay(450);
   movimento.parar();
   delay(500);
   movimento.seguir();
   delay(200);
 
   while (sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito()) {
-    robo.acionarMotores(20, 20);
+    robo.acionarMotores(30, 30);
   }
   /* movimento.parar();
      delay(300);*/
@@ -114,7 +114,7 @@ void Estrategia::desviarObstaculo() {
 
   movimento.parar();
   delay(500);
-  robo.acionarMotores(20, 20);
+  robo.acionarMotores(30, 30);
   delay(350);
   movimento.parar();
   delay(500);
@@ -170,18 +170,15 @@ void Estrategia::executar() {
   if ((robo.lerSensorSonarFrontal() <= 6 && robo.lerSensorSonarFrontal() >= 1)) {
     desviarObstaculo();
   }
-  else if (sensores.procuraVerde()) {
+  /*else if (sensores.procuraVerde()) {
     identificarVerde();
-  }
+  }*/
   else if ((robo.lerSensorSonarEsq() <= 20 ) && (robo.lerSensorSonarDir() <= 20)) {
     subirRampa();
   }
   else {
     seguirLinha();
   }
-
-
-
 }
 
 
