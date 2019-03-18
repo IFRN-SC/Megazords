@@ -10,11 +10,11 @@ void setup() {
   Serial.begin(9600);
 }
 void loop() {
-  //e.executar();
+  e.executar();
   /*if (s.ehVerdeEsquerdo()) Serial.println("EH VERDE ESQUERDOOOO");
   Serial.println(robo.getHSVEsquerdo().v);
   delay(200);
-*/
+
   if(s.branco_branco_branco_branco()){
     robo.acionarMotores(30, 30);
   }else if (s.branco_preto_branco_branco()) {     //BPBB
@@ -59,6 +59,6 @@ void loop() {
     }
     robo.desligarTodosLeds();
     //while(1){robo.acionarMotores(0,0);}
-  }
+  }*/
   
 }
