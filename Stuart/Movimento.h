@@ -1,41 +1,35 @@
 class Movimento{
-  #define PNEU_ANDA 40
-  #define PNEU_VOLTA -40
-  #define PNEU_ANDA_OBSTACULO 40
-  #define PNEU_VOLTA_OBSTACULO -40
+        #define PNEU_ANDA_ESQ 40
+        #define PNEU_ANDA_DIR 43
+        #define PNEU_VOLTA_DIR -43
+        #define PNEU_VOLTA_ESQ -40
 
-	public:
-	
-	void seguir(){
-		robo.acionarMotores(PNEU_ANDA, PNEU_ANDA);
-	}
-	void girarParaEsquerda(){
-		robo.acionarMotores(PNEU_VOLTA, PNEU_ANDA);
-	}
-  void girarParaDireita(){
-    robo.acionarMotores(PNEU_ANDA, PNEU_VOLTA);
-  }
-  void parar(){
-    robo.acionarMotores(0,0);
-  }
-  void voltar(){
-    robo.acionarMotores(PNEU_VOLTA, PNEU_VOLTA);
-  }
-  
+	  public:
+        void seguir (){
+            robo.acionarMotores(PNEU_ANDA_ESQ, PNEU_ANDA_DIR);
+        }
+        
+        void voltar (){
+            robo.acionarMotores(PNEU_VOLTA_ESQ, PNEU_VOLTA_DIR);
+        }
+        
+        void parar (){
+            robo.acionarMotores(0,0);
+        }
+        
+        void girarSoEsquerda(){
+            robo.acionarMotores(PNEU_ANDA_ESQ * (-1), 0);
+        }
+        
+        void girarSoDireita (){
+            robo.acionarMotores(0, PNEU_ANDA_DIR * (-1));
+        }
+      
+        void girarParaEsquerda (){
+            robo.acionarMotores(PNEU_VOLTA_ESQ, PNEU_ANDA_DIR);
+        }
 
-  void girarSoEsquerda(){
-    robo.acionarMotores(-25, 0); 
-  }
-  void girarSoDireita(){
-    robo.acionarMotores(0, -25); 
-  }
-  void seguirOb(){
-    robo.acionarMotores(PNEU_ANDA_OBSTACULO, PNEU_ANDA_OBSTACULO);
-  }
-  void girarParaEsquerdaOb(){
-    robo.acionarMotores(PNEU_VOLTA_OBSTACULO, PNEU_ANDA_OBSTACULO);
-  }
-  void girarParaDireitaOb(){
-    robo.acionarMotores(PNEU_ANDA_OBSTACULO, PNEU_VOLTA_OBSTACULO);
-  }
+        void girarParaDireita (){
+            robo.acionarMotores(PNEU_ANDA_ESQ, PNEU_VOLTA_DIR);
+        }
 };

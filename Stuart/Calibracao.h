@@ -3,20 +3,21 @@
 
 #include <robo_hardware2.h>
 
-class Calibracao{
+class Calibracao{     
+    protected:       
+        int mediaEsquerdo;
+        int mediaDireito;
+        int mediaMaisDireito;
+        int mediaMaisEsquerdo;
+        float cor_direito, cor_esquerdo;
+  
+    public:
+        Calibracao(); 
+        void menuCor();
+        void testeRobo ();
+        void menuCalibrar();
+        int dadosCalibracao();
 
-  public:
-
-  Calibracao(); 
-
-  void menuCalibrar();
-  int dadosCalibracao();
-
-  protected: 
-
-  int mediaEsquerdo;
-  int mediaDireito;
-  int mediaMaisDireito;
-  int mediaMaisEsquerdo;
 };
+
 #endif

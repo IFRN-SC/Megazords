@@ -1,21 +1,25 @@
+#include "Resgate.h"
 #include "Sensores.h"
 #include "Movimento.h"
 #include "Calibracao.h"
+#include "Garra.h"
 
 class Estrategia{
-
-	private:
-  Sensores sensores;
-  Movimento movimento;
-  Calibracao cali;
-  
-	void seguirLinha();
-	void desviarObstaculo();
-	void identificarVerde();
-	void subirRampa(); 
-	
-
-	public:
-  void calibracao();
-	void executar();
+	  private:
+        Garra garra;
+        Resgate resgate;
+        Sensores sensores;
+        Movimento movimento;
+        Calibracao cali;
+       
+    protected:    
+        void fazerVerde();
+        void subirRampa(); 
+      	void seguirLinha();
+      	void desviarObstaculo();
+     
+   	public:
+        Estrategia();
+        void calibracao();
+      	void executar();
 };

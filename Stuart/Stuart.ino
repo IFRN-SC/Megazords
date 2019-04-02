@@ -1,14 +1,15 @@
 #include <robo_hardware2.h>
 #include "Estrategia.h"
 
-Estrategia e;
+Estrategia meuRobo;
 
-void setup() {
-  Serial.begin(9600);
-  robo.configurar(false);
-  e.calibracao();             
+void setup (){
+    Serial.begin(9600);
+    robo.configurar(true);
+    robo.habilitaTCS34();
+    meuRobo.calibracao();
 }
-void loop() {
-  //Serial.println("Miro é o mito");
-  e.executar();
+
+void loop(){
+    meuRobo.executar();
 }
