@@ -5,18 +5,19 @@
 
 class Garra {
     private :
-        #define DELAY 20
+        #define DELAY 10
         #define ANG_MAO_FECHAR 90
-        #define ANG_MAO_ABIR 0
-        #define ANG_BRACO_SUBIR 180
-        #define ANG_BRACO_BAIXAR 90
-  
+        #define ANG_MAO_ABIR 150
+        #define ANG_BRACO_SUBIR 120
+        #define ANG_BRACO_BAIXAR 0 
+        
     public :
         Garra ();
         void subir();
         void abrir();
         void fechar();
         void baixar();     
+        
 };
 
 #endif
