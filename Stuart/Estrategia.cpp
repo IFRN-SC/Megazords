@@ -162,11 +162,7 @@ void Estrategia::subirRampa(){
         while (sensores.identificouRampa()){
             robo.acionarMotores(60,60);
         }
-     
-        //----------------------------------- CÓDIGO PARA A SALA 3 -----------------------------------------
-        resgate.entrarNaSala(); 
-        resgate.zona = resgate.indentificaZona();
-        resgate.seguirNaSala();                    
+        resgate.iniciar (); 
     }
 }
 
