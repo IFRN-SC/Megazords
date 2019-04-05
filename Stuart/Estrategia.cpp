@@ -163,11 +163,10 @@ void Estrategia::subirRampa(){
             robo.acionarMotores(60,60);
         }
      
-       //----------------------------------- CÓDIGO PARA A SALA 3 -----------------------------------------
-       resgate.entrarNaSala(); 
-       resgate.alinhar();
-       resgate.zona = resgate.indentificaZona();
-       resgate.seguirNaSala();                    
+        //----------------------------------- CÓDIGO PARA A SALA 3 -----------------------------------------
+        resgate.entrarNaSala(); 
+        resgate.zona = resgate.indentificaZona();
+        resgate.seguirNaSala();                    
     }
 }
 
@@ -194,14 +193,6 @@ void Estrategia::calibracao(){
             robo.desligarTodosLeds(); 
         }
 
-        // testar movimentos do robô
-        if (robo.botao3Pressionado()){
-            robo.ligarTodosLeds();
-            cali.testeRobo(); 
-            robo.acionarMotores(0,0); 
-            robo.desligarTodosLeds(); 
-        }
-        
         Serial.println(F("Tentativa:"));
         Serial.println(i);
         delay(500); 
@@ -210,6 +201,7 @@ void Estrategia::calibracao(){
     sensores.dadosCalibracao();
     Serial.println(F("Robô Calibrado!"));
 }
+
 
 void Estrategia::fazerVerde(){
 }
