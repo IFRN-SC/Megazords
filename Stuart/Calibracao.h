@@ -14,10 +14,8 @@ class Calibracao{
     public:
         Calibracao(); 
         void menuCor();
-        void testeRobo ();
         void menuCalibrar();
         int dadosCalibracao();
-
 };
 
 #endif
