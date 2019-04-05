@@ -4,6 +4,13 @@ Resgate::Resgate(){
 }
 
 
+void Resgate::iniciar (){
+    this -> entrarNaSala(); 
+    this -> zona = this -> indentificaZona();
+    this -> seguirNaSala();                    
+}
+
+
 // construimos um método responsável por alinha o robô
 // com a parede atrás dele, dessa forma reduzimos a força dos motores
 // e aumentamos a práticidade com que ele alinha com a parede 
