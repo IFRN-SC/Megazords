@@ -16,17 +16,6 @@ Calibracao:: Calibracao(){
     cor_esquerdo = ((cd.verdeEsq.s + cd.brancoEsq.s)/2);
 }
 
-void Calibracao::testeRobo (){  
-    robo.acionarMotores (40,40);
-    delay (1000);
-    robo.acionarMotores (40,-40);
-    delay (1000);
-    robo.acionarMotores (-40,40);
-    delay (1000);
-    robo.acionarMotores (-40,-40);
-    delay (1000);
-}
-
 void Calibracao::menuCor() {
     char controle = "t"; 
     Serial.println ("CALIBRE COR");
