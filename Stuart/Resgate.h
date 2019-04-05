@@ -13,10 +13,10 @@ class Resgate: public Garra {
         char zona = 'd';  
 	    	char indentificaZona ();
 	    	void areaResgate ();     
-	      void alinhar ();
+	      void alinharRobo ();
         void entrarNaSala ();
         void seguirNaSala ();   
-        void noventaEsquerda();
+        void seguirLateral();
 };
 
 #endif
