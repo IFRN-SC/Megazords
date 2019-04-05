@@ -7,16 +7,19 @@
 class Resgate: public Garra {
     private:
         Garra garra;
-      
-    public:
-		    Resgate();
+
+    protected :
         char zona = 'd';  
-	    	char indentificaZona ();
-	    	void areaResgate ();     
-	      void alinharRobo ();
+        char indentificaZona ();
+        void areaResgate ();     
+        void alinharRobo ();
         void entrarNaSala ();
         void seguirNaSala ();   
         void seguirLateral();
+      
+    public:
+		    Resgate();
+        void iniciar ();     
 };
 
 #endif
