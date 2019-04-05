@@ -1,28 +1,19 @@
+#include <robo_hardware2.h>
 #include "Garra.h"
 
 Garra::Garra(){
 }
 
 void Garra::subir (){
-    for (int i = 0; i < 80; i++){
-        robo.acionarServoGarra2(i);
-        delay(5);
-    }
+    robo.acionarServoGarra2(0, 120, DELAY);
 }
 void Garra::baixar (){
-    for (int i = 80; i > 0; i--){
-        robo.acionarServoGarra2(i);
-        delay(5);
-    }
+    robo.acionarServoGarra2(120, 0, DELAY);
 }
+
 void Garra::abrir (){
-    for (int i = 90; i < 180; i++ ){
-        robo.acionarServoGarra1 (i);
-        delay (5);
-    }
+    robo.acionarServoGarra1 (90, 170, DELAY);
 }
 void Garra::fechar (){
-    for (int i = 180; i > 90; i-- ){
-        robo.acionarServoGarra1 (i);
-    }
+    robo.acionarServoGarra1 (170, 90, DELAY);
 }
