@@ -5,21 +5,26 @@
 #include "Garra.h"
 
 class Resgate: public Garra {
-    private:
+    private :
         Garra garra;
-
-    protected :
-        char zona = 'd';  
-        char indentificaZona ();
-        void areaResgate ();     
-        void alinharRobo ();
+    
+    protected: 
+        void alinhar ();
         void entrarNaSala ();
-        void seguirNaSala ();   
-        void seguirLateral();
-      
-    public:
-		    Resgate();
-        void iniciar ();     
+        void soltarBolinha ();
+        void identificaZona ();
+ 
+        bool verificaArea ();
+        void irLateralDir ();
+        void irLateralEsq ();
+
+        void voltar (char zona);
+        void seguirNaSala (char zona);      
+        void resgatarVitima (char zona);
+        
+    public :
+        Resgate ();
+        void iniciar ();
 };
 
 #endif
