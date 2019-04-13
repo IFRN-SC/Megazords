@@ -1,6 +1,5 @@
 #include "Resgate.h"
 
-
 Resgate::Resgate(){}
 
 void Resgate::iniciar (){
@@ -35,8 +34,8 @@ void Resgate::alinhar (){
 void Resgate::entrarNaSala (){
     robo.acionarMotores (60,20);
     delay (520);
-    robo.acionarMotores (-40,-38);
-    delay (250);
+    robo.acionarMotores (40,38);
+    delay (200);
     
     while (robo.lerSensorSonarEsq() < 20){
         robo.acionarMotores (40,-38);
