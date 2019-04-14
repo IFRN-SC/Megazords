@@ -162,11 +162,13 @@ void Estrategia::subirRampa(){
         while (sensores.identificouRampa()){
             robo.acionarMotores(60,60);
         }
+
+        //  ********************   COMEÇAMOS A SALA TRÊS AQUI!   ******************** 
         resgate.iniciar (); 
     }
 }
 
- 
+  
 void Estrategia::calibracao(){
     Serial.println(F("Pressione o Botão para Calibrar!"));
     Serial.println();
@@ -182,12 +184,16 @@ void Estrategia::calibracao(){
         }
       
         // para calibrar a cor
-        if(robo.botao2Pressionado()){
+        if(robo.botao3Pressionado()){
             robo.desligarLed(3);
             robo.ligarLed(1);
             cali.menuCor();
             robo.desligarTodosLeds(); 
         }
+
+        
+
+
 
         Serial.println(F("Tentativa:"));
         Serial.println(i);
