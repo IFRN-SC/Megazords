@@ -43,7 +43,7 @@ void Resgate::entrarNaSala (){
     }
     robo.acionarMotores (40,-38);
     delay (280);
-    this -> alinharRobo ();
+    this -> alinhar ();
 }
 
 
@@ -79,7 +79,7 @@ bool Resgate::verificarArea (){
 
 // nesse método iremos fazer com que o robô encontre a sala 
 // onde deve ser deixado a bolinha
-void Resgate::identificaZona (){
+char Resgate::identificaZona (){
     robo.desligarTodosLeds();
     robo.acionarMotores (-40,38);
     delay (550);
@@ -108,7 +108,7 @@ void Resgate::identificaZona (){
     delay (3000);
 
     // caso a zona esteja a frente da entrada da sala
-    if (verificaArea()){
+    if (verificarArea()){
         for(int i = 0; i < 10; i++){  
             robo.ligarTodosLeds();
             delay(400);
@@ -178,7 +178,7 @@ void Resgate::identificaZona (){
 
 
     // caso a zona esteja a frente da entrada da sala
-    if (verificaArea()){
+    if (verificarArea()){
         robo.ligarLed (2);
         this -> soltarBolinha ();
         return 'b';
