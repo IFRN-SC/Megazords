@@ -12,12 +12,12 @@ class Resgate: public Garra {
         void alinhar ();
         void entrarNaSala ();
         void soltarBolinha ();
-        void identificaZona ();
+        char identificaZona ();
  
-        bool verificaArea ();
         void irLateralDir ();
         void irLateralEsq ();
-
+        bool verificarArea ();
+ 
         void voltar (char zona);
         void seguirNaSala (char zona);      
         void resgatarVitima (char zona);
