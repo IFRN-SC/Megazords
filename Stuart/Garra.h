@@ -6,8 +6,8 @@
 class Garra {
     private :
         #define DELAY 10
-        #define ANG_MAO_FECHAR 90
-        #define ANG_MAO_ABIR 150
+        #define ANG_MAO_FECHAR 55
+        #define ANG_MAO_ABIR 5
         #define ANG_BRACO_SUBIR 120
         #define ANG_BRACO_BAIXAR 0 
         
