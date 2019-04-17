@@ -34,9 +34,8 @@ void Resgate::alinhar (){
 void Resgate::entrarNaSala (){
     robo.acionarMotores (60,20);
     delay (520);
-    robo.acionarMotores (40,38);
+    robo.acionarMotores (-40,-40);
     delay (200);
-    
     while (robo.lerSensorSonarEsq() < 20){
         robo.acionarMotores (40,-38);
         delay (50);
@@ -53,9 +52,9 @@ void Resgate::entrarNaSala (){
 void Resgate::soltarBolinha (){
     robo.acionarMotores (0,0);
     delay (3000);
-    robo.acionarServoGarra2 (30);
+    robo.acionarServoGarra2 (60);
     delay (1000);
-    robo.acionarServoGarra1 (180);
+    robo.acionarServoGarra1 (5);
     delay (2000);  
     garra.subir ();
     garra.fechar ();
@@ -71,8 +70,8 @@ void Resgate::soltarBolinha (){
 // com o sonar ESQ 
 bool Resgate::verificarArea (){
     robo.acionarMotores (0,0);
-    delay (2000);
-    return (robo.lerSensorSonarEsq () <= 20);
+    delay (1000);
+    return (robo.lerSensorSonarEsq() <= 20);
 }
 
 
@@ -83,11 +82,13 @@ char Resgate::identificaZona (){
     robo.desligarTodosLeds();
     robo.acionarMotores (-40,38);
     delay (550);
+    robo.acionarMotores (0,0);
+    delay (100);
     garra.baixar ();
     garra.abrir ();
     robo.acionarMotores (0,0);
-    delay (1000);
-
+    delay (900);
+    
      // seguir um pouco 
     robo.acionarMotores (40,38);
     delay (1100);
@@ -116,6 +117,10 @@ char Resgate::identificaZona (){
             delay(200);
         }
         robo.ligarLed (1);
+        robo.acionarMotores(-40,38);
+        delay (550);
+        robo.acionarMotores(40,38);
+        delay (200);  
         this -> soltarBolinha ();
         return 'a';
     }
@@ -133,13 +138,18 @@ char Resgate::identificaZona (){
     robo.acionarMotores (0,0);
     delay (1000);    
     robo.acionarMotores (40,38);
-    delay (400);
+    delay (800);
     robo.acionarMotores (0,0);
     delay (500);
     garra.fechar ();
     garra.subir (); 
     robo.acionarMotores (0,0);
     delay (2000);
+    robo.acionarMotores (40,38);
+    delay (300);
+
+
+
 
     // vamos alinha e verificar a outra zona
     robo.acionarMotores (40,-38);
@@ -166,8 +176,7 @@ char Resgate::identificaZona (){
     robo.acionarMotores (40,38);
     delay (900);
     robo.acionarMotores (0,0);
-    delay (3000);
-
+    delay (1000);
 
     for(int i = 0; i < 10; i++){  
         robo.ligarTodosLeds();
@@ -176,10 +185,14 @@ char Resgate::identificaZona (){
         delay(200);
     }
 
-
     // caso a zona esteja a frente da entrada da sala
     if (verificarArea()){
         robo.ligarLed (2);
+        robo.acionarMotores(-40,38);
+        delay (550);
+        robo.acionarMotores(40,38);
+        delay (200);
+        
         this -> soltarBolinha ();
         return 'b';
     }else {
@@ -262,17 +275,21 @@ void Resgate::irLateralEsq (){
     garra.baixar ();
     robo.acionarMotores (0,0);
     delay (1000);
-
     robo.acionarMotores (40,38);
-    delay (300);
+    delay (600);
     robo.acionarMotores (0,0);
     delay (1000);   
     garra.fechar ();
+    robo.acionarMotores (0,0);
+    delay (100);
     garra.subir ();
     robo.acionarMotores (0,0);
-    delay (1000);   
-    robo.acionarMotores (-40,38);
+    delay (100);   
+    robo.acionarMotores (40,-38);
     delay (550);
+    robo.acionarMotores (0,0);
+    delay (1000);
+    this -> alinhar ();       
 }
 
 // método responsável por verificar a lateral
@@ -291,17 +308,21 @@ void Resgate::irLateralDir (){
     delay (1000);
 
     robo.acionarMotores (40,38);
-    delay (300);
+    delay (600);
     robo.acionarMotores (0,0);
     delay (1000);   
     garra.fechar ();
+    robo.acionarMotores (0,0);
+    delay (100);
     garra.subir ();
     robo.acionarMotores (0,0);
-    delay (1000);  
+    delay (100);  
     robo.acionarMotores (-40,38);
     delay (550);
+    robo.acionarMotores (0,0);
+    delay (1000);
+    this -> alinhar ();       
 }
-
 
 
 // método responsável por pegar a bolinha e deixa-la
@@ -309,11 +330,11 @@ void Resgate::irLateralDir (){
 void Resgate::resgatarVitima (char zona){ 
     //iremos aperfeiçoar isso ainda pois temos outra garra agr
 
-    robo.acionarServoGarra2 (0);
+    robo.acionarServoGarra2 (12);
     delay (1000);
-    robo.acionarServoGarra1 (180);
+    robo.acionarServoGarra1 (5);
     delay (1000);
-    robo.acionarServoGarra1 (90);
+    garra.fechar ();
     delay (1000);
     robo.acionarServoGarra2 (100);
     delay (1000);
@@ -335,7 +356,7 @@ void Resgate::resgatarVitima (char zona){
 
     this -> alinhar ();       
     robo.acionarMotores(40,38);
-    delay (1800);
+    delay (1600);
  
 
 
@@ -400,6 +421,9 @@ void Resgate::seguirNaSala (char zona){
         
         robo.acionarMotores(40,38);
         delay (1800);
+        robo.acionarMotores(0,0);
+        delay (1000);
+        
         garra.fechar();
         delay (1000);
 
@@ -408,12 +432,19 @@ void Resgate::seguirNaSala (char zona){
         this -> alinhar ();
 
         // iremos modificar isso  
-        robo.acionarServoGarra1 (90,170, 40);
+        robo.acionarServoGarra1 (5, 55, 40);
         garra.subir();
         delay(2000);
 
 
         if (robo.lerSensorSonarFrontal() <= 20){
+            for(int i = 0; i < 10; i++){  
+                robo.ligarTodosLeds();
+                delay(400);
+                robo.desligarTodosLeds();
+                delay(200);
+            }    
+            
             this -> resgatarVitima (zona);
             this -> voltar(zona);
             i = 0;
