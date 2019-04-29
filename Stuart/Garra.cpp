@@ -5,10 +5,10 @@ Garra::Garra(){
 }
 
 void Garra::subir (){
-    robo.acionarServoGarra2(20, 130, DELAY);
+    robo.acionarServoGarra2(15, 130, DELAY);
 }
 void Garra::baixar (){
-    robo.acionarServoGarra2(130, 20, DELAY);
+    robo.acionarServoGarra2(130, 15, DELAY);
 }
 
 void Garra::abrir (){
