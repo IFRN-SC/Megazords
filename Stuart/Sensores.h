@@ -27,15 +27,15 @@ class Sensores: public Calibracao{
         
 
         // Funcoes para condicoes      	
-      	boolean branco_branco_branco_branco(){ return (ehBrancoMaisEsquerdo() && ehBrancoEsquerdo() && ehBrancoDireito() && ehBrancoMaisDireito());}     //BBBB
-      	boolean preto_branco_branco_branco(){  return (!ehBrancoMaisEsquerdo() && ehBrancoEsquerdo() && ehBrancoDireito() && ehBrancoMaisDireito());}    //PBBB
-      	boolean branco_preto_branco_branco(){  return (ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && ehBrancoDireito() && ehBrancoMaisDireito());}    //BPBB
-      	boolean branco_branco_preto_branco(){  return (ehBrancoMaisEsquerdo() && ehBrancoEsquerdo() && !ehBrancoDireito() && ehBrancoMaisDireito());}    //BBPB
-      	boolean branco_branco_branco_preto(){  return (ehBrancoMaisEsquerdo() && ehBrancoEsquerdo() && ehBrancoDireito() && !ehBrancoMaisDireito());}    //BBBP
-        boolean branco_preto_preto_branco(){   return (ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && !ehBrancoDireito() && ehBrancoMaisDireito());}   //BPPB
-        boolean preto_preto_branco_branco(){   return (!ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && ehBrancoDireito() && ehBrancoMaisDireito());}   //PPBB
-        boolean branco_branco_preto_preto(){   return (ehBrancoMaisEsquerdo() && ehBrancoEsquerdo() && !ehBrancoDireito() && !ehBrancoMaisDireito());}   //BBPP
-        boolean branco_preto_preto_preto(){    return (ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && !ehBrancoDireito() && !ehBrancoMaisDireito());}  //BPPP
+      	boolean branco_branco_branco_branco(){ return (ehBrancoMaisEsquerdo()  && ehBrancoEsquerdo()  && ehBrancoDireito()  && ehBrancoMaisDireito());}  //BBBB
+      	boolean preto_branco_branco_branco(){  return (!ehBrancoMaisEsquerdo() && ehBrancoEsquerdo()  && ehBrancoDireito()  && ehBrancoMaisDireito());}  //PBBB
+      	boolean branco_preto_branco_branco(){  return (ehBrancoMaisEsquerdo()  && !ehBrancoEsquerdo() && ehBrancoDireito()  && ehBrancoMaisDireito());}  //BPBB
+      	boolean branco_branco_preto_branco(){  return (ehBrancoMaisEsquerdo()  && ehBrancoEsquerdo()  && !ehBrancoDireito() && ehBrancoMaisDireito());}  //BBPB
+      	boolean branco_branco_branco_preto(){  return (ehBrancoMaisEsquerdo()  && ehBrancoEsquerdo()  && ehBrancoDireito()  && !ehBrancoMaisDireito());} //BBBP
+        boolean branco_preto_preto_branco(){   return (ehBrancoMaisEsquerdo()  && !ehBrancoEsquerdo() && !ehBrancoDireito() && ehBrancoMaisDireito());}  //BPPB
+        boolean preto_preto_branco_branco(){   return (!ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && ehBrancoDireito()  && ehBrancoMaisDireito());}  //PPBB
+        boolean branco_branco_preto_preto(){   return (ehBrancoMaisEsquerdo()  && ehBrancoEsquerdo()  && !ehBrancoDireito() && !ehBrancoMaisDireito());} //BBPP
+        boolean branco_preto_preto_preto(){    return (ehBrancoMaisEsquerdo()  && !ehBrancoEsquerdo() && !ehBrancoDireito() && !ehBrancoMaisDireito());} //BPPP
         boolean preto_preto_preto_branco(){    return (!ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && !ehBrancoDireito() && ehBrancoMaisDireito());}  //PPPB
         boolean preto_preto_preto_preto(){     return (!ehBrancoMaisEsquerdo() && !ehBrancoEsquerdo() && !ehBrancoDireito() && !ehBrancoMaisDireito());} //PPPP
 
@@ -48,4 +48,7 @@ class Sensores: public Calibracao{
         boolean outro_verde (){return (!ehVerdeDireito() && ehVerdeEsquerdo());}
         boolean verde_verde (){return ( ehVerdeDireito() && ehVerdeEsquerdo());}
         boolean outro_outro (){return (!ehVerdeDireito() &&!ehVerdeEsquerdo());}
+
+        boolean testarVerde (){return (preto_preto_branco_branco() || preto_preto_preto_branco() ||branco_branco_preto_preto() || branco_preto_preto_preto() || preto_preto_preto_preto());}
+        
 };
