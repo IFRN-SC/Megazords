@@ -14,6 +14,9 @@ class Estrategia{
        
     protected:    
         void fazerVerde();
+        void girarVerdeEsq();
+        void girarVerdeDir();
+        void girarVerdeBeco();
         void subirRampa(); 
       	void seguirLinha();
       	void desviarObstaculo();
