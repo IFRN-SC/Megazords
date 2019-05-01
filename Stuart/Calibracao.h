@@ -3,7 +3,7 @@
 
 #include <robo_hardware2.h>
 
-class Calibracao{     
+class Calibracao{    
     protected:       
         int mediaEsquerdo;
         int mediaDireito;
@@ -16,6 +16,10 @@ class Calibracao{
         void menuCor();
         void menuCalibrar();
         int dadosCalibracao();
+    private:
+        int caliPretoEsquerdo, caliPretoMaisEsquerdo, caliPretoDireito, caliPretoMaisDireito;
+        int caliBrancoEsquerdo, caliBrancoMaisEsquerdo, caliBrancoDireito, caliBrancoMaisDireito; 
+        float verdeDir, verdeEsq, brancoDir,brancoEsq;
 };
 
 #endif

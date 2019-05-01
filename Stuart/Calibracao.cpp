@@ -1,10 +1,6 @@
 #include <robo_hardware2.h> 
 #include "Calibracao.h"
 
-int caliPretoEsquerdo, caliPretoMaisEsquerdo, caliPretoDireito, caliPretoMaisDireito;
-int caliBrancoEsquerdo, caliBrancoMaisEsquerdo, caliBrancoDireito, caliBrancoMaisDireito; 
-float verdeDir, verdeEsq, brancoDir,brancoEsq;
-
 Calibracao:: Calibracao(){
     calibracao_dados cd;
     robo.lerCalibracao(cd);
@@ -18,10 +14,10 @@ Calibracao:: Calibracao(){
 
 void Calibracao::menuCor() {
     char controle = "t"; 
-    Serial.println ("CALIBRE COR");
+    Serial.println (F("CALIBRE COR"));
     Serial.println();
     while (1){
-        Serial.print("BRANCO ESQUERDO : ");
+        Serial.print(F("BRANCO ESQUERDO : "));
         Serial.println (robo.getHSVEsquerdo().s);
         if (Serial.available()){
             controle = Serial.read();
@@ -33,7 +29,7 @@ void Calibracao::menuCor() {
         delay(500);
     } 
     while (1){
-        Serial.print("BRANCO DIREITO : ");
+        Serial.print(F("BRANCO DIREITO : "));
         Serial.println (robo.getHSVDireito().s);
         if (Serial.available()){
             controle = Serial.read();
@@ -45,7 +41,7 @@ void Calibracao::menuCor() {
         delay(500);
     }
     while (1){
-        Serial.print("VERDE ESQUERDO : ");
+        Serial.print(F("VERDE ESQUERDO : "));
         Serial.println (robo.getHSVEsquerdo().s);
         if (Serial.available()){
             controle = Serial.read();
@@ -57,7 +53,7 @@ void Calibracao::menuCor() {
         delay(500);
     }     
     while (1){
-        Serial.print("VERDE DIREITO : ");
+        Serial.print(F("VERDE DIREITO : "));
         Serial.println (robo.getHSVDireito().s);
         if (Serial.available()){
             controle = Serial.read();
@@ -74,9 +70,9 @@ void Calibracao::menuCor() {
     cor_esquerdo = ((verdeEsq + brancoEsq)/2);
 
     Serial.println ();
-    Serial.print ("COR DIREITO: ");
+    Serial.print (F("COR DIREITO: "));
     Serial.println (cor_direito);
-    Serial.print ("COR ESQUERDO: ");
+    Serial.print (F("COR ESQUERDO: "));
     Serial.println (cor_esquerdo);
 
     // Salvar dados da Calibracao na EEPROM
@@ -90,15 +86,15 @@ void Calibracao::menuCor() {
 
 void Calibracao::menuCalibrar(){
     char controle = 't'; 
-    Serial.println("CALIBRE BRANCO");
+    Serial.println(F("CALIBRE BRANCO"));
     while(1){
-        Serial.print("MAIS ESQUERDO : ");
+        Serial.print(F("MAIS ESQUERDO : "));
         Serial.print(robo.lerSensorLinhaMaisEsqSemRuido());
-        Serial.print("  |  ESQUERDO : ");
+        Serial.print(F("  |  ESQUERDO : "));
         Serial.print(robo.lerSensorLinhaEsqSemRuido());
-        Serial.print("  |  DIREITO : ");
+        Serial.print(F("  |  DIREITO : "));
         Serial.print(robo.lerSensorLinhaDirSemRuido());
-        Serial.print("  |  MAIS DIREITO : ");
+        Serial.print(F("  |  MAIS DIREITO : "));
         Serial.println(robo.lerSensorLinhaMaisDirSemRuido());
       
         // Verifica se o testador  quer terminar ou não a calibração para esse sensor
@@ -119,9 +115,9 @@ void Calibracao::menuCalibrar(){
     
     // Mostra os valores do preto do sensor de refletancia mais esquerdo
     
-    Serial.println("CALIBRE PRETO MAIS ESQUERDO");
+    Serial.println(F("CALIBRE PRETO MAIS ESQUERDO"));
     while(1){
-        Serial.print("MAIS ESQUERDO : ");
+        Serial.print(F("MAIS ESQUERDO : "));
         Serial.println(robo.lerSensorLinhaMaisEsqSemRuido());
         if (Serial.available()){
             controle = Serial.read();
@@ -134,9 +130,9 @@ void Calibracao::menuCalibrar(){
         delay(500);
     }    
     
-    Serial.println("CALIBRE PRETO ESQUERDO");
+    Serial.println(F("CALIBRE PRETO ESQUERDO"));
     while(1){
-        Serial.print("ESQUERDO : ");
+        Serial.print(F("ESQUERDO : "));
         Serial.println(robo.lerSensorLinhaEsqSemRuido());
         if (Serial.available()){
             controle = Serial.read();
@@ -149,9 +145,9 @@ void Calibracao::menuCalibrar(){
         delay(500);
     }
    
-    Serial.println("CALIBRE PRETO DIREITO");
+    Serial.println(F("CALIBRE PRETO DIREITO"));
     while(1){
-        Serial.print("DIREITO : ");
+        Serial.print(F("DIREITO : "));
         Serial.println(robo.lerSensorLinhaDirSemRuido());
         if (Serial.available()){
             controle = Serial.read();
@@ -163,7 +159,7 @@ void Calibracao::menuCalibrar(){
         }
         delay(500);
     }
-    Serial.println("CALIBRE PRETO MAIS DIREITO");
+    Serial.println(F("CALIBRE PRETO MAIS DIREITO"));
     while(1){
         Serial.print(F("MAIS DIREITO : "));
         Serial.println(robo.lerSensorLinhaMaisDirSemRuido());
