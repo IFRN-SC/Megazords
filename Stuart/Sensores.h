@@ -44,10 +44,10 @@ class Sensores: public Calibracao{
         boolean ehVerdeEsquerdo (){ return robo.getHSVEsquerdo().s > cor_esquerdo;} 
         boolean detectouVerde (){ return (ehVerdeDireito() || ehVerdeEsquerdo());}            
         
-        boolean verde_outro (){return ( ehVerdeDireito() &&!ehVerdeEsquerdo());}
-        boolean outro_verde (){return (!ehVerdeDireito() && ehVerdeEsquerdo());}
-        boolean verde_verde (){return ( ehVerdeDireito() && ehVerdeEsquerdo());}
-        boolean outro_outro (){return (!ehVerdeDireito() &&!ehVerdeEsquerdo());}
+        boolean verde_outro (){return ( ehVerdeEsquerdo() &&!ehVerdeDireito());}
+        boolean outro_verde (){return (!ehVerdeEsquerdo() && ehVerdeDireito());}
+        boolean verde_verde (){return ( ehVerdeEsquerdo() && ehVerdeDireito());}
+        boolean outro_outro (){return (!ehVerdeEsquerdo() &&!ehVerdeDireito());}
 
         boolean testarVerde (){return (preto_preto_branco_branco() || preto_preto_preto_branco() ||branco_branco_preto_preto() || branco_preto_preto_preto() || preto_preto_preto_preto());}
         

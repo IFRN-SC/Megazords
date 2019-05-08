@@ -226,16 +226,46 @@ void Estrategia::fazerVerde(){
     
     else if (sensores.outro_verde()) { girarVerdeDir();}
     
+    else if(sensores.outro_outro()){
+      
+            if(!sensores.ehBrancoMaisEsquerdo()){
+          
+              while(!sensores.ehBrancoMaisEsquerdo()){
+                movimento.seguir();   
+              }
+              while(sensores.ehBrancoDireito()){
+                robo.acionarMotores(-25, 25); 
+              }   
+            }
+            else if(!sensores.ehBrancoMaisDireito()){
+              
+              while(!sensores.ehBrancoMaisDireito()){
+                movimento.seguir();   
+              }
+              while(sensores.ehBrancoEsquerdo()){
+                robo.acionarMotores(25, -25); 
+              }
+            }
+            else if(!sensores.ehBrancoMaisEsquerdo() && !sensores.ehBrancoMaisDireito()){
+
+              while(!sensores.ehBrancoMaisDireito() && !sensores.ehBrancoMaisDireito()){
+                movimento.seguir();   
+              }
+            }
+    }
 }
 
 void Estrategia::girarVerdeEsq(){
+
+  robo.desligarTodosLeds();
+  
     for(int i = 0; i < 3; i++){
            robo.ligarLed(1);
            delay(200);
            robo.desligarLed(1);
            delay(200); 
          }
-      robo.acionarMotores(20, 20);
+      robo.acionarMotores(35, 35);
       delay(300);
       while(sensores.ehBrancoMaisEsquerdo()){
          movimento.girarParaEsquerda(); 
@@ -246,13 +276,16 @@ void Estrategia::girarVerdeEsq(){
   }
   
   void Estrategia::girarVerdeDir(){
+
+    robo.desligarTodosLeds();
+    
     for(int i = 0; i < 3; i++){
            robo.ligarLed(2);
            delay(200);
            robo.desligarLed(2);
            delay(200); 
          }
-      robo.acionarMotores(20, 20);
+      robo.acionarMotores(35, 35);
       delay(300); 
       while(sensores.ehBrancoMaisDireito()){
          movimento.girarParaDireita(); 
@@ -263,6 +296,9 @@ void Estrategia::girarVerdeEsq(){
   }
   
   void Estrategia::girarVerdeBeco(){
+    
+    robo.desligarTodosLeds();
+    
     for(int i = 0; i < 3; i++){
            robo.ligarLed(3);
            delay(200);
