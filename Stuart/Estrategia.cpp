@@ -207,9 +207,9 @@ void Estrategia::calibracao(){
 void Estrategia::fazerVerde(){
     
     movimento.parar();
-    delay(200);
+    delay(100);
     movimento.seguir();
-    delay(50);
+    delay(100);
     movimento.parar();
     delay(100);
     
@@ -226,14 +226,13 @@ void Estrategia::fazerVerde(){
     
     else if (sensores.outro_verde()) { girarVerdeDir();}
     
-    else if(sensores.outro_outro()){
-      
+    else{
             if(!sensores.ehBrancoMaisEsquerdo()){
           
               while(!sensores.ehBrancoMaisEsquerdo()){
                 movimento.seguir();   
               }
-              while(sensores.ehBrancoDireito()){
+              while(sensores.ehBrancoMaisDireito()){
                 robo.acionarMotores(-25, 25); 
               }   
             }
@@ -242,7 +241,7 @@ void Estrategia::fazerVerde(){
               while(!sensores.ehBrancoMaisDireito()){
                 movimento.seguir();   
               }
-              while(sensores.ehBrancoEsquerdo()){
+              while(sensores.ehBrancoMaisEsquerdo()){
                 robo.acionarMotores(25, -25); 
               }
             }
@@ -261,12 +260,12 @@ void Estrategia::girarVerdeEsq(){
   
     for(int i = 0; i < 3; i++){
            robo.ligarLed(1);
-           delay(200);
+           delay(100);
            robo.desligarLed(1);
-           delay(200); 
+           delay(100); 
          }
       robo.acionarMotores(35, 35);
-      delay(300);
+      delay(200);
       while(sensores.ehBrancoMaisEsquerdo()){
          movimento.girarParaEsquerda(); 
       } 
@@ -281,12 +280,12 @@ void Estrategia::girarVerdeEsq(){
     
     for(int i = 0; i < 3; i++){
            robo.ligarLed(2);
-           delay(200);
+           delay(100);
            robo.desligarLed(2);
-           delay(200); 
+           delay(100); 
          }
       robo.acionarMotores(35, 35);
-      delay(300); 
+      delay(200); 
       while(sensores.ehBrancoMaisDireito()){
          movimento.girarParaDireita(); 
       }
@@ -301,12 +300,12 @@ void Estrategia::girarVerdeEsq(){
     
     for(int i = 0; i < 3; i++){
            robo.ligarLed(3);
-           delay(200);
+           delay(100);
            robo.desligarLed(3);
-           delay(200); 
+           delay(100); 
          }
     movimento.girarParaDireita();
-    delay(400);
+    delay(500);
     while(sensores.ehBrancoMaisDireito()){
        movimento.girarParaDireita(); 
     }
