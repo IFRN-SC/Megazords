@@ -8,8 +8,8 @@ Calibracao:: Calibracao(){
     mediaEsquerdo = cd.refletanciaEsq;
     mediaMaisDireito  = cd.refletanciaMaisDir;
     mediaMaisEsquerdo = cd.refletanciaMaisEsq;
-    cor_direito = ((cd.verdeDir.s + cd.brancoDir.s)/2);
-    cor_esquerdo = ((cd.verdeEsq.s + cd.brancoEsq.s)/2);
+    cor_direito = ((cd.verdeDir.h + cd.brancoDir.h)/2);
+    cor_esquerdo = ((cd.verdeEsq.h + cd.brancoEsq.h)/2);
 }
 
 void Calibracao::menuCor() {
@@ -18,11 +18,11 @@ void Calibracao::menuCor() {
     Serial.println();
     while (1){
         Serial.print(F("BRANCO ESQUERDO : "));
-        Serial.println (robo.getHSVEsquerdo().s);
+        Serial.println (robo.getHSVEsquerdo().h);
         if (Serial.available()){
             controle = Serial.read();
             if(controle == 's'){
-              brancoEsq = robo.getHSVEsquerdo().s;
+              brancoEsq = robo.getHSVEsquerdo().h;
               break;
             }
         }
@@ -30,11 +30,11 @@ void Calibracao::menuCor() {
     } 
     while (1){
         Serial.print(F("BRANCO DIREITO : "));
-        Serial.println (robo.getHSVDireito().s);
+        Serial.println (robo.getHSVDireito().h);
         if (Serial.available()){
             controle = Serial.read();
             if(controle == 's'){
-                brancoDir = robo.getHSVDireito().s;
+                brancoDir = robo.getHSVDireito().h;
                 break;
             }
         }
@@ -42,11 +42,11 @@ void Calibracao::menuCor() {
     }
     while (1){
         Serial.print(F("VERDE ESQUERDO : "));
-        Serial.println (robo.getHSVEsquerdo().s);
+        Serial.println (robo.getHSVEsquerdo().h);
         if (Serial.available()){
             controle = Serial.read();
             if (controle == 's'){
-                verdeEsq = robo.getHSVEsquerdo().s;
+                verdeEsq = robo.getHSVEsquerdo().h;
                 break;
             }
         }
@@ -54,18 +54,18 @@ void Calibracao::menuCor() {
     }     
     while (1){
         Serial.print(F("VERDE DIREITO : "));
-        Serial.println (robo.getHSVDireito().s);
+        Serial.println (robo.getHSVDireito().h);
         if (Serial.available()){
             controle = Serial.read();
             if (controle == 's'){
-                verdeDir = robo.getHSVDireito().s;
+                verdeDir = robo.getHSVDireito().h;
                 break;
             }
         }
         delay(500);
     }
 
-    // mostrar as médias de S 
+    // mostrar as médias de H 
     cor_direito = ((verdeDir + brancoDir)/2);
     cor_esquerdo = ((verdeEsq + brancoEsq)/2);
 
@@ -77,10 +77,10 @@ void Calibracao::menuCor() {
 
     // Salvar dados da Calibracao na EEPROM
     calibracao_dados cd;
-    cd.verdeDir.s = verdeDir;
-    cd.verdeEsq.s = verdeEsq;
-    cd.brancoDir.s = brancoDir;
-    cd.brancoEsq.s = brancoEsq;
+    cd.verdeDir.h = verdeDir;
+    cd.verdeEsq.h = verdeEsq;
+    cd.brancoDir.h = brancoDir;
+    cd.brancoEsq.h = brancoEsq;
     robo.salvarCalibracao(cd);
 }
 
@@ -211,7 +211,7 @@ Calibracao::dadosCalibracao(){
     mediaMaisDireito  = cd.refletanciaMaisDir;
     mediaMaisEsquerdo = cd.refletanciaMaisEsq;
 
-    // pegar os valores salvos de S
-    cor_direito = ((cd.verdeDir.s + cd.brancoDir.s)/2);
-    cor_esquerdo = ((cd.verdeEsq.s + cd.brancoEsq.s)/2);
+    // pegar os valores salvos de H
+    cor_direito = ((cd.verdeDir.h + cd.brancoDir.h)/2);
+    cor_esquerdo = ((cd.verdeEsq.h + cd.brancoEsq.h)/2);
 }    
