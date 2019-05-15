@@ -210,6 +210,12 @@ Calibracao::dadosCalibracao(){
     mediaEsquerdo = cd.refletanciaEsq;
     mediaMaisDireito  = cd.refletanciaMaisDir;
     mediaMaisEsquerdo = cd.refletanciaMaisEsq;
+    
+    
+    Serial.println(mediaMaisEsquerdo);
+    Serial.println(mediaEsquerdo);
+    Serial.println(mediaDireito);
+    Serial.println(mediaMaisDireito);
 
     // pegar os valores salvos de H
     cor_direito = ((cd.verdeDir.h + cd.brancoDir.h)/2);

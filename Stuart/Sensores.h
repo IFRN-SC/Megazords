@@ -49,6 +49,6 @@ class Sensores: public Calibracao{
         boolean verde_verde (){return ( ehVerdeEsquerdo() && ehVerdeDireito());}
         boolean outro_outro (){return (!ehVerdeEsquerdo() &&!ehVerdeDireito());}
 
-        boolean testarVerde (){return (preto_preto_branco_branco() || preto_preto_preto_branco() ||branco_branco_preto_preto() || branco_preto_preto_preto() || preto_preto_preto_preto());}
+        //boolean testarVerde (){return (preto_preto_branco_branco() || preto_preto_preto_branco() ||branco_branco_preto_preto() || branco_preto_preto_preto() || preto_preto_preto_preto());}
         
 };

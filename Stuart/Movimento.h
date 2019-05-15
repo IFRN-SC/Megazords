@@ -1,8 +1,8 @@
 class Movimento{
-        #define PNEU_ANDA_ESQ 40
-        #define PNEU_ANDA_DIR 43
-        #define PNEU_VOLTA_DIR -43
-        #define PNEU_VOLTA_ESQ -40
+        #define PNEU_ANDA_ESQ 43
+        #define PNEU_ANDA_DIR 40
+        #define PNEU_VOLTA_DIR -40
+        #define PNEU_VOLTA_ESQ -43
 
 	  public:
         void seguir (){
@@ -18,11 +18,11 @@ class Movimento{
         }
         
         void girarSoEsquerda(){
-            robo.acionarMotores(PNEU_ANDA_ESQ * (-1), 0);
+            robo.acionarMotores(PNEU_VOLTA_ESQ, 0);
         }
         
         void girarSoDireita (){
-            robo.acionarMotores(0, PNEU_ANDA_DIR * (-1));
+            robo.acionarMotores(0, PNEU_VOLTA_DIR);
         }
       
         void girarParaEsquerda (){
