@@ -8,19 +8,13 @@ void Estrategia::seguirLinha() {
 	  if(sensores.branco_branco_branco_branco()){            //BBBB    
      	  movimento.seguir(); 
          
-   	}else if(sensores.preto_branco_branco_branco()){       //PBBB
-        movimento.girarParaEsquerda();   
+   	}else if(sensores.preto_branco_branco_branco() || sensores.branco_preto_branco_branco()){ //PBBB//BPBB
+        robo.acionarMotores(-33,30);
+        //movimento.girarParaEsquerda();    
         
-   	}else if(sensores.branco_preto_branco_branco()){       //BPBB
-      	//robo.acionarMotores(20, 40);
-      	movimento.girarParaEsquerda();  
-        
-   	}else if(sensores.branco_branco_preto_branco()){       //BBPB
-        //robo.acionarMotores(40, 20);
-        movimento.girarParaDireita();
-          
-    }else if(sensores.branco_branco_branco_preto()){       //BBBP
-     	  movimento.girarParaDireita(); 
+   	}else if(sensores.branco_branco_branco_preto() || sensores.branco_branco_preto_branco()){ //BBBP//BBPB
+     	  robo.acionarMotores(33,-30);
+        //movimento.girarParaDireita(); 
          
     }else if(sensores.preto_preto_branco_branco() || sensores.preto_preto_preto_branco()){ //PPBB//PPPB
       
@@ -73,7 +67,7 @@ void Estrategia::desviarObstaculo(){
     while(sensores.ehBrancoMaisDireito()){
         movimento.girarSoDireita();
     }
-    /*
+    
     while(robo.lerSensorSonarEsq() > 15){
       movimento.seguir();  
     }
@@ -83,7 +77,7 @@ void Estrategia::desviarObstaculo(){
 
     while(robo.lerSensorSonarEsq() < 15){
       movimento.seguir();
-      delay(50);
+      delay(10);
     }
 
     movimento.parar();  
@@ -104,7 +98,7 @@ void Estrategia::desviarObstaculo(){
 
     while(robo.lerSensorSonarEsq() < 15){
       movimento.seguir();
-      delay(50);
+      delay(10);
     }
 
     movimento.parar();  
@@ -117,9 +111,9 @@ void Estrategia::desviarObstaculo(){
     delay(500);
   
     movimento.seguir();
-    delay(250);*/
+    delay(300);
 
-    movimento.parar(); 
+    /*movimento.parar(); 
     delay(500);
     movimento.seguir(); 
     delay(400);
@@ -133,7 +127,7 @@ void Estrategia::desviarObstaculo(){
     delay(500);
     }
     robo.acionarMotores(-30, 30);
-    delay(400);
+    delay(400);*/
           
     while(sensores.ehBrancoEsquerdo() && sensores.ehBrancoDireito()){
         movimento.seguir(); 
@@ -202,11 +196,6 @@ void Estrategia::calibracao(){
             cali.menuCor();
             robo.desligarTodosLeds(); 
         }
-
-        
-
-
-
         Serial.println(F("Tentativa:"));
         Serial.println(i);
         delay(500); 
