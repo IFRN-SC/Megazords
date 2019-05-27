@@ -70,7 +70,7 @@ void Resgate::soltarBolinha (){
 // com o sonar ESQ 
 bool Resgate::verificarArea (){
     robo.acionarMotores (0,0);
-    delay (1000);
+    delay (500);
     return (robo.lerSensorSonarEsq() <= 20);
 }
 
@@ -87,7 +87,7 @@ char Resgate::identificaZona (){
     garra.baixar ();
     garra.abrir ();
     robo.acionarMotores (0,0);
-    delay (900);
+    delay (100);
     
      // seguir um pouco 
     robo.acionarMotores (40,38);
@@ -414,21 +414,26 @@ void Resgate::resgatarVitima (char zona){
 // deixa-la e voltara ao ponto 0, caso não encontre ele irá para após ter feito a paralela 4 vezes
 void Resgate::seguirNaSala (char zona){
     for (int i = 0; i < 4; i++){
+      
         garra.baixar();
         garra.abrir();
-        robo.acionarMotores(0,0);
-        delay (2000);
         
-        robo.acionarMotores(40,38);
-        delay (1800);
+        long ant = millis();
+        int angInicial = 2;
+        long t = (millis() -  ant);
+        int x = 2100;
+        while(t < x){
+          robo.acionarMotores(40, 38);     
+          if(t > (x-800)){
+            robo.acionarServoGarra1(map(t, 1300, 2100, 0, 55));  
+          }
+          t = (millis() -  ant);
+        }
         robo.acionarMotores(0,0);
-        delay (1000);
+        delay (500);
         
-        garra.fechar();
-        delay (1000);
-
         robo.acionarMotores(-40,-38);
-        delay (1800);        
+        delay (2000);       
         this -> alinhar ();
 
         // iremos modificar isso  
