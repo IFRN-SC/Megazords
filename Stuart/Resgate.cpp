@@ -51,13 +51,15 @@ void Resgate::entrarNaSala (){
 // na areá que esta há frente do robô
 void Resgate::soltarBolinha (){
     robo.acionarMotores (0,0);
-    delay (3000);
+    delay (1000);
     robo.acionarServoGarra2 (60);
     delay (1000);
     robo.acionarServoGarra1 (5);
-    delay (2000);  
-    garra.subir ();
-    garra.fechar ();
+    delay (2000); 
+     
+    robo.acionarServoGarra2(60,130, DELAY);
+    robo.acionarServoGarra1 (5, 55, DELAY);
+    
     robo.acionarMotores (0,0);
     delay (500);
     robo.acionarMotores(-40,-38);
@@ -437,12 +439,11 @@ void Resgate::seguirNaSala (char zona){
         this -> alinhar ();
 
         // iremos modificar isso  
-        robo.acionarServoGarra1 (5, 55, 40);
         garra.subir();
-        delay(2000);
+        delay(500);
 
 
-        if (robo.lerSensorSonarFrontal() <= 20){
+        if (robo.fimDeCursoPressionado()){
             for(int i = 0; i < 10; i++){  
                 robo.ligarTodosLeds();
                 delay(400);
