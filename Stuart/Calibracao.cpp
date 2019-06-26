@@ -17,7 +17,7 @@ Calibracao:: Calibracao(){
 }
 
 void Calibracao::menuCor() {
-    char controle = "t"; 
+    char controle = 't'; 
     Serial.println ("CALIBRE COR");
     Serial.println();
     while (1){
