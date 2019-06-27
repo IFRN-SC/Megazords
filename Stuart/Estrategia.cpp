@@ -77,7 +77,7 @@ void Estrategia::desviarObstaculo(){
 
     while(robo.lerSensorSonarEsq() < 15){
       movimento.seguir();
-      delay(5);
+      //delay(5);
     }
 
     movimento.parar();  
@@ -98,7 +98,7 @@ void Estrategia::desviarObstaculo(){
 
     while(robo.lerSensorSonarEsq() < 15){
       movimento.seguir();
-      delay(5);
+      //delay(5);
     }
 
     movimento.parar();  
@@ -139,13 +139,29 @@ void Estrategia::desviarObstaculo(){
     while(!sensores.ehBrancoEsquerdo() && !sensores.ehBrancoDireito()){
         movimento.seguir(); 
     }
+
+    while(sensores.ehBrancoMaisDireito()){
+        movimento.girarParaDireita();    
+    }
+    movimento.seguir();
+    delay(150);
+    while(sensores.ehBrancoDireito()){
+        movimento.girarParaDireita();    
+    }
+    movimento.seguir();
+    delay(150);
     
     while(sensores.ehBrancoDireito()){
         movimento.girarParaDireita();    
     }
     while(!sensores.ehBrancoDireito()){
         movimento.girarParaDireita();    
-    }       
+    } 
+    movimento.parar();
+    delay(500);
+    movimento.voltar();
+    delay(200);
+          
 }
 
 void Estrategia::subirRampa(){
