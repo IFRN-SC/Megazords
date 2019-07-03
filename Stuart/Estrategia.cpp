@@ -5,7 +5,9 @@ Estrategia::Estrategia (){
 }
 
 void Estrategia::seguirLinha() {
-	  if(sensores.branco_branco_branco_branco()){            //BBBB    
+	  if(sensores.branco_branco_branco_branco()){            //BBBB  
+        robo.desligarTodosLeds();
+        robo.ligarLed(2);  
      	  movimento.seguir(); 
          
    	}else if(sensores.preto_branco_branco_branco() || sensores.branco_preto_branco_branco()){ //PBBB//BPBB
@@ -17,6 +19,9 @@ void Estrategia::seguirLinha() {
         movimento.girarParaDireita(); 
          
     }else if(sensores.preto_preto_branco_branco() || sensores.preto_preto_preto_branco()){ //PPBB//PPPB
+        
+        robo.desligarTodosLeds();
+        robo.ligarLed(1);
       
         while(!sensores.ehBrancoMaisEsquerdo()){
             movimento.seguir(); 
@@ -29,6 +34,9 @@ void Estrategia::seguirLinha() {
         }
         
     }else if(sensores.branco_branco_preto_preto() || sensores.branco_preto_preto_preto()){ //BBPP//BPPP 
+
+        robo.desligarTodosLeds();
+        robo.ligarLed(3);
               
         while(!sensores.ehBrancoMaisDireito()){
             movimento.seguir(); 
@@ -41,6 +49,8 @@ void Estrategia::seguirLinha() {
         }
           
     }else if(sensores.preto_preto_preto_preto()){    //PPPP
+        robo.desligarTodosLeds();
+        robo.ligarLed(2);
      	  movimento.seguir();  	
     }
 }
@@ -49,7 +59,9 @@ void Estrategia::seguirLinha() {
 void Estrategia::desviarObstaculo(){
     movimento.parar();
     delay(1000);
-
+    
+    robo.desligarTodosLeds();
+       
     for(int i = 0; i < 3; i++){  
       robo.ligarTodosLeds();
       delay(250);
@@ -166,17 +178,17 @@ void Estrategia::desviarObstaculo(){
 
 void Estrategia::subirRampa(){
     if(sensores.branco_branco_branco_branco()){           //BBBB    
-        robo.acionarMotores(50,50);  
+        robo.acionarMotores(55,55);  
     }
     else if(sensores.preto_branco_branco_branco() || sensores.branco_preto_branco_branco()){       //PBBB//BPBB
-        robo.acionarMotores(45,50);      
+        robo.acionarMotores(40,55);      
     }
     else if(sensores.branco_branco_preto_branco() || sensores.branco_branco_branco_preto()){       //BBPB//BBBP
-        robo.acionarMotores(50,45);
+        robo.acionarMotores(55,40);
     }
     else if(sensores.preto_preto_preto_preto()){          //PPPP 
         while (sensores.identificouRampa()){
-            robo.acionarMotores(50,50);
+            robo.acionarMotores(55,55);
         }
 
         //  ********************   COMEÇAMOS A SALA TRÊS AQUI!   ******************** 
@@ -348,6 +360,8 @@ void Estrategia::executar(){
         desviarObstaculo();
     }
     else if (sensores.identificouRampa()){ 
+        robo.desligarTodosLeds();
+        robo.ligarTodosLeds();
         subirRampa();  
     }
     else{
