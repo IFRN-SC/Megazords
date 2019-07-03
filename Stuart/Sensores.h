@@ -11,7 +11,7 @@ class Sensores: public Calibracao{
 	  public:
         // Sonares      
         bool identificouRampa(){
-        	return (robo.lerSensorSonarEsq() < 15 ) && (robo.lerSensorSonarDir() < 15);}
+        	return (robo.lerSensorSonarEsq() < 20 ) && (robo.lerSensorSonarDir() < 20);}
         bool detectouObstaculo(){
         	return (robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1);}
 
