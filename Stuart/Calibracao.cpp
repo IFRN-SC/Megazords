@@ -8,8 +8,34 @@ Calibracao:: Calibracao(){
     mediaEsquerdo = cd.refletanciaEsq;
     mediaMaisDireito  = cd.refletanciaMaisDir;
     mediaMaisEsquerdo = cd.refletanciaMaisEsq;
-    cor_direito = ((cd.verdeDir.h + cd.brancoDir.h)/2);
-    cor_esquerdo = ((cd.verdeEsq.h + cd.brancoEsq.h)/2);
+
+    
+    cor_direito = ((cd.verdeDir.s + cd.brancoDir.s)/2);
+    cor_esquerdo = ((cd.verdeEsq.s + cd.brancoEsq.s)/2);
+
+
+
+    /*Serial.println ();
+    Serial.print (F("COR DIREITO: "));
+    Serial.println (cor_direito);
+    Serial.print (F("COR ESQUERDO: "));
+    Serial.println (cor_esquerdo);
+    Serial.print(F("Valores finais: "));
+    Serial.print(F("MAIS ESQUERDO : "));
+    Serial.print(mediaMaisEsquerdo);
+    Serial.print(F("  |  ESQUERDO : "));
+    Serial.print(mediaEsquerdo);
+    Serial.print(F("  |  DIREITO : "));
+    Serial.print(mediaDireito);
+    Serial.print(F("  |  MAIS DIREITO : "));
+    Serial.println(mediaMaisDireito);
+      Serial.println ();
+    Serial.print (F("COR DIREITO: "));
+    Serial.println (cor_direito);
+    Serial.print (F("COR ESQUERDO: "));
+    Serial.println (cor_esquerdo);*/
+
+    
 }
 
 void Calibracao::menuCor() {
@@ -18,11 +44,11 @@ void Calibracao::menuCor() {
     Serial.println();
     while (1){
         Serial.print(F("BRANCO ESQUERDO : "));
-        Serial.println (robo.getHSVEsquerdo().h);
+        Serial.println (robo.getHSVEsquerdo().s);
         if (Serial.available()){
             controle = Serial.read();
             if(controle == 's'){
-              brancoEsq = robo.getHSVEsquerdo().h;
+              brancoEsq = robo.getHSVEsquerdo().s;
               break;
             }
         }
@@ -30,11 +56,11 @@ void Calibracao::menuCor() {
     } 
     while (1){
         Serial.print(F("BRANCO DIREITO : "));
-        Serial.println (robo.getHSVDireito().h);
+        Serial.println (robo.getHSVDireito().s);
         if (Serial.available()){
             controle = Serial.read();
             if(controle == 's'){
-                brancoDir = robo.getHSVDireito().h;
+                brancoDir = robo.getHSVDireito().s;
                 break;
             }
         }
@@ -42,11 +68,11 @@ void Calibracao::menuCor() {
     }
     while (1){
         Serial.print(F("VERDE ESQUERDO : "));
-        Serial.println (robo.getHSVEsquerdo().h);
+        Serial.println (robo.getHSVEsquerdo().s);
         if (Serial.available()){
             controle = Serial.read();
             if (controle == 's'){
-                verdeEsq = robo.getHSVEsquerdo().h;
+                verdeEsq = robo.getHSVEsquerdo().s;
                 break;
             }
         }
@@ -54,11 +80,11 @@ void Calibracao::menuCor() {
     }     
     while (1){
         Serial.print(F("VERDE DIREITO : "));
-        Serial.println (robo.getHSVDireito().h);
+        Serial.println (robo.getHSVDireito().s);
         if (Serial.available()){
             controle = Serial.read();
             if (controle == 's'){
-                verdeDir = robo.getHSVDireito().h;
+                verdeDir = robo.getHSVDireito().s;
                 break;
             }
         }
@@ -69,6 +95,8 @@ void Calibracao::menuCor() {
     cor_direito = ((verdeDir + brancoDir)/2);
     cor_esquerdo = ((verdeEsq + brancoEsq)/2);
 
+    Serial.println (); 
+    Serial.println (); 
     Serial.println ();
     Serial.print (F("COR DIREITO: "));
     Serial.println (cor_direito);
@@ -77,10 +105,10 @@ void Calibracao::menuCor() {
 
     // Salvar dados da Calibracao na EEPROM
     calibracao_dados cd;
-    cd.verdeDir.h = verdeDir;
-    cd.verdeEsq.h = verdeEsq;
-    cd.brancoDir.h = brancoDir;
-    cd.brancoEsq.h = brancoEsq;
+    cd.verdeDir.s = verdeDir;
+    cd.verdeEsq.s = verdeEsq;
+    cd.brancoDir.s = brancoDir;
+    cd.brancoEsq.s = brancoEsq;
     robo.salvarCalibracao(cd);
 }
 
@@ -217,7 +245,7 @@ Calibracao::dadosCalibracao(){
     Serial.println(mediaDireito);
     Serial.println(mediaMaisDireito);
 
-    // pegar os valores salvos de H
-    cor_direito = ((cd.verdeDir.h + cd.brancoDir.h)/2);
-    cor_esquerdo = ((cd.verdeEsq.h + cd.brancoEsq.h)/2);
+    // pegar os valores salvos de s
+    cor_direito = ((cd.verdeDir.s + cd.brancoDir.s)/2);
+    cor_esquerdo = ((cd.verdeEsq.s + cd.brancoEsq.s)/2);
 }    
