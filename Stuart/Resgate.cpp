@@ -100,7 +100,7 @@ char Resgate::identificaZona (){
     garra.fechar ();
     garra.subir (); 
     robo.acionarMotores (0,0);
-    delay (500);
+    delay (300);
     
     // o robô ira está lateralmente a area de resgate
     robo.acionarMotores (40,-38);
@@ -108,7 +108,7 @@ char Resgate::identificaZona (){
     robo.acionarMotores (40,38);
     delay (1000);
     robo.acionarMotores (0,0);
-    delay (500);
+    delay (300);
 
     // caso a zona esteja a frente da entrada da sala
     if (verificarArea()){
@@ -146,7 +146,7 @@ char Resgate::identificaZona (){
     garra.fechar ();
     garra.subir (); 
     robo.acionarMotores (0,0);
-    delay (500);
+    delay (300);
     robo.acionarMotores (40,38);
     delay (200);
 
@@ -162,7 +162,7 @@ char Resgate::identificaZona (){
     garra.baixar ();
     garra.abrir ();
     robo.acionarMotores (0,0);
-    delay (300);
+    delay (100);
     
     // seguir um pouco 
     robo.acionarMotores (40,38);
@@ -171,14 +171,17 @@ char Resgate::identificaZona (){
     delay (300);
     garra.fechar ();
     garra.subir (); 
+
+
+    
     robo.acionarMotores (0,0);
     delay (500);
     robo.acionarMotores (40,-38);
     delay (230);
     robo.acionarMotores (40,38);
-    delay (100);
+    delay (800);
     robo.acionarMotores (0,0);
-    delay (300);
+    delay (100);
 
     // caso a zona esteja a frente da entrada da sala
     if (verificarArea()){
@@ -204,11 +207,11 @@ char Resgate::identificaZona (){
 
      // caso não esteja vamos verificar o canto que não foi preenchido
     robo.acionarMotores (-40,-38);
-    delay (100);    
+    delay (800);    
     robo.acionarMotores (-40,38);
     delay (230);
     robo.acionarMotores (0,0);
-    delay (300);    
+    delay (100);    
 
     // vamos alinha e fazer a sala
     robo.acionarMotores (40,38);
@@ -416,7 +419,7 @@ void Resgate::resgatarVitima (char zona){
 // método responsável por preencher as paralelas sendo que um avez que encontre a bolinha, o mesmo irá 
 // deixa-la e voltara ao ponto 0, caso não encontre ele irá para após ter feito a paralela 4 vezes
 void Resgate::seguirNaSala (char zona){
-    for (int i = 0; i < 4; i++){
+    for (int i = 0; i < 3; i++){
       
         garra.baixar();
         garra.abrir();
