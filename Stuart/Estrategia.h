@@ -13,7 +13,8 @@ class Estrategia{
         Calibracao cali;
        
     protected:    
-        void fazerVerde();
+        void alinharCurva();
+        boolean fazerVerde(int curva);
         void girarVerdeEsq();
         void girarVerdeDir();
         void girarVerdeBeco();
