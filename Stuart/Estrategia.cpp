@@ -4,6 +4,20 @@
 Estrategia::Estrategia (){  
 }
 
+
+
+/***************** CURVAS ******************/
+/* 
+ *    verificar beco sem saida - 1
+ *    verificar direito verde  - 2
+ *    verificar esquerdo verde - 3
+ * 
+ */
+
+
+
+
+
 void Estrategia::seguirLinha() {
 	  if(sensores.branco_branco_branco_branco()){            //BBBB  
         robo.desligarTodosLeds();
@@ -19,39 +33,45 @@ void Estrategia::seguirLinha() {
         movimento.girarParaDireita(); 
          
     }else if(sensores.preto_preto_branco_branco() || sensores.preto_preto_preto_branco()){ //PPBB//PPPB
-        
-        robo.desligarTodosLeds();
-        robo.ligarLed(1);
-      
-        while(!sensores.ehBrancoMaisEsquerdo()){
-            movimento.seguir(); 
-        }
-        while(sensores.ehBrancoDireito()){
-            movimento.girarParaEsquerda(); 
-        } 
-        while(!sensores.ehBrancoDireito()){
-            movimento.girarParaDireita(); 
-        }
-        
-    }else if(sensores.branco_branco_preto_preto() || sensores.branco_preto_preto_preto()){ //BBPP//BPPP 
-
-        robo.desligarTodosLeds();
-        robo.ligarLed(3);
-              
-        while(!sensores.ehBrancoMaisDireito()){
-            movimento.seguir(); 
-        }
-        while(sensores.ehBrancoEsquerdo()){
-            movimento.girarParaDireita(); 
-        }
-        while(!sensores.ehBrancoEsquerdo()){
-            movimento.girarParaEsquerda(); 
-        }
+        alinharCurva();
+        if (!((fazerVerde(1) && fazerVerde(3)))){
+            robo.desligarTodosLeds();
+            robo.ligarLed(1);
           
-    }else if(sensores.preto_preto_preto_preto()){    //PPPP
-        robo.desligarTodosLeds();
-        robo.ligarLed(2);
-     	  movimento.seguir();  	
+            while(!sensores.ehBrancoMaisEsquerdo()){
+                movimento.seguir(); 
+            }
+            while(sensores.ehBrancoDireito()){
+                movimento.girarParaEsquerda(); 
+            } 
+            while(!sensores.ehBrancoDireito()){
+                movimento.girarParaDireita(); 
+            }
+        }       
+    }else if(sensores.branco_branco_preto_preto() || sensores.branco_preto_preto_preto()){ //BBPP//BPPP 
+        alinharCurva();
+        if (!((fazerVerde(1) && fazerVerde(2)))){
+            robo.desligarTodosLeds();
+            robo.ligarLed(3);
+                  
+            while(!sensores.ehBrancoMaisDireito()){
+                movimento.seguir(); 
+            }
+            while(sensores.ehBrancoEsquerdo()){
+                movimento.girarParaDireita(); 
+            }
+            while(!sensores.ehBrancoEsquerdo()){
+                movimento.girarParaEsquerda(); 
+            }
+        }  
+    }
+    else if(sensores.preto_preto_preto_preto()){    //PPPP
+        alinharCurva();
+        if (!((fazerVerde(1) && fazerVerde(2) && fazerVerde(3)))){
+            robo.desligarTodosLeds();
+            robo.ligarLed(2);
+            movimento.seguir();     
+        }
     }
 }
 
@@ -169,7 +189,6 @@ void Estrategia::desviarObstaculo(){
     delay(1000);
     movimento.voltar();
     delay(100);
-          
 }
 
 void Estrategia::subirRampa(){
@@ -223,8 +242,7 @@ void Estrategia::calibracao(){
     Serial.println(F("Robô Calibrado!"));
 }
 
-void Estrategia::fazerVerde(){
-    
+void Estrategia::alinharCurva (){ 
     movimento.parar();
     delay(200);
     movimento.seguir();
@@ -235,11 +253,55 @@ void Estrategia::fazerVerde(){
     while(sensores.ehBrancoMaisDireito() && sensores.ehBrancoMaisEsquerdo()){
        robo.acionarMotores(-30,-30);
     }
-    
     movimento.parar();
     delay(100);
-    
-    
+}
+
+
+boolean Estrategia::fazerVerde(int curva){
+    switch (curva) {
+        case 1:
+            if (sensores.verde_verde()) { 
+                for(int i = 0; i < 5; i++){
+                   robo.ligarLed(1);
+                   delay(100);
+                   robo.desligarLed(1);
+                   delay(100); 
+                }
+                girarVerdeBeco();
+                return true;
+            }
+            break;
+            
+        case 2:
+            if (sensores.outro_verde()) { 
+                for(int i = 0; i < 5; i++){
+                   robo.ligarLed(1);
+                   delay(100);
+                   robo.desligarLed(1);
+                   delay(100); 
+                }
+                girarVerdeDir();
+                return true;
+            }
+            break;
+            
+
+        case 3:
+            if (sensores.verde_outro()) { 
+                for(int i = 0; i < 5; i++){
+                   robo.ligarLed(1);
+                   delay(100);
+                   robo.desligarLed(1);
+                   delay(100); 
+                }
+                girarVerdeEsq();
+                return true;
+            }
+            break;
+    } 
+
+    /*
     if (sensores.verde_verde()) { girarVerdeBeco();}
    
     else if (sensores.outro_verde()) { girarVerdeDir();}
@@ -279,7 +341,7 @@ void Estrategia::fazerVerde(){
                 movimento.seguir();   
               }
             }
-    }
+    }*/
 }
 
 void Estrategia::girarVerdeEsq(){
