@@ -19,7 +19,9 @@ class Calibracao{
     private:
         int caliPretoEsquerdo, caliPretoMaisEsquerdo, caliPretoDireito, caliPretoMaisDireito;
         int caliBrancoEsquerdo, caliBrancoMaisEsquerdo, caliBrancoDireito, caliBrancoMaisDireito; 
+        calibracao_dados cd;
         float verdeDir, verdeEsq, brancoDir,brancoEsq;
+        void salvaCalibracao(calibracao_dados);
 };
 
 #endif
