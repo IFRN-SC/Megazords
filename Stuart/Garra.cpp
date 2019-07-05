@@ -12,8 +12,8 @@ void Garra::baixar (){
 }
 
 void Garra::abrir (){
-    robo.acionarServoGarra1 (8);
+    robo.acionarServoGarra1 (65, 0, DELAY);
 }
 void Garra::fechar (){
-    robo.acionarServoGarra1 (8, 55, DELAY);
+    robo.acionarServoGarra1 (0, 65, DELAY);
 }
