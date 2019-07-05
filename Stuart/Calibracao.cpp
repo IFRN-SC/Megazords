@@ -2,7 +2,7 @@
 #include "Calibracao.h"
 
 Calibracao:: Calibracao(){
-    calibracao_dados cd;
+   
     robo.lerCalibracao(cd);
     mediaDireito = cd.refletanciaDir;
     mediaEsquerdo = cd.refletanciaEsq;
@@ -12,29 +12,6 @@ Calibracao:: Calibracao(){
     
     cor_direito = ((cd.verdeDir.s + cd.brancoDir.s)/2);
     cor_esquerdo = ((cd.verdeEsq.s + cd.brancoEsq.s)/2);
-
-
-
-    /*Serial.println ();
-    Serial.print (F("COR DIREITO: "));
-    Serial.println (cor_direito);
-    Serial.print (F("COR ESQUERDO: "));
-    Serial.println (cor_esquerdo);
-    Serial.print(F("Valores finais: "));
-    Serial.print(F("MAIS ESQUERDO : "));
-    Serial.print(mediaMaisEsquerdo);
-    Serial.print(F("  |  ESQUERDO : "));
-    Serial.print(mediaEsquerdo);
-    Serial.print(F("  |  DIREITO : "));
-    Serial.print(mediaDireito);
-    Serial.print(F("  |  MAIS DIREITO : "));
-    Serial.println(mediaMaisDireito);
-      Serial.println ();
-    Serial.print (F("COR DIREITO: "));
-    Serial.println (cor_direito);
-    Serial.print (F("COR ESQUERDO: "));
-    Serial.println (cor_esquerdo);*/
-
     
 }
 
@@ -104,12 +81,12 @@ void Calibracao::menuCor() {
     Serial.println (cor_esquerdo);
 
     // Salvar dados da Calibracao na EEPROM
-    calibracao_dados cd;
+ 
     cd.verdeDir.s = verdeDir;
     cd.verdeEsq.s = verdeEsq;
     cd.brancoDir.s = brancoDir;
     cd.brancoEsq.s = brancoEsq;
-    robo.salvarCalibracao(cd);
+    salvaCalibracao(cd);
 }
 
 void Calibracao::menuCalibrar(){
@@ -209,12 +186,12 @@ void Calibracao::menuCalibrar(){
     mediaMaisDireito = (caliBrancoMaisDireito + caliPretoMaisDireito) / 2;
   
     // Salvar dados da Calibracao na EEPROM
-    calibracao_dados cd;
+   
     cd.refletanciaDir = mediaDireito; 
     cd.refletanciaEsq = mediaEsquerdo;
     cd.refletanciaMaisDir = mediaMaisDireito;
     cd.refletanciaMaisEsq = mediaMaisEsquerdo;
-    robo.salvarCalibracao(cd);
+    salvaCalibracao(cd);
     
     Serial.println();
     Serial.println();
@@ -232,7 +209,7 @@ void Calibracao::menuCalibrar(){
 }
 
 Calibracao::dadosCalibracao(){
-    calibracao_dados cd;
+
     robo.lerCalibracao(cd);
     mediaDireito = cd.refletanciaDir;
     mediaEsquerdo = cd.refletanciaEsq;
@@ -248,4 +225,36 @@ Calibracao::dadosCalibracao(){
     // pegar os valores salvos de s
     cor_direito = ((cd.verdeDir.s + cd.brancoDir.s)/2);
     cor_esquerdo = ((cd.verdeEsq.s + cd.brancoEsq.s)/2);
-}    
+} 
+
+void Calibracao::salvaCalibracao(calibracao_dados dadosAtuais){
+  
+    robo.lerCalibracao(cd);
+    
+    if(dadosAtuais.refletanciaDir != cd.refletanciaDir){
+        cd.refletanciaDir = dadosAtuais.refletanciaDir;
+    }
+    if(dadosAtuais.refletanciaMaisDir != cd.refletanciaMaisDir){
+        cd.refletanciaMaisDir = dadosAtuais.refletanciaMaisDir;  
+    }
+    if(dadosAtuais.refletanciaEsq != cd.refletanciaEsq){
+        cd.refletanciaEsq = dadosAtuais.refletanciaEsq; 
+    }
+    if(dadosAtuais.refletanciaMaisEsq != cd.refletanciaMaisEsq){
+        cd.refletanciaMaisEsq = dadosAtuais.refletanciaMaisEsq;  
+    }
+    if(dadosAtuais.brancoDir.s != cd.brancoDir.s){
+        cd.brancoDir.s = dadosAtuais.brancoDir.s;
+    }
+    if(dadosAtuais.brancoEsq.s != cd.brancoEsq.s){
+        cd.brancoEsq.s = dadosAtuais.brancoEsq.s; 
+    }
+    if(dadosAtuais.verdeDir.s != cd.verdeDir.s){
+        cd.verdeDir.s = dadosAtuais.verdeDir.s; 
+    }
+    if(dadosAtuais.verdeEsq.s != cd.verdeEsq.s){
+        cd.verdeEsq.s = dadosAtuais.verdeEsq.s; 
+    }
+    robo.salvarCalibracao(cd);
+}
+
