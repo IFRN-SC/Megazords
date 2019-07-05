@@ -46,7 +46,6 @@ void Resgate::entrarNaSala (){
 }
 
 
-
 // metodo responsável por soltar a bolinha com os servos
 // na areá que esta há frente do robô
 void Resgate::soltarBolinha (){
@@ -73,7 +72,7 @@ void Resgate::soltarBolinha (){
 bool Resgate::verificarArea (){
     robo.acionarMotores (0,0);
     delay (100);
-    return (robo.lerSensorSonarEsq() <= 20);
+    return (robo.lerSensorSonarEsq() <= 15);
 }
 
 
@@ -92,21 +91,31 @@ char Resgate::identificaZona (){
     delay (100);
     
      // seguir um pouco 
-    robo.acionarMotores (40,38);
-    delay (1100);
+
+    long ant2 = millis();
+    int angInicial2 = 2;
+    long t2 = (millis() -  ant2);
+    int x2 = 1000;
+    while(t2 < x2){
+      robo.acionarMotores(40, 38);     
+      if(t2 > (x2-500)){
+        robo.acionarServoGarra1(map(t2, 600, 1000, 0, 65));  
+      }
+      t2 = (millis() -  ant2);
+    }
+
     robo.acionarMotores (0,0);
-    delay (200);
+    delay (100);
     
-    garra.fechar ();
     garra.subir (); 
     robo.acionarMotores (0,0);
-    delay (300);
+    delay (100);
     
     // o robô ira está lateralmente a area de resgate
     robo.acionarMotores (40,-38);
     delay (230);
     robo.acionarMotores (40,38);
-    delay (1000);
+    delay (800);
     robo.acionarMotores (0,0);
     delay (300);
 
@@ -118,37 +127,52 @@ char Resgate::identificaZona (){
             robo.desligarTodosLeds();
             delay(200);
         }
-        robo.ligarLed (1);
-        robo.acionarMotores(-40,38);//testar se o robô pegou a bolinha aqui
-        delay (550);                //para só soltar se estiver com bola na garra
-        robo.acionarMotores(40,38);
-        delay (200);  
-        this -> soltarBolinha ();
+
+        if(robo.fimDeCursoPressionado()){
+            robo.ligarLed (1);
+            robo.acionarMotores(-40,38);//testar se o robô pegou a bolinha aqui
+            delay (550);                //para só soltar se estiver com bola na garra
+            robo.acionarMotores(40,38);
+            delay (200);  
+            this -> soltarBolinha ();
+        }
         return 'a';
     }
 
     
     // caso não esteja vamos verificar o canto que não foi preenchido
     robo.acionarMotores (-40,-38);
-    delay (1000);    
+    delay (900);  
+    robo.acionarMotores(0, 0); 
+    delay(100); 
     robo.acionarMotores (-40,38);
     delay (230);
     robo.acionarMotores (0,0);
-    delay (500);    
+    delay (100);    
     garra.baixar ();
     garra.abrir ();
     robo.acionarMotores (0,0);
-    delay (200);    
-    robo.acionarMotores (40,38);
-    delay (800);
+    delay (100);    
+    
+    long ant3 = millis();
+    int angInicial3 = 2;
+    long t3 = (millis() -  ant3);
+    int x3 = 800;
+    while(t3 < x3){
+        robo.acionarMotores(40, 38);     
+        if(t3 > (x3-500)){
+            robo.acionarServoGarra1(map(t3, 300, 800, 0, 65));  
+         }
+         t3 = (millis() -  ant3);
+    }
+    
     robo.acionarMotores (0,0);
-    delay (200);
-    garra.fechar ();
+    delay (100);
     garra.subir (); 
     robo.acionarMotores (0,0);
-    delay (300);
+    delay (100);
     robo.acionarMotores (40,38);
-    delay (200);
+    delay (100);
 
 
 
@@ -165,21 +189,29 @@ char Resgate::identificaZona (){
     delay (100);
     
     // seguir um pouco 
-    robo.acionarMotores (40,38);
-    delay (1200);
-    robo.acionarMotores (0,0);
-    delay (300);
-    garra.fechar ();
-    garra.subir (); 
-
-
+    
+    long ant4 = millis();
+    int angInicial4 = 2;
+    long t4 = (millis() -  ant4);
+    int x4 = 1100;
+    while(t4 < x4){
+      robo.acionarMotores(40, 38);     
+      if(t4 > (x4-500)){
+        robo.acionarServoGarra1(map(t4, 600, 1100, 0, 65));  
+      }
+      t4 = (millis() -  ant4);
+    }
     
     robo.acionarMotores (0,0);
-    delay (500);
+    delay (100);
+    garra.subir (); 
+    
+    robo.acionarMotores (0,0);
+    delay (100);
     robo.acionarMotores (40,-38);
     delay (230);
     robo.acionarMotores (40,38);
-    delay (800);
+    delay (1000);
     robo.acionarMotores (0,0);
     delay (100);
 
@@ -192,14 +224,16 @@ char Resgate::identificaZona (){
         robo.desligarTodosLeds();
         delay(200);
         }
-        
-        robo.ligarLed (2);
-        robo.acionarMotores(-40,38);
-        delay (550);
-        robo.acionarMotores(40,38);
-        delay (200);
-        
-        this -> soltarBolinha ();
+
+        if(robo.fimDeCursoPressionado()){
+            robo.ligarLed (2);
+            robo.acionarMotores(-40,38);
+            delay (550);
+            robo.acionarMotores(40,38);
+            delay (200);
+            
+            this -> soltarBolinha ();
+        }
         return 'b';
     }else {
         robo.ligarLed (3);
@@ -207,7 +241,9 @@ char Resgate::identificaZona (){
 
      // caso não esteja vamos verificar o canto que não foi preenchido
     robo.acionarMotores (-40,-38);
-    delay (800);    
+    delay (900);
+    robo.acionarMotores (0, 0);
+    delay (100);    
     robo.acionarMotores (-40,38);
     delay (230);
     robo.acionarMotores (0,0);
@@ -271,23 +307,31 @@ void Resgate::voltar (char zona){
 // método responsável por verificar a lateral
 // se a bolinha estiver      
 void Resgate::irLateralEsq (){
-    robo.acionarMotores (40,38);
+    robo.acionarMotores (43,38);
     delay (50);
     robo.acionarMotores (-40,38);
     delay (550);
     robo.acionarMotores (0,0);
-    delay (1000);
+    delay (100);
     garra.abrir ();
     garra.baixar ();
     robo.acionarMotores (0,0);
-    delay (1000);
-    robo.acionarMotores (40,38);
-    delay (600);
-    robo.acionarMotores (0,0);
-    delay (1000);   
-    garra.fechar ();
-    robo.acionarMotores (0,0);
     delay (100);
+
+    long ant = millis();
+    int angInicial = 2;
+    long t = (millis() -  ant);
+    int x = 600;
+    while(t < x){
+        robo.acionarMotores(40, 38);     
+        if(t > (x-400)){
+            robo.acionarServoGarra1(map(t, 200, 600, 0, 65));  
+         }
+         t = (millis() -  ant);
+    }
+
+    robo.acionarMotores (0,0);
+    delay (100);   
     garra.subir ();
     robo.acionarMotores (0,0);
     delay (100);   
@@ -431,7 +475,7 @@ void Resgate::seguirNaSala (char zona){
         while(t < x){
           robo.acionarMotores(40, 38);     
           if(t > (x-800)){
-            robo.acionarServoGarra1(map(t, 1300, 2100, 0, 55));  
+            robo.acionarServoGarra1(map(t, 1300, 2100, 0, 65));  
           }
           t = (millis() -  ant);
         }
@@ -444,8 +488,6 @@ void Resgate::seguirNaSala (char zona){
 
         // iremos modificar isso  
         garra.subir();
-        delay(500);
-
 
         if (robo.fimDeCursoPressionado()){
             for(int i = 0; i < 10; i++){  
