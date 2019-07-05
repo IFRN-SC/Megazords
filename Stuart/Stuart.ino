@@ -7,10 +7,10 @@ Estrategia meuRobo;
 
 void setup (){
     Serial.begin(9600);
-    robo.configurar(false);
-    //robo.acionarServoGarra2(130);
-    //robo.acionarServoGarra1(55);
-    //delay(1000);
+    robo.configurar(true);
+    robo.acionarServoGarra2(130);
+    robo.acionarServoGarra1(65);
+    delay(1000);
     robo.habilitaTCS34();
     meuRobo.calibracao();
     robo.desligarTodosLeds();
