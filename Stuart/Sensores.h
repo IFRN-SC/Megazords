@@ -10,10 +10,8 @@ class Sensores: public Calibracao{
   
 	  public:
         // Sonares      
-        bool identificouRampa(){
-        	return (robo.lerSensorSonarEsq() < 20 ) && (robo.lerSensorSonarDir() < 20);}
-        bool detectouObstaculo(){
-        	return (robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1);}
+        bool identificouRampa(){return (robo.lerSensorSonarEsq() < 20 ) && (robo.lerSensorSonarDir() < 20);}
+        bool detectouObstaculo(){return (robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1);}
 
         // Funcoes para definir o branco
         boolean ehBrancoMaisEsquerdo(){
@@ -41,14 +39,11 @@ class Sensores: public Calibracao{
 
         // PARA O SENSOR DE COR 
         boolean ehVerdeDireito (){ return robo.getHSVDireito().s > cor_direito;}          
-        boolean ehVerdeEsquerdo (){ return robo.getHSVEsquerdo().s > cor_esquerdo;} 
-        boolean detectouVerde (){ return (ehVerdeDireito() || ehVerdeEsquerdo());}            
+        boolean ehVerdeEsquerdo (){ return robo.getHSVEsquerdo().s > cor_esquerdo;}      
         
-        boolean verde_outro (){return ( ehVerdeEsquerdo() &&!ehVerdeDireito());}
-        boolean outro_verde (){return (!ehVerdeEsquerdo() && ehVerdeDireito());}
-        boolean verde_verde (){return ( ehVerdeEsquerdo() && ehVerdeDireito());}
-        boolean outro_outro (){return (!ehVerdeEsquerdo() &&!ehVerdeDireito());}
-
-        //boolean testarVerde (){return (preto_preto_branco_branco() || preto_preto_preto_branco() ||branco_branco_preto_preto() || branco_preto_preto_preto() || preto_preto_preto_preto());}
-        
+        boolean verde_outro (){return ( ehVerdeEsquerdo() && !ehVerdeDireito());}
+        boolean outro_verde (){return (!ehVerdeEsquerdo() &&  ehVerdeDireito());}
+        boolean verde_verde (){return ( ehVerdeEsquerdo() &&  ehVerdeDireito());}
+        boolean outro_outro (){return (!ehVerdeEsquerdo() && !ehVerdeDireito());}
+         
 };
