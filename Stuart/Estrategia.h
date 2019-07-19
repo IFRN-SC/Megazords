@@ -14,7 +14,7 @@ class Estrategia{
        
     protected:    
         void alinharCurva();
-        boolean fazerVerde(int curva);
+        boolean fazerVerde();
         void girarVerdeEsq();
         void girarVerdeDir();
         void girarVerdeBeco();
