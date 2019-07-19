@@ -34,7 +34,7 @@ void Estrategia::seguirLinha() {
          
     }else if(sensores.preto_preto_branco_branco() || sensores.preto_preto_preto_branco()){ //PPBB//PPPB
         alinharCurva();
-        if (!(fazerVerde(1) && fazerVerde(3))){
+        if (!fazerVerde()){
             robo.desligarTodosLeds();
             robo.ligarLed(1);
           
@@ -51,7 +51,7 @@ void Estrategia::seguirLinha() {
                
     }else if(sensores.branco_branco_preto_preto() || sensores.branco_preto_preto_preto()){ //BBPP//BPPP 
         alinharCurva();
-        if (!(fazerVerde(1) && fazerVerde(2))){
+        if (!fazerVerde()){
             robo.desligarTodosLeds();
             robo.ligarLed(3);
                   
@@ -69,7 +69,7 @@ void Estrategia::seguirLinha() {
     }
     else if(sensores.preto_preto_preto_preto()){    //PPPP
         alinharCurva();
-        if (!(fazerVerde(1) && fazerVerde(2) && fazerVerde(3))){
+        if (!fazerVerde()){
             robo.desligarTodosLeds();
             robo.ligarLed(2);
             movimento.seguir();     
@@ -201,7 +201,7 @@ void Estrategia::subirRampa(){
 void Estrategia::calibracao(){
     Serial.println(F("Pressione o Botão para Calibrar!"));
     Serial.println();
-    for (int i = 1; i <= 10; i++){
+    for (int i = 1; i <= 15; i++){
         robo.ligarLed(3);
 
         // para calibrar a refletância
@@ -243,63 +243,50 @@ void Estrategia::alinharCurva (){
     delay(200);
 }
 
-boolean Estrategia::fazerVerde(int curva){
-    switch (curva) {
-        case 1:
-            if (sensores.verde_verde()) { 
-                for(int i = 0; i < 5; i++){
-                   robo.ligarLed(2);
-                   delay(100);
-                   robo.desligarLed(2);
-                   delay(100); 
-                }
-                girarVerdeBeco();
-                return true;
-            }
-            return false;
-            break;
-            
-        case 2:
-            if (sensores.outro_verde()) { 
-                for(int i = 0; i < 5; i++){
-                   robo.ligarLed(3);
-                   delay(100);
-                   robo.desligarLed(3);
-                   delay(100); 
-                }
-                girarVerdeDir();
-                return true;
-            }
-            return false;
-            break;
-            
+boolean Estrategia::fazerVerde(){
+    
+    boolean retorno = true;
+    
+    if (sensores.ehVerdeDireito() && sensores.ehVerdeEsquerdo()) { 
+          robo.desligarTodosLeds();
+          for(int i = 0; i < 10; i++){
+             robo.ligarLed(2);
+             delay(100);
+             robo.desligarLed(2);
+             delay(100); 
+          }
+          girarVerdeBeco();
+    }
+    
+    else if (sensores.ehVerdeDireito()) { 
+          robo.desligarTodosLeds();
+          for(int i = 0; i < 10; i++){
+             robo.ligarLed(3);
+             delay(100);
+             robo.desligarLed(3);
+             delay(100); 
+          }
+          girarVerdeDir();
+    }
+    
+    else if (sensores.ehVerdeEsquerdo()) { 
+          robo.desligarTodosLeds();
+          for(int i = 0; i < 10; i++){
+             robo.ligarLed(1);
+             delay(100);
+             robo.desligarLed(1);
+             delay(100); 
+          }
+          girarVerdeEsq();
+    }else{ 
+        retorno = false;  
+    }
 
-        case 3:
-            if (sensores.verde_outro()) { 
-                for(int i = 0; i < 5; i++){
-                   robo.ligarLed(1);
-                   delay(100);
-                   robo.desligarLed(1);
-                   delay(100); 
-                }
-                girarVerdeEsq();
-                return true;
-            }
-            return false;
-            break;
-    } 
+    return retorno;
+    
 }
 
 void Estrategia::girarVerdeEsq(){
-
-  robo.desligarTodosLeds();
-  
-    for(int i = 0; i < 5; i++){
-       robo.ligarLed(1);
-       delay(100);
-       robo.desligarLed(1);
-       delay(100); 
-    }
     
     robo.acionarMotores(35, 35);
     delay(200);
@@ -314,15 +301,6 @@ void Estrategia::girarVerdeEsq(){
   
   void Estrategia::girarVerdeDir(){
 
-    robo.desligarTodosLeds();
-    
-    for(int i = 0; i < 5; i++){
-       robo.ligarLed(1);
-       delay(100);
-       robo.desligarLed(1);
-       delay(100); 
-    }
-    
     robo.acionarMotores(35, 35);
     delay(200);
      
@@ -336,17 +314,8 @@ void Estrategia::girarVerdeEsq(){
   
   void Estrategia::girarVerdeBeco(){
     
-    robo.desligarTodosLeds();
-    
-    for(int i = 0; i < 5; i++){
-       robo.ligarLed(3);
-       delay(100);
-       robo.desligarLed(3);
-       delay(100); 
-    }
-    
     movimento.girarParaDireita();
-    delay(400);
+    delay(500);
     
     while(sensores.ehBrancoMaisDireito()){
        movimento.girarParaDireita(); 
