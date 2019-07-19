@@ -12,7 +12,32 @@ Calibracao:: Calibracao(){
     
     cor_direito = ((cd.verdeDir.s + cd.brancoDir.s)/2);
     cor_esquerdo = ((cd.verdeEsq.s + cd.brancoEsq.s)/2);
-    
+
+    // imprimir a calibração
+    Serial.println ();
+    Serial.println ();
+    Serial.println ();
+    Serial.print ("-------------------------------");
+    Serial.print ("   MAIS ESQUERDO:   ");
+    Serial.print (mediaMaisEsquerdo);
+    Serial.print ("   ESQUERDO:   ");
+    Serial.print (mediaEsquerdo);
+    Serial.print ("   DIREITO:   ");
+    Serial.print (mediaDireito);
+    Serial.print ("   MAIS DIREITO:   ");
+    Serial.print (mediaMaisDireito);
+    Serial.println ("-------------------------------");
+    Serial.println ();
+    Serial.println ();
+    Serial.print ("-------------------------------");
+    Serial.print ("   COR ESQUERDO:   ");
+    Serial.print (((cd.verdeEsq.s + cd.brancoEsq.s)/2));
+    Serial.print ("   COR DIREITO:    ");
+    Serial.print (((cd.verdeDir.s + cd.brancoDir.s)/2));
+    Serial.print ("-------------------------------");
+    Serial.println ();
+    Serial.println ();
+    Serial.println ();
 }
 
 void Calibracao::menuCor() {
@@ -73,6 +98,8 @@ void Calibracao::menuCor() {
     cor_esquerdo = ((verdeEsq + brancoEsq)/2);
 
     Serial.println (); 
+    Serial.println (); 
+    Serial.println ();
     Serial.println (); 
     Serial.println ();
     Serial.print (F("COR DIREITO: "));
@@ -195,6 +222,10 @@ void Calibracao::menuCalibrar(){
     
     Serial.println();
     Serial.println();
+    Serial.println();
+    Serial.println();
+    Serial.println();
+    Serial.println();
   
     // Imprime os valores das médias 
     Serial.print(F("Valores finais: "));
@@ -255,6 +286,33 @@ void Calibracao::salvaCalibracao(calibracao_dados dadosAtuais){
     if(dadosAtuais.verdeEsq.s != cd.verdeEsq.s){
         cd.verdeEsq.s = dadosAtuais.verdeEsq.s; 
     }
+
     robo.salvarCalibracao(cd);
+
+    // imprimir a calibração
+    Serial.println ();
+    Serial.println ();
+    Serial.println ();
+    Serial.print ("-------------------------------");
+    Serial.print ("   MAIS ESQUERDO:   ");
+    Serial.print (mediaMaisEsquerdo);
+    Serial.print ("   ESQUERDO:   ");
+    Serial.print (mediaEsquerdo);
+    Serial.print ("   DIREITO:   ");
+    Serial.print (mediaDireito);
+    Serial.print ("   MAIS DIREITO:   ");
+    Serial.print (mediaMaisDireito);
+    Serial.println ("-------------------------------");
+    Serial.println ();
+    Serial.println ();
+    Serial.print ("-------------------------------");
+    Serial.print ("   COR ESQUERDO:   ");
+    Serial.print (((cd.verdeEsq.s + cd.brancoEsq.s)/2));
+    Serial.print ("   COR DIREITO:    ");
+    Serial.print (((cd.verdeDir.s + cd.brancoDir.s)/2));
+    Serial.print ("-------------------------------");
+    Serial.println ();
+    Serial.println ();
+    Serial.println ();
 }
 
