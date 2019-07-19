@@ -41,9 +41,5 @@ class Sensores: public Calibracao{
         boolean ehVerdeDireito (){ return robo.getHSVDireito().s > cor_direito;}          
         boolean ehVerdeEsquerdo (){ return robo.getHSVEsquerdo().s > cor_esquerdo;}      
         
-        boolean verde_outro (){return ( ehVerdeEsquerdo() && !ehVerdeDireito());}
-        boolean outro_verde (){return (!ehVerdeEsquerdo() &&  ehVerdeDireito());}
-        boolean verde_verde (){return ( ehVerdeEsquerdo() &&  ehVerdeDireito());}
-        boolean outro_outro (){return (!ehVerdeEsquerdo() && !ehVerdeDireito());}
          
 };
