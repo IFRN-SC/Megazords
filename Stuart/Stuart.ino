@@ -9,7 +9,7 @@ void setup (){
     Serial.begin(9600);
     robo.configurar(true);
     robo.acionarServoGarra2(130);
-    robo.acionarServoGarra1(65);
+    robo.acionarServoGarra1(70);
     delay(1000);
     robo.habilitaTCS34();
     meuRobo.calibracao();
