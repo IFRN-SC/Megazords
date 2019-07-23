@@ -179,17 +179,17 @@ void Estrategia::desviarObstaculo(){
 
 void Estrategia::subirRampa(){
     if(sensores.branco_branco_branco_branco()){           //BBBB    
-        robo.acionarMotores(55,55);  
+        robo.acionarMotores(60,60);  
     }
     else if(sensores.preto_branco_branco_branco() || sensores.branco_preto_branco_branco() || sensores.preto_preto_branco_branco()){       //PBBB//BPBB//PPBB             
-        robo.acionarMotores(35,55);      
+        robo.acionarMotores(35,60);      
     }
     else if(sensores.branco_branco_preto_branco() || sensores.branco_branco_branco_preto() || sensores.branco_branco_preto_preto()){       //BBPB//BBBP//BBPP
-        robo.acionarMotores(55,35);
+        robo.acionarMotores(60,35);
     }
     else if(sensores.preto_preto_preto_preto()){          //PPPP 
         while (sensores.identificouRampa()){
-            robo.acionarMotores(55,55);
+            robo.acionarMotores(60,60);
         }
 
         //  ********************   COMEÇAMOS A SALA TRÊS AQUI!   ******************** 
