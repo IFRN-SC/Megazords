@@ -21,6 +21,7 @@ class Resgate: public Garra {
         void voltar (char zona);
         void seguirNaSala (char zona);      
         void resgatarVitima (char zona);
+        void restoDosCantos (char zona);
         
     public :
         Resgate ();
