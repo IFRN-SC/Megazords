@@ -74,7 +74,7 @@ void Estrategia::seguirLinha() {
             robo.ligarLed(2);
             movimento.seguir();     
         }
-    }
+   }
 }
 
 
@@ -98,10 +98,15 @@ void Estrategia::desviarObstaculo(){
         movimento.girarParaDireita(); 
     }
           
-    while(sensores.ehBrancoMaisDireito()){
+    while(sensores.ehBrancoEsquerdo()){
         movimento.girarSoDireita();
     }
-    
+
+    movimento.girarSoDireita();
+    delay(550);
+    movimento.parar();
+    delay(500);
+        
     while(robo.lerSensorSonarEsq() > 15){
       movimento.seguir();  
     }
@@ -111,7 +116,7 @@ void Estrategia::desviarObstaculo(){
 
     while(robo.lerSensorSonarEsq() < 15){
       movimento.seguir();
-      delay(10);
+      delay(20);
     }
 
     movimento.parar();  
@@ -128,11 +133,11 @@ void Estrategia::desviarObstaculo(){
     }
 
     movimento.parar();  
-    delay(500);
+    delay(1000);
 
     while(robo.lerSensorSonarEsq() < 15){
       movimento.seguir();
-      delay(10);
+      delay(20);
     }
 
     movimento.parar();  
@@ -158,7 +163,20 @@ void Estrategia::desviarObstaculo(){
         movimento.seguir(); 
     }
 
-    while(sensores.ehBrancoMaisDireito()){
+    for(int i = 1; i <= 7; i++){
+        robo.acionarMotores(43, 0);
+        delay(200);
+        robo.acionarMotores(-30, -30);
+        delay(150);  
+    }
+    movimento.parar();
+    delay(500);
+    movimento.voltar();
+    delay(100);
+    movimento.parar();
+    delay(500);
+    
+   /* while(sensores.ehBrancoMaisDireito()){
         movimento.girarParaDireita();    
     }
     movimento.seguir();
@@ -174,7 +192,7 @@ void Estrategia::desviarObstaculo(){
     movimento.parar();
     delay(1000);
     movimento.voltar();
-    delay(100);
+    delay(200);*/
 }
 
 void Estrategia::subirRampa(){
