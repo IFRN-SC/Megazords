@@ -207,7 +207,7 @@ char Resgate::identificaZona (){
     subir();
     
     robo.acionarMotores (40,38);
-    delay (250);
+    delay (350);
     // vamos alinha e verificar a outra zona
     robo.acionarMotores (40,-38);
     delay (500);
@@ -326,21 +326,34 @@ void Resgate::voltar (char zona){
     }
     else if (zona == 'b'){
         robo.acionarMotores(-40,-38);
-        delay (700);
+        delay (200);
         robo.acionarMotores(0,0);
         delay (100);
         robo.acionarMotores(-40,38);
-        delay (225);
-        robo.acionarMotores(-40,-38);
-        delay (2000);
+        delay (1000);
+        robo.acionarMotores(0,0);
+        delay (100);
         this -> alinhar();
         robo.acionarMotores(40,38);
+        delay (800);
+        robo.acionarMotores(0,0);
         delay (100);
         robo.acionarMotores(40,-38);
-        delay (550);
+        delay (800);
         robo.acionarMotores(-40,-38);
         delay (1000);
         this -> alinhar ();
+        robo.acionarMotores(40,38);
+        delay (200);
+        robo.acionarMotores(0,0);
+        delay (100);
+        robo.acionarMotores(40,-38);
+        delay (500);
+        robo.acionarMotores(0,0);
+        delay (100);
+        robo.acionarMotores(-40,-38);
+        delay (400);
+        this -> alinhar();
     }
 }
 
@@ -477,7 +490,7 @@ void Resgate::resgatarVitima (char zona){
 
         // giro para ficar de frente com a sala
         robo.acionarMotores(40,-38);
-        delay (1100);
+        delay (1000);
        
         robo.acionarMotores(40,38);
         delay (200);
