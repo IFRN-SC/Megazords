@@ -72,7 +72,8 @@ void Estrategia::seguirLinha() {
         if (!fazerVerde()){
             robo.desligarTodosLeds();
             robo.ligarLed(2);
-            movimento.seguir();     
+            movimento.seguir(); 
+            delay(200);    
         }
    }
 }

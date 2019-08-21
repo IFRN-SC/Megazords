@@ -10,7 +10,7 @@ void setup (){
     robo.configurar(true);
     robo.acionarServoGarra2(130);
     robo.acionarServoGarra1(70);
-    delay(1000);
+    delay(500);
     robo.habilitaTCS34();
     meuRobo.calibracao();
     robo.desligarTodosLeds();
