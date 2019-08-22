@@ -3,11 +3,21 @@
 Resgate::Resgate(){}
 
 void Resgate::iniciar (){
-    this -> entrarNaSala ();
-    char zona = this -> identificaZona ();
-    
-    this -> restoDosCantos (zona); 
-    this -> seguirNaSala (zona);
+     
+    if(robo.lerSensorSonarDir() > robo.lerSensorSonarEsq()){
+      this -> entrarNaSala();
+      char zona = this -> identificaZona();
+      
+      this -> restoDosCantos(zona); 
+      this -> seguirNaSala(zona);
+    }
+    else{
+      this -> entrarNaSalaDir();
+      char zona = this -> identificaZona();
+      
+      this -> restoDosCantos(zona); 
+      this -> seguirNaSala(zona);  
+    }
 }
 
 // método responsável por fazer o robô alinhar
@@ -40,6 +50,19 @@ void Resgate::entrarNaSala (){
         delay (50);
     }
     robo.acionarMotores (40,-40);
+    delay (250);
+    this -> alinhar ();
+}
+void Resgate::entrarNaSalaDir (){
+    robo.acionarMotores (20,60);
+    delay (550);
+    robo.acionarMotores (-40,-40);
+    delay (200);
+    while (robo.lerSensorSonarEsq() < 20){
+        robo.acionarMotores (-40,38);
+        delay (50);
+    }
+    robo.acionarMotores (-40,40);
     delay (250);
     this -> alinhar ();
 }
@@ -90,7 +113,7 @@ char Resgate::identificaZona (){
     robo.desligarTodosLeds();
     robo.acionarMotores (40,38);
     delay (100);
-    robo.acionarMotores (-40,38);
+    robo.acionarMotores (-40,38); 
     delay (500);
     robo.acionarMotores (0,0);
     delay (100);
