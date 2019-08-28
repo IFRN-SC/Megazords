@@ -11,10 +11,8 @@ class Resgate: public Garra {
     protected: 
         void alinhar ();
         void entrarNaSala ();
-        void entrarNaSalaDir ();
         void soltarBolinha ();
         char identificaZona ();
-        char identificaZonaDir ();
  
         void irLateralDir ();
         void irLateralEsq ();

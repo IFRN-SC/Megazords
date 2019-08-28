@@ -2,22 +2,12 @@
 
 Resgate::Resgate(){}
 
-void Resgate::iniciar (){
-     
-    if(robo.lerSensorSonarDir() > robo.lerSensorSonarEsq()){
+void Resgate::iniciar (){        
       this -> entrarNaSala();
       char zona = this -> identificaZona();
       
       this -> restoDosCantos(zona); 
       this -> seguirNaSala(zona);
-    }
-    else{
-      this -> entrarNaSalaDir();
-      char zona = this -> identificaZonaDir();
-      
-      this -> restoDosCantos(zona); 
-      this -> seguirNaSala(zona);  
-    }
 }
 
 // método responsável por fazer o robô alinhar
@@ -40,20 +30,7 @@ void Resgate::alinhar (){
 
 // método responsável por fazer o robô entrar na sala 3
 // alinhando com a sala após ter entrado
-void Resgate::entrarNaSala (){
-    robo.acionarMotores (60,20);
-    delay (550);
-    robo.acionarMotores (-40,-40);
-    delay (200);
-    while (robo.lerSensorSonarEsq() < 20){
-        robo.acionarMotores (40,-38);
-        delay (50);
-    }
-    robo.acionarMotores (40,-40);
-    delay (250);
-    this -> alinhar ();
-}
-void Resgate::entrarNaSalaDir (){
+void Resgate::entrarNaSala(){
     robo.acionarMotores (20,60);
     delay (550);
     robo.acionarMotores (-40,-40);
@@ -109,221 +86,7 @@ bool Resgate::verificarArea (){
 
 // nesse método iremos fazer com que o robô encontre a sala 
 // onde deve ser deixado a bolinha
-char Resgate::identificaZona (){
-    robo.desligarTodosLeds();
-    robo.acionarMotores (40,38);
-    delay (100);
-    robo.acionarMotores (-40,38); 
-    delay (500);
-    robo.acionarMotores (0,0);
-    delay (100);
-    garra.abrir ();
-    garra.baixar ();
-    robo.acionarMotores (0,0);
-    delay (100);
-    
-     // seguir um pouco 
-
-    long ant2 = millis();
-    int angInicial2 = 2;
-    long t2 = (millis() -  ant2);
-    int x2 = 800;
-    while(t2 < x2){
-      robo.acionarMotores(40, 38);     
-      if(t2 > (x2-500)){
-        robo.acionarServoGarra1(map(t2, 500, 800, 0, 70));  
-      }
-      t2 = (millis() -  ant2);
-    }
-
-    robo.acionarMotores (0,0);
-    delay (100);
-    
-    garra.subir (); 
-    robo.acionarMotores (0,0);
-    delay (100);
-    
-    // o robô ira está lateralmente a area de resgate
-    robo.acionarMotores (40,-38);
-    delay (230);
-    robo.acionarMotores (40,38);
-    delay (900);
-    robo.acionarMotores (0,0);
-    delay (100);
-    robo.acionarServoGarra1 (55, 70, 10);
-
-    // caso a zona esteja a frente da entrada da sala
-    if (verificarArea()){
-        for(int i = 0; i < 10; i++){  
-            robo.ligarTodosLeds();
-            delay(400);
-            robo.desligarTodosLeds();
-            delay(200);
-        }
-
-        robo.acionarMotores(-40,38);
-        delay (520);
-        robo.acionarMotores(40,38);
-        delay (100);                
-
-        // caso o robo esteja com a bolinha dentro da garra
-        // ele ira ate a area de resgate usando o sonar
-        if(robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
-            robo.ligarLed (1);  
-
-            robo.acionarMotores(40,38);
-            delay (200);
-
-            this -> soltarBolinha ();
-
-            robo.acionarMotores(-40,-38);
-            delay (100);
-        }
-        return 'a';
-    }
-
-    
-    // caso não esteja vamos verificar o canto que não foi preenchido
-    robo.acionarMotores (40,-38);
-    delay (200);  
-    robo.acionarMotores(0, 0); 
-    delay(100); 
-    this -> alinhar ();
-   
-    robo.acionarMotores(0, 0); 
-    delay(100);
-    robo.acionarMotores (40,38);
-    delay (200);
-    robo.acionarMotores (-40,38);
-    delay (500); 
-    robo.acionarMotores (0,0);
-    delay (100);
-
-    if (robo.fimDeCursoPressionado1() or robo.fimDeCursoPressionado2()){
-        garra.baixar ();
-        garra.abrir ();
-        robo.acionarMotores (0,0);
-        delay (100); 
-    }
-    else {
-        garra.abrir ();
-        garra.baixar ();
-        robo.acionarMotores (0,0);
-        delay (100);  
-    }
-    
-    long ant = millis();
-    int angInicial = 2;
-    long t = (millis() -  ant);
-    int x = 300;
-    while(t < x){
-        robo.acionarMotores(40, 38);     
-        if(t > (x-150)){
-            robo.acionarServoGarra1(map(t, 150, 300, 0, 70));  
-         }
-         t = (millis() -  ant);
-    };
-
-    robo.acionarMotores(0, 0); 
-    delay(100);
-    
-    subir();
-    
-    robo.acionarMotores (40,38);
-    delay (350);
-    // vamos alinha e verificar a outra zona
-    robo.acionarMotores (40,-38);
-    delay (500);
-    this -> alinhar ();
-   
-    // procurar zona e pegar as bolinhas
-    garra.baixar ();
-    garra.abrir ();
-    robo.acionarMotores (0,0);
-    delay (100);
-    
-    // seguir um pouco 
-    
-    long ant4 = millis();
-    int angInicial4 = 2;
-    long t4 = (millis() -  ant4);
-    int x4 = 1200;
-    while(t4 < x4){
-      robo.acionarMotores(40, 38);     
-      if(t4 > (x4-400)){
-        robo.acionarServoGarra1(map(t4, 800, 1200, 0, 70));  
-      }
-      t4 = (millis() -  ant4);
-    }
-    
-    robo.acionarMotores (0,0);
-    delay (100);
-    
-    garra.subir (); 
-    
-    robo.acionarMotores (0,0);
-    delay (100);
-    robo.acionarMotores (40,-38);
-    delay (200);
-    robo.acionarMotores (40,38);
-    delay (800);
-    robo.acionarMotores (0,0);
-    delay (100);
-
-    robo.acionarServoGarra1 (50, 70, 30);
-
-    // caso a zona esteja a frente da entrada da sala
-    if (verificarArea()){
-      
-        for(int i = 0; i < 10; i++){  
-        robo.ligarTodosLeds();
-        delay(400);
-        robo.desligarTodosLeds();
-        delay(200);
-        }
-
-        robo.acionarMotores(-40,38);
-        delay (550);
-        robo.acionarMotores(40,38);
-        delay (200);
-
-        if(robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
-            robo.ligarLed (2);
-
-            robo.acionarMotores(40,38);
-            delay (200);
-            
-            this -> soltarBolinha ();
-        }
-        return 'b';
-    }else {
-        robo.ligarLed (3);
-    }
-
-     // caso não esteja vamos verificar o canto que não foi preenchido
-    robo.acionarMotores (40,-38);
-    delay (250);
-    robo.acionarMotores (0, 0);
-    delay (100);    
-    robo.acionarMotores (-40,-38);
-    delay (400);
-    robo.acionarMotores (0,0);
-    delay (100);    
-    this -> alinhar ();
-    
-    // vamos alinha e fazer a sala
-    robo.acionarMotores (40,38);
-    delay (200);
-    robo.acionarMotores (-40,38);
-    delay (510);
-    robo.acionarMotores (-40,-38);
-    delay (1000);
-    this -> alinhar ();
-    
-    return 'c';
-}
-
-char Resgate::identificaZonaDir (){
+char Resgate::identificaZona(){
     robo.desligarTodosLeds();
     robo.acionarMotores (40,38);
     delay (100);
@@ -1097,5 +860,3 @@ void Resgate::seguirNaSala (char zona){
        }      // parentese do if
     }         // parentese do for
 }      
-
-

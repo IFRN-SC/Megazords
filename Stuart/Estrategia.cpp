@@ -81,7 +81,7 @@ void Estrategia::seguirLinha() {
 
 void Estrategia::desviarObstaculo(){
     movimento.parar();
-    delay(1000);
+    delay(300);
     
     robo.desligarTodosLeds();
        
@@ -124,7 +124,7 @@ void Estrategia::desviarObstaculo(){
     delay(500);
   
     movimento.girarParaEsquerda();
-    delay(470);
+    delay(450);
 
     movimento.parar();  
     delay(500);
