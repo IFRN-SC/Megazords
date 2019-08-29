@@ -79,7 +79,7 @@ void Resgate::soltarBolinha (){
 bool Resgate::verificarArea (){
     robo.acionarMotores (0,0);
     delay (100);
-    return (robo.lerSensorSonarEsq() <= 15);
+    return (robo.lerSensorSonarDir() <= 15);
 }
 
 
@@ -91,7 +91,7 @@ char Resgate::identificaZona(){
     robo.acionarMotores (40,38);
     delay (100);
     robo.acionarMotores (40,-38); 
-    delay (500);
+    delay (480);
     robo.acionarMotores (0,0);
     delay (100);
     garra.abrir ();
@@ -108,7 +108,7 @@ char Resgate::identificaZona(){
     while(t2 < x2){
       robo.acionarMotores(40, 38);     
       if(t2 > (x2-500)){
-        robo.acionarServoGarra1(map(t2, 500, 800, 0, 70));  
+        robo.acionarServoGarra1(map(t2, 500, 800, 0, 77));  
       }
       t2 = (millis() -  ant2);
     }
@@ -122,12 +122,12 @@ char Resgate::identificaZona(){
     
     // o robô ira está lateralmente a area de resgate
     robo.acionarMotores (-40,38);
-    delay (230);
+    delay (220);
     robo.acionarMotores (40,38);
     delay (900);
     robo.acionarMotores (0,0);
     delay (100);
-    robo.acionarServoGarra1 (55, 70, 10);
+    robo.acionarServoGarra1 (60, 77, 10);
 
     // caso a zona esteja a frente da entrada da sala
     if (verificarArea()){
@@ -196,7 +196,7 @@ char Resgate::identificaZona(){
     while(t < x){
         robo.acionarMotores(40, 38);     
         if(t > (x-150)){
-            robo.acionarServoGarra1(map(t, 150, 300, 0, 70));  
+            robo.acionarServoGarra1(map(t, 150, 300, 0, 77));  
          }
          t = (millis() -  ant);
     };
@@ -228,7 +228,7 @@ char Resgate::identificaZona(){
     while(t4 < x4){
       robo.acionarMotores(40, 38);     
       if(t4 > (x4-400)){
-        robo.acionarServoGarra1(map(t4, 800, 1200, 0, 70));  
+        robo.acionarServoGarra1(map(t4, 800, 1200, 0, 77));  
       }
       t4 = (millis() -  ant4);
     }
@@ -247,7 +247,7 @@ char Resgate::identificaZona(){
     robo.acionarMotores (0,0);
     delay (100);
 
-    robo.acionarServoGarra1 (50, 70, 30);
+    robo.acionarServoGarra1 (60, 77, 10);
 
     // caso a zona esteja a frente da entrada da sala
     if (verificarArea()){
@@ -305,11 +305,11 @@ char Resgate::identificaZona(){
 void Resgate::voltar (char zona){
     if (zona == 'a' or zona == 'c'){
         robo.acionarMotores(-40,-38);
-        delay (1100);
+        delay (1300);
         robo.acionarMotores(0,0);
         delay (100);
-        robo.acionarMotores(40,-38);
-        delay (150);
+        robo.acionarMotores(-40,38);
+        delay (170);
         robo.acionarMotores(0,0);
         delay (100);
         robo.acionarMotores(-40,-38);
@@ -317,8 +317,8 @@ void Resgate::voltar (char zona){
         this -> alinhar();
         robo.acionarMotores(40,38);
         delay (200);
-        robo.acionarMotores(-40,38);
-        delay (550);
+        robo.acionarMotores(40,-38);
+        delay (480);
         robo.acionarMotores(-40,-38);
         delay (1000);
         this -> alinhar ();
@@ -359,10 +359,10 @@ void Resgate::voltar (char zona){
 // método responsável por verificar a lateral
 // se a bolinha estiver      
 void Resgate::irLateralEsq (){
-    robo.acionarMotores (43,38);
-    delay (50);
+    robo.acionarMotores (40,38);
+    delay (120);
     robo.acionarMotores (-40,38);
-    delay (550);
+    delay (480);
     robo.acionarMotores (0,0);
     delay (100);
     garra.abrir ();
@@ -377,7 +377,7 @@ void Resgate::irLateralEsq (){
     while(t < x){
         robo.acionarMotores(40, 38);     
         if(t > (x-200)){
-            robo.acionarServoGarra1(map(t, 300, 500, 0, 70));  
+            robo.acionarServoGarra1(map(t, 300, 500, 0, 77));  
          }
          t = (millis() -  ant);
     }
@@ -388,7 +388,7 @@ void Resgate::irLateralEsq (){
     robo.acionarMotores (0,0);
     delay (100);   
     robo.acionarMotores (40,-38);
-    delay (550);
+    delay (480);
     robo.acionarMotores (0,0);
     delay (1000);
     this -> alinhar ();       
@@ -398,11 +398,11 @@ void Resgate::irLateralEsq (){
 // se a bolinha estiver
 void Resgate::irLateralDir (){
     robo.acionarMotores (40,38);
-    delay (50);
+    delay (120);
     robo.acionarMotores (40,-38);
-    delay (550);
+    delay (480);
     robo.acionarMotores (0,0);
-    delay (1000);
+    delay (100);
    
     garra.abrir ();
     garra.baixar ();
@@ -416,7 +416,7 @@ void Resgate::irLateralDir (){
     while(t < x){
         robo.acionarMotores(40, 38);     
         if(t > (x-200)){
-            robo.acionarServoGarra1(map(t, 300, 500, 0, 70));  
+            robo.acionarServoGarra1(map(t, 300, 500, 0, 77));  
          }
          t = (millis() -  ant);
     }
@@ -427,7 +427,7 @@ void Resgate::irLateralDir (){
     robo.acionarMotores (0,0);
     delay (100);  
     robo.acionarMotores (-40,38);
-    delay (550);
+    delay (480);
     robo.acionarMotores (0,0);
     delay (1000);
     this -> alinhar ();       
@@ -443,7 +443,7 @@ void Resgate::resgatarVitima (char zona){
     delay (1200);
 
     if (zona == 'a' or zona == 'c'){
-        robo.acionarMotores(40,-38);
+        robo.acionarMotores(-40,38);
         delay (450);    
         robo.acionarMotores (0,0);
         delay (100);   
@@ -454,22 +454,28 @@ void Resgate::resgatarVitima (char zona){
         robo.acionarMotores (0,0);
         delay (100);   
     }
-
+    robo.acionarMotores(-40,-38);
+    delay (400);    
     this -> alinhar ();       
     robo.acionarMotores(40,38);
     delay (1300);
- 
+    robo.acionarMotores (0,0);
+    delay (100);
 
     if (zona == 'a' or zona == 'c'){     
-        robo.acionarMotores(40,-38);
-        delay (650);
+        robo.acionarMotores(-40,38);
+        delay (630);
         robo.acionarMotores(-40,-38);
         delay (700);
         this -> alinhar ();
 
         // giro para ficar de frente com a sala
+        robo.acionarMotores(40,38);
+        delay (200);
+        robo.acionarMotores(0,0);
+        delay (100);
         robo.acionarMotores(40,-38);
-        delay (1100);
+        delay (850);
         
         robo.acionarMotores(40,38);
         delay (200);
@@ -508,7 +514,7 @@ void Resgate::restoDosCantos (char zona){
         robo.acionarMotores(-40,-38);
         delay (200);
         robo.acionarMotores(40,-38);
-        delay (1000);
+        delay (800);
         robo.acionarMotores(0,0);
         delay (100);               
         this -> alinhar ();
@@ -518,7 +524,7 @@ void Resgate::restoDosCantos (char zona){
         delay (750);               
         robo.acionarMotores(0,0);
         delay (100);
-        robo.acionarMotores(40,-38);
+        robo.acionarMotores(-40,38);
         delay (200);
         robo.acionarMotores(0,0);
         delay (100); 
@@ -531,8 +537,8 @@ void Resgate::restoDosCantos (char zona){
         delay (200); 
         robo.acionarMotores(0,0);
         delay (100);
-        robo.acionarMotores(-40,38);
-        delay (500);               
+        robo.acionarMotores(40,-38);
+        delay (480);               
         robo.acionarMotores(0,0);
         delay (100);         
     }
@@ -560,7 +566,7 @@ void Resgate::restoDosCantos (char zona){
         while(t < x){
             robo.acionarMotores(40, 38);     
             if(t > (x-500)){
-                robo.acionarServoGarra1(map(t, 500, 800, 0, 70));  
+                robo.acionarServoGarra1(map(t, 500, 800, 0, 77));  
              }
              t = (millis() -  ant);
         }
@@ -576,7 +582,7 @@ void Resgate::restoDosCantos (char zona){
         delay (400);               
         robo.acionarMotores (0,0);
         delay (100);
-        robo.acionarMotores(40,-38);
+        robo.acionarMotores(-40,38);
         delay (480);               
         robo.acionarMotores(0,0);
         delay (100); 
@@ -612,7 +618,7 @@ void Resgate::restoDosCantos (char zona){
         while(t < x){
           robo.acionarMotores(40, 38);     
           if(t > (x-400)){
-            robo.acionarServoGarra1(map(t, 1400, 1800, 0, 70));  
+            robo.acionarServoGarra1(map(t, 1400, 1800, 0, 77));  
           }
           t = (millis() -  ant);
         }
@@ -629,8 +635,8 @@ void Resgate::restoDosCantos (char zona){
         robo.acionarMotores (0,0);
         delay (100);
 
-        robo.acionarMotores(40,-38);
-        delay (470);               
+        robo.acionarMotores(-40,38);
+        delay (480);               
         robo.acionarMotores(0,0);
         delay (100); 
         this -> alinhar ();
@@ -749,14 +755,20 @@ void Resgate::restoDosCantos (char zona){
 // método responsável por preencher as paralelas sendo que um avez que encontre a bolinha, o mesmo irá 
 // deixa-la e voltara ao ponto 0, caso não encontre ele irá para após ter feito a paralela 4 vezes
 void Resgate::seguirNaSala (char zona){
-    for (int i = 0; i <= 4; i++){
+    for (int i = 0; i <= 3; i++){
 
-        robo.acionarServoGarra1 (55, 70, 10);
+        robo.acionarServoGarra1 (57, 77, 10);
         
         if (i == 0 and (robo.fimDeCursoPressionado1() or robo.fimDeCursoPressionado2())){
-                  this -> resgatarVitima (zona);
-                  this -> voltar(zona);
-                  i = 0;  
+                for(int i = 0; i < 10; i++){  
+                  robo.ligarTodosLeds();
+                  delay(400);
+                  robo.desligarTodosLeds();
+                  delay(200);
+                }  
+                this -> resgatarVitima (zona);
+                this -> voltar(zona);
+                i = 0;  
         }
         else {
             if (robo.fimDeCursoPressionado1() or robo.fimDeCursoPressionado2()){
@@ -771,15 +783,15 @@ void Resgate::seguirNaSala (char zona){
                 robo.acionarMotores (0,0);
                 delay (100);  
             }
-            if(i != 4){
+            if(i != 3){
                 long ant = millis();
                 int angInicial = 2;
                 long t = (millis() -  ant);
-                int x = 2000;
+                int x = 1900;
                 while(t < x){
                   robo.acionarMotores(40, 38);     
                   if(t > (x-400)){
-                    robo.acionarServoGarra1(map(t, 1600, 2000, 0, 70));  
+                    robo.acionarServoGarra1(map(t, 1500, 1900, 0, 77));  
                   }
                   t = (millis() -  ant);
                 }
@@ -788,11 +800,11 @@ void Resgate::seguirNaSala (char zona){
                 long ant = millis();
                 int angInicial = 2;
                 long t = (millis() -  ant);
-                int x = 1500;
+                int x = 1400;
                 while(t < x){
                   robo.acionarMotores(40, 38);     
                   if(t > (x-400)){
-                    robo.acionarServoGarra1(map(t, 1100, 1500, 0, 70));  
+                    robo.acionarServoGarra1(map(t, 1000, 1400, 0, 77));  
                   }
                   t = (millis() -  ant);
                 }  
@@ -807,7 +819,7 @@ void Resgate::seguirNaSala (char zona){
             // iremos modificar isso  
             garra.subir();
             
-            robo.acionarServoGarra1 (50, 70, 30);
+            robo.acionarServoGarra1 (57, 77, 10);
     
             if (robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
                 for(int i = 0; i < 10; i++){  
@@ -827,7 +839,7 @@ void Resgate::seguirNaSala (char zona){
           // lados que ele deve virar caso não encontre a bolinha
           
           else if (zona == 'a' or zona == 'c'){
-              this-> irLateralDir ();   
+              this-> irLateralEsq ();   
                 
               if (robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
                   for (int i = 0; i < 10; i++){  
@@ -843,7 +855,7 @@ void Resgate::seguirNaSala (char zona){
               }
           }
           else {
-              this-> irLateralEsq ();             
+              this-> irLateralDir();             
               if (robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
                   for (int i = 0; i < 10; i++){  
                       robo.ligarTodosLeds();

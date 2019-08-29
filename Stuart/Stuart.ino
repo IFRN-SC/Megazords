@@ -1,4 +1,4 @@
-#include <robo_hardware2.h>
+ #include <robo_hardware2.h>
 #include "Estrategia.h"
 #include "Garra.h"
 
@@ -8,8 +8,8 @@ Estrategia meuRobo;
 void setup (){
     Serial.begin(9600);
     robo.configurar(true);
-    robo.acionarServoGarra2(130);
-    robo.acionarServoGarra1(70);
+    robo.acionarServoGarra2(120);
+    robo.acionarServoGarra1(77);
     delay(500);
     robo.habilitaTCS34();
     meuRobo.calibracao();
