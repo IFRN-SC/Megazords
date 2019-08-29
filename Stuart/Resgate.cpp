@@ -17,7 +17,7 @@ void Resgate::alinhar (){
     robo.acionarMotores(40,40);
     delay (200);
     robo.acionarMotores(-40,-40);
-    delay (700);
+    delay (1000);
     robo.acionarMotores(40,40);
     delay (150);
     robo.acionarMotores(-40,-40);
@@ -108,7 +108,7 @@ char Resgate::identificaZona(){
     while(t2 < x2){
       robo.acionarMotores(40, 38);     
       if(t2 > (x2-500)){
-        robo.acionarServoGarra1(map(t2, 500, 800, 0, 77));  
+        robo.acionarServoGarra1(map(t2, 500, 800, 0, 80 ));  
       }
       t2 = (millis() -  ant2);
     }
@@ -127,7 +127,7 @@ char Resgate::identificaZona(){
     delay (900);
     robo.acionarMotores (0,0);
     delay (100);
-    robo.acionarServoGarra1 (60, 77, 10);
+    robo.acionarServoGarra1 (65, 80, 10);
 
     // caso a zona esteja a frente da entrada da sala
     if (verificarArea()){
@@ -196,7 +196,7 @@ char Resgate::identificaZona(){
     while(t < x){
         robo.acionarMotores(40, 38);     
         if(t > (x-150)){
-            robo.acionarServoGarra1(map(t, 150, 300, 0, 77));  
+            robo.acionarServoGarra1(map(t, 150, 300, 0, 80));  
          }
          t = (millis() -  ant);
     };
@@ -228,7 +228,7 @@ char Resgate::identificaZona(){
     while(t4 < x4){
       robo.acionarMotores(40, 38);     
       if(t4 > (x4-400)){
-        robo.acionarServoGarra1(map(t4, 800, 1200, 0, 77));  
+        robo.acionarServoGarra1(map(t4, 800, 1200, 0, 80));  
       }
       t4 = (millis() -  ant4);
     }
@@ -247,7 +247,7 @@ char Resgate::identificaZona(){
     robo.acionarMotores (0,0);
     delay (100);
 
-    robo.acionarServoGarra1 (60, 77, 10);
+    robo.acionarServoGarra1 (65, 80, 10);
 
     // caso a zona esteja a frente da entrada da sala
     if (verificarArea()){
@@ -307,11 +307,11 @@ void Resgate::voltar (char zona){
         robo.acionarMotores(-40,-38);
         delay (1300);
         robo.acionarMotores(0,0);
-        delay (100);
+        delay (1000);
         robo.acionarMotores(-40,38);
-        delay (170);
+        delay (250);
         robo.acionarMotores(0,0);
-        delay (100);
+        delay (1000);
         robo.acionarMotores(-40,-38);
         delay (500);
         this -> alinhar();
@@ -377,7 +377,7 @@ void Resgate::irLateralEsq (){
     while(t < x){
         robo.acionarMotores(40, 38);     
         if(t > (x-200)){
-            robo.acionarServoGarra1(map(t, 300, 500, 0, 77));  
+            robo.acionarServoGarra1(map(t, 300, 500, 0, 80));  
          }
          t = (millis() -  ant);
     }
@@ -416,7 +416,7 @@ void Resgate::irLateralDir (){
     while(t < x){
         robo.acionarMotores(40, 38);     
         if(t > (x-200)){
-            robo.acionarServoGarra1(map(t, 300, 500, 0, 77));  
+            robo.acionarServoGarra1(map(t, 300, 500, 0, 80));  
          }
          t = (millis() -  ant);
     }
@@ -455,7 +455,7 @@ void Resgate::resgatarVitima (char zona){
         delay (100);   
     }
     robo.acionarMotores(-40,-38);
-    delay (400);    
+    delay (800);    
     this -> alinhar ();       
     robo.acionarMotores(40,38);
     delay (1300);
@@ -475,7 +475,7 @@ void Resgate::resgatarVitima (char zona){
         robo.acionarMotores(0,0);
         delay (100);
         robo.acionarMotores(40,-38);
-        delay (850);
+        delay (880);
         
         robo.acionarMotores(40,38);
         delay (200);
@@ -525,7 +525,7 @@ void Resgate::restoDosCantos (char zona){
         robo.acionarMotores(0,0);
         delay (100);
         robo.acionarMotores(-40,38);
-        delay (200);
+        delay (250);
         robo.acionarMotores(0,0);
         delay (100); 
       
@@ -566,7 +566,7 @@ void Resgate::restoDosCantos (char zona){
         while(t < x){
             robo.acionarMotores(40, 38);     
             if(t > (x-500)){
-                robo.acionarServoGarra1(map(t, 500, 800, 0, 77));  
+                robo.acionarServoGarra1(map(t, 500, 800, 0, 80));  
              }
              t = (millis() -  ant);
         }
@@ -618,7 +618,7 @@ void Resgate::restoDosCantos (char zona){
         while(t < x){
           robo.acionarMotores(40, 38);     
           if(t > (x-400)){
-            robo.acionarServoGarra1(map(t, 1400, 1800, 0, 77));  
+            robo.acionarServoGarra1(map(t, 1400, 1800, 0, 80));  
           }
           t = (millis() -  ant);
         }
@@ -667,7 +667,7 @@ void Resgate::restoDosCantos (char zona){
         while(t < x){
             robo.acionarMotores(40, 38);     
             if(t > (x-300)){
-                robo.acionarServoGarra1(map(t, 400, 700, 0, 70));  
+                robo.acionarServoGarra1(map(t, 400, 700, 0, 80));  
              }
              t = (millis() -  ant);
         }
@@ -713,7 +713,7 @@ void Resgate::restoDosCantos (char zona){
         while(t < x){
           robo.acionarMotores(40, 38);     
           if(t > (x-300)){
-            robo.acionarServoGarra1(map(t, 700, 1000, 0, 70));  
+            robo.acionarServoGarra1(map(t, 700, 1000, 0, 80));  
           }
           t = (millis() -  ant);
         }
@@ -748,41 +748,41 @@ void Resgate::restoDosCantos (char zona){
     }
 }
 
-
-
-
-
+void Resgate::voltarZero(){   
+  
+}
 // método responsável por preencher as paralelas sendo que um avez que encontre a bolinha, o mesmo irá 
 // deixa-la e voltara ao ponto 0, caso não encontre ele irá para após ter feito a paralela 4 vezes
 void Resgate::seguirNaSala (char zona){
-    for (int i = 0; i <= 3; i++){
-
-        robo.acionarServoGarra1 (57, 77, 10);
+    while(1){
+        bool salvouVitima=false;
         
-        if (i == 0 and (robo.fimDeCursoPressionado1() or robo.fimDeCursoPressionado2())){
-                for(int i = 0; i < 10; i++){  
-                  robo.ligarTodosLeds();
-                  delay(400);
-                  robo.desligarTodosLeds();
-                  delay(200);
-                }  
-                this -> resgatarVitima (zona);
-                this -> voltar(zona);
-                i = 0;  
-        }
-        else {
-            if (robo.fimDeCursoPressionado1() or robo.fimDeCursoPressionado2()){
-                garra.baixar ();
-                garra.abrir ();
-                robo.acionarMotores (0,0);
-                delay (100); 
-            }
-            else {
-                garra.abrir ();
-                garra.baixar ();
-                robo.acionarMotores (0,0);
-                delay (100);  
-            }
+        for (int i = 0; i <= 3; i++){
+          if(salvouVitima){
+            i=0;
+            salvouVitima=false;
+          }
+    
+            robo.acionarServoGarra1 (65, 80, 10);
+            
+            if (robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
+                    for(int j = 0; j < 10; j++){  
+                      robo.ligarTodosLeds();
+                      delay(400);
+                      robo.desligarTodosLeds();
+                      delay(200);
+                    }  
+                    this -> resgatarVitima (zona);
+                    this -> voltar(zona); 
+                    salvouVitima=true;
+            }  
+            else{        
+             garra.abrir ();
+             garra.baixar ();
+             robo.acionarMotores (0,0);
+             delay (100);  
+            }  
+                      
             if(i != 3){
                 long ant = millis();
                 int angInicial = 2;
@@ -791,12 +791,12 @@ void Resgate::seguirNaSala (char zona){
                 while(t < x){
                   robo.acionarMotores(40, 38);     
                   if(t > (x-400)){
-                    robo.acionarServoGarra1(map(t, 1500, 1900, 0, 77));  
+                    robo.acionarServoGarra1(map(t, 1500, 1900, 0, 80));  
                   }
                   t = (millis() -  ant);
                 }
             }
-            else{
+            else if(i == 3){
                 long ant = millis();
                 int angInicial = 2;
                 long t = (millis() -  ant);
@@ -804,71 +804,72 @@ void Resgate::seguirNaSala (char zona){
                 while(t < x){
                   robo.acionarMotores(40, 38);     
                   if(t > (x-400)){
-                    robo.acionarServoGarra1(map(t, 1000, 1400, 0, 77));  
+                    robo.acionarServoGarra1(map(t, 1000, 1400, 0, 80));  
                   }
-                  t = (millis() -  ant);
-                }  
-            }
+                   t = (millis() -  ant); 
+                }
+            }   
             robo.acionarMotores(0,0);
             delay (500);
-            
+                
             robo.acionarMotores(-40,-38);
             delay (2000);       
             this -> alinhar ();
-    
+        
             // iremos modificar isso  
             garra.subir();
-            
-            robo.acionarServoGarra1 (57, 77, 10);
-    
+                
+            robo.acionarServoGarra1 (65, 80, 10);
+        
             if (robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
-                for(int i = 0; i < 10; i++){  
+                for(int j = 0; j < 10; j++){  
                     robo.ligarTodosLeds();
                     delay(400);
                     robo.desligarTodosLeds();
                     delay(200);
                 }    
-                
+                    
                 this -> resgatarVitima (zona);
                 this -> voltar(zona);
-                i = 0;
+                salvouVitima=true;
             }
+              // lados que ele deve virar caso não encontre a bolinha
+              
+           else if (zona == 'a' or zona == 'c'){
+               this-> irLateralEsq ();   
+               robo.acionarServoGarra1 (65, 80, 10);  
+               if (robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
+                 for (int j = 0; j < 10; j++){  
+                      robo.ligarTodosLeds();
+                      delay(400);
+                      robo.desligarTodosLeds();
+                      delay(200);
+                 }    
+                       
+                 this -> resgatarVitima (zona);
+                 this -> voltar(zona);
+                 salvouVitima=true;
+               }
+           }
+           else {
+               this-> irLateralDir();             
+               if (robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
+               robo.acionarServoGarra1 (65, 80, 10);
+                 for (int j = 0; j < 10; j++){  
+                     robo.ligarTodosLeds();
+                     delay(400);
+                     robo.desligarTodosLeds();
+                     delay(200);
+                 }    
+                        
+                 this -> resgatarVitima (zona);
+                 this -> voltar(zona);
+                 salvouVitima=true;
+               }
+           }
+        }
 
-
-
-          // lados que ele deve virar caso não encontre a bolinha
+        voltarZero();
           
-          else if (zona == 'a' or zona == 'c'){
-              this-> irLateralEsq ();   
-                
-              if (robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
-                  for (int i = 0; i < 10; i++){  
-                      robo.ligarTodosLeds();
-                      delay(400);
-                      robo.desligarTodosLeds();
-                      delay(200);
-                  }    
-                   
-                  this -> resgatarVitima (zona);
-                  this -> voltar(zona);
-                  i = 0;
-              }
-          }
-          else {
-              this-> irLateralDir();             
-              if (robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
-                  for (int i = 0; i < 10; i++){  
-                      robo.ligarTodosLeds();
-                      delay(400);
-                      robo.desligarTodosLeds();
-                      delay(200);
-                  }    
-                    
-                  this -> resgatarVitima (zona);
-                  this -> voltar(zona);
-                  i = 0;
-              }
-          }
-       }      // parentese do if
-    }         // parentese do for
+    }              
 }      
