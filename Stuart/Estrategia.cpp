@@ -33,7 +33,7 @@ void Estrategia::seguirLinha() {
         movimento.girarParaDireita(); 
          
     }else if(sensores.preto_preto_branco_branco() || sensores.preto_preto_preto_branco()){ //PPBB//PPPB
-        alinharCurva();
+       /* alinharCurva();
         if (!fazerVerde()){
             robo.desligarTodosLeds();
             robo.ligarLed(1);
@@ -47,8 +47,8 @@ void Estrategia::seguirLinha() {
             while(!sensores.ehBrancoDireito()){
                 movimento.girarParaDireita(); 
             }
-        }
-        /*while(!sensores.ehBrancoEsquerdo()){
+        }*/
+        while(!sensores.ehBrancoEsquerdo()){
              movimento.seguir(); 
         }
         while(sensores.ehBrancoDireito()){
@@ -56,10 +56,10 @@ void Estrategia::seguirLinha() {
         } 
         while(!sensores.ehBrancoDireito()){
              movimento.girarParaDireita(); 
-        }*/
+        }
                
     }else if(sensores.branco_branco_preto_preto() || sensores.branco_preto_preto_preto()){ //BBPP//BPPP 
-        alinharCurva();
+        /*alinharCurva();
         if (!fazerVerde()){
             robo.desligarTodosLeds();
             robo.ligarLed(3);
@@ -74,8 +74,8 @@ void Estrategia::seguirLinha() {
             while(!sensores.ehBrancoEsquerdo()){
                 movimento.girarParaEsquerda(); 
             }
-        }
-        /*while(!sensores.ehBrancoDireito()){
+        }*/
+        while(!sensores.ehBrancoDireito()){
              movimento.seguir(); 
         }
         while(sensores.ehBrancoEsquerdo()){
@@ -83,16 +83,17 @@ void Estrategia::seguirLinha() {
         } 
         while(!sensores.ehBrancoEsquerdo()){
              movimento.girarParaDireita(); 
-        }*/  
+        }  
     }
     else if(sensores.preto_preto_preto_preto()){    //PPPP
-        alinharCurva();
+        /*alinharCurva();
         if (!fazerVerde()){
             robo.desligarTodosLeds();
             robo.ligarLed(2);
             movimento.seguir(); 
             delay(200);    
-        }
+        }*/
+        movimento.seguir();
    }
 }
 
