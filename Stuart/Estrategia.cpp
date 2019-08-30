@@ -48,6 +48,15 @@ void Estrategia::seguirLinha() {
                 movimento.girarParaDireita(); 
             }
         }
+        /*while(!sensores.ehBrancoEsquerdo()){
+             movimento.seguir(); 
+        }
+        while(sensores.ehBrancoDireito()){
+             movimento.girarParaEsquerda(); 
+        } 
+        while(!sensores.ehBrancoDireito()){
+             movimento.girarParaDireita(); 
+        }*/
                
     }else if(sensores.branco_branco_preto_preto() || sensores.branco_preto_preto_preto()){ //BBPP//BPPP 
         alinharCurva();
@@ -65,7 +74,16 @@ void Estrategia::seguirLinha() {
             while(!sensores.ehBrancoEsquerdo()){
                 movimento.girarParaEsquerda(); 
             }
-        }  
+        }
+        /*while(!sensores.ehBrancoDireito()){
+             movimento.seguir(); 
+        }
+        while(sensores.ehBrancoEsquerdo()){
+             movimento.girarParaEsquerda(); 
+        } 
+        while(!sensores.ehBrancoEsquerdo()){
+             movimento.girarParaDireita(); 
+        }*/  
     }
     else if(sensores.preto_preto_preto_preto()){    //PPPP
         alinharCurva();
@@ -124,7 +142,7 @@ void Estrategia::desviarObstaculo(){
     delay(500);
   
     movimento.girarParaEsquerda();
-    delay(450);
+    delay(420);
 
     movimento.parar();  
     delay(500);
@@ -145,7 +163,7 @@ void Estrategia::desviarObstaculo(){
     delay(500);
     
     movimento.girarParaEsquerda();
-    delay(450);
+    delay(420);
 
     movimento.parar();  
     delay(500);
@@ -158,7 +176,7 @@ void Estrategia::desviarObstaculo(){
     delay(500);
 
     movimento.voltar();
-    delay(300);
+    delay(250);
 
     movimento.parar();  
     delay(500);
@@ -279,14 +297,14 @@ void Estrategia::calibracao(){
 
 void Estrategia::alinharCurva (){ 
     movimento.parar();
-    delay(200);
+    delay(500);
     movimento.seguir();
     delay(100);
     movimento.parar();
-    delay(200);
+    delay(500);
     
     while(sensores.ehBrancoMaisDireito() && sensores.ehBrancoMaisEsquerdo()){
-       robo.acionarMotores(-30,-30);
+       robo.acionarMotores(-34,-30);
     }
     movimento.parar();
     delay(200);
