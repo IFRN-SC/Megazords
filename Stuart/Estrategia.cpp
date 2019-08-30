@@ -137,14 +137,14 @@ void Estrategia::desviarObstaculo(){
 
     while(robo.lerSensorSonarEsq() < 15){
       movimento.seguir();
-      delay(20);
+      delay(25);
     }
 
     movimento.parar();  
     delay(500);
   
     movimento.girarParaEsquerda();
-    delay(420);
+    delay(400);
 
     movimento.parar();  
     delay(500);
@@ -158,14 +158,14 @@ void Estrategia::desviarObstaculo(){
 
     while(robo.lerSensorSonarEsq() < 15){
       movimento.seguir();
-      delay(20);
+      delay(25);
     }
 
     movimento.parar();  
     delay(500);
     
     movimento.girarParaEsquerda();
-    delay(420);
+    delay(400);
 
     movimento.parar();  
     delay(500);
@@ -178,7 +178,7 @@ void Estrategia::desviarObstaculo(){
     delay(500);
 
     movimento.voltar();
-    delay(250);
+    delay(200);
 
     movimento.parar();  
     delay(500);
