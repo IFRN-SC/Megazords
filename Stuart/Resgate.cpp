@@ -756,8 +756,72 @@ void Resgate::restoDosCantos (char zona){
     }
 }
 
-void Resgate::voltarZero(){   
-  
+void Resgate::voltarZero(char zona){   
+    for (int j = 0; j < 20; j++){  
+         robo.ligarTodosLeds();
+         delay(400);
+         robo.desligarTodosLeds();
+         delay(200);
+     }    
+    
+    
+    robo.acionarMotores (44,40);
+    delay (200);
+
+   
+    switch (zona){
+        case 'a' or 'c':
+             // caso zona a (viro para a direita)
+            robo.acionarMotores (44,-40);
+            delay (480);
+            break;
+        case 'b':
+            // caso zona a (viro para a esquerda)
+            robo.acionarMotores (-44,40);
+            delay (480);
+            break;
+    } 
+
+    // ele não vai alinhar com a saida da sala
+    if (zona != 'c'){
+        this -> alinhar ();
+    }
+    
+    // vamos baixar a garra e seguir pegando a bola
+    garra.abrir ();
+    garra.baixar ();
+    robo.acionarMotores (0,0);
+    delay (100);  
+
+
+    long ant = millis();
+    int angInicial = 2;
+    long t = (millis() -  ant);
+    int x = 1900;
+
+    while(t < x){
+        robo.acionarMotores(40, 38);     
+        if (t > (x-400)){
+            robo.acionarServoGarra1(map(t, 1500, 1900, 0, 70));  
+        }
+    t = (millis() -  ant);
+    }
+
+    switch (zona){
+        case 'a' or 'c':
+      // caso zona a (viro para a esquerda)
+      robo.acionarMotores (-44,40);
+      delay (480);
+            break;
+        case 'b':
+      // caso zona a (viro para a direita)
+      robo.acionarMotores (44,-40);
+      delay (480);
+            break;
+    } 
+
+    // ele vai alinhar em todos os caso
+    this -> alinhar ();  
 }
 // método responsável por preencher as paralelas sendo que um avez que encontre a bolinha, o mesmo irá 
 // deixa-la e voltara ao ponto 0, caso não encontre ele irá para após ter feito a paralela 4 vezes
@@ -877,7 +941,7 @@ void Resgate::seguirNaSala (char zona){
            }
         }
 
-        voltarZero();
+        voltarZero(zona);
           
     }              
 }      

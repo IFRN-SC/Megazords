@@ -13,7 +13,7 @@ class Resgate: public Garra {
         void entrarNaSala ();
         void soltarBolinha ();
         char identificaZona ();
-        void voltarZero();
+        void voltarZero(char zona);
  
         void irLateralDir ();
         void irLateralEsq ();
