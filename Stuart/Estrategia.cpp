@@ -48,7 +48,7 @@ void Estrategia::seguirLinha() {
                 movimento.girarParaDireita(); 
             }
         }*/
-        while(!sensores.ehBrancoEsquerdo()){
+        while(!sensores.ehBrancoMaisEsquerdo()){
              movimento.seguir(); 
         }
         while(sensores.ehBrancoDireito()){
@@ -75,14 +75,14 @@ void Estrategia::seguirLinha() {
                 movimento.girarParaEsquerda(); 
             }
         }*/
-        while(!sensores.ehBrancoDireito()){
+        while(!sensores.ehBrancoMaisDireito()){
              movimento.seguir(); 
         }
         while(sensores.ehBrancoEsquerdo()){
-             movimento.girarParaEsquerda(); 
+             movimento.girarParaDireita(); 
         } 
         while(!sensores.ehBrancoEsquerdo()){
-             movimento.girarParaDireita(); 
+             movimento.girarParaEsquerda(); 
         }  
     }
     else if(sensores.preto_preto_preto_preto()){    //PPPP
@@ -136,14 +136,14 @@ void Estrategia::desviarObstaculo(){
 
     while(robo.lerSensorSonarEsq() < 15){
       movimento.seguir();
-      delay(20);
+      delay(25);
     }
 
     movimento.parar();  
     delay(500);
   
     movimento.girarParaEsquerda();
-    delay(420);
+    delay(380);
 
     movimento.parar();  
     delay(500);
@@ -157,14 +157,14 @@ void Estrategia::desviarObstaculo(){
 
     while(robo.lerSensorSonarEsq() < 15){
       movimento.seguir();
-      delay(20);
+      delay(25);
     }
 
     movimento.parar();  
     delay(500);
     
     movimento.girarParaEsquerda();
-    delay(420);
+    delay(400);
 
     movimento.parar();  
     delay(500);
@@ -177,7 +177,7 @@ void Estrategia::desviarObstaculo(){
     delay(500);
 
     movimento.voltar();
-    delay(250);
+    delay(200);
 
     movimento.parar();  
     delay(500);

@@ -768,18 +768,16 @@ void Resgate::voltarZero(char zona){
     robo.acionarMotores (44,40);
     delay (200);
 
-   
-    switch (zona){
-        case 'a' or 'c':
-             // caso zona a (viro para a direita)
-            robo.acionarMotores (44,-40);
-            delay (480);
-            break;
-        case 'b':
-            // caso zona a (viro para a esquerda)
-            robo.acionarMotores (-44,40);
-            delay (480);
-            break;
+
+    if (zona == 'a' or zona == 'c'){
+        robo.acionarMotores (44,-40);
+        delay (480);  
+    }
+    else {
+        // caso zona a (viro para a esquerda)
+        robo.acionarMotores (-44,40);
+        delay (480);
+            
     } 
 
     // ele não vai alinhar com a saida da sala
@@ -806,18 +804,17 @@ void Resgate::voltarZero(char zona){
         }
     t = (millis() -  ant);
     }
-
-    switch (zona){
-        case 'a' or 'c':
-      // caso zona a (viro para a esquerda)
-      robo.acionarMotores (-44,40);
-      delay (480);
-            break;
-        case 'b':
-      // caso zona a (viro para a direita)
-      robo.acionarMotores (44,-40);
-      delay (480);
-            break;
+  
+  
+    if (zona == 'a' or zona == 'c'){
+        robo.acionarMotores (-44,40);
+        delay (480);  
+    }
+    else {
+        // caso zona a (viro para a esquerda)
+        robo.acionarMotores (44,-40);
+        delay (480);
+            
     } 
 
     // ele vai alinhar em todos os caso
@@ -907,7 +904,7 @@ void Resgate::seguirNaSala (char zona){
             }
               // lados que ele deve virar caso não encontre a bolinha
               
-           else if (zona == 'a' or zona == 'c'){
+           else if ((zona == 'a' or zona == 'c') and (i != 3)){
                this-> irLateralEsq ();   
                robo.acionarServoGarra1 (65, 83, 10);  
                if (robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
@@ -923,7 +920,7 @@ void Resgate::seguirNaSala (char zona){
                  salvouVitima=true;
                }
            }
-           else {
+           else if((i + 1) == 4){
                this-> irLateralDir();             
                if (robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
                robo.acionarServoGarra1 (65, 83, 10);

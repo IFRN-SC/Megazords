@@ -11,7 +11,7 @@ void setup (){
 
     // após o roboô esta ligado, iremos levantar a garra
     robo.acionarServoGarra2(130);
-    robo.acionarServoGarra1(80);
+    robo.acionarServoGarra1(77);
     delay(500);
     
     robo.habilitaTCS34();
