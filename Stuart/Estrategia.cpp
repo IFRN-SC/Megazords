@@ -196,7 +196,7 @@ void Estrategia::desviarObstaculo(){
     }*/
 
     for(int i = 1; i <= 7; i++){
-        robo.acionarMotores(43, 0);
+        robo.acionarMotores(40, 0);
         delay(200);
         robo.acionarMotores(-30, -30);
         delay(150);  
