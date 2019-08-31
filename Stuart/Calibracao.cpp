@@ -161,7 +161,7 @@ void Calibracao::menuCalibrar(){
         }  
         delay(500);
     }    
-    
+
     Serial.println(F("CALIBRE PRETO ESQUERDO"));
     while(1){
         Serial.print(F("ESQUERDO : "));
