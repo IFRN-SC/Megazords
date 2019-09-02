@@ -20,6 +20,8 @@ class Resgate: public Garra {
         char entrar ();
         void alinhar ();
 
+        void voltarZero (char zona, char area);
+
         void voltar (char zona, char area);
         void restoDosCantos (char zona, char area);
         char identificarZona (char area);
@@ -34,14 +36,8 @@ class Resgate: public Garra {
 
         void resgatarVitima (char zona, char area);
 
-    
-    
-    /*
-    
-    protected: 
-      
-        void irLateralDir ();
-        void irLateralEsq ();*/
+        void irLateralDir (char area);
+        void irLateralEsq (char area);
 };
 
 #endif
