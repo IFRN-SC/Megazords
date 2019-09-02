@@ -5,6 +5,30 @@
 #include "Garra.h"
 
 class Resgate: public Garra {
+
+    #define DELAY_DIR 480  // constante para o giro 90º para a direita
+    #define DELAY_ESQ 480  // constante para o giro 90º para a esquerda    
+
+    private :
+        Garra garra;
+
+    public:
+        Resgate ();
+        void iniciar ();
+        
+    protected :
+        char entrar ();
+        void alinhar ();
+
+        char identificarZona (char area);
+        bool verificaSonarArea (char area);
+        void sinalizar (int vezes);
+        
+        bool verificaVitimaGarra (); 
+        void soltarBolinha ();
+    
+    
+    /*
     private :
         Garra garra;
     
@@ -26,7 +50,7 @@ class Resgate: public Garra {
         
     public :
         Resgate ();
-        void iniciar ();
+        void iniciar ();*/
 };
 
 #endif
