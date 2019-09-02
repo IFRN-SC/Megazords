@@ -28,6 +28,12 @@ class Resgate: public Garra {
         
         bool verificaVitimaGarra (); 
         void soltarBolinha ();
+
+        // método responsável por varrer a sala 3
+        void varrerSala (char zona, char area);
+
+        void resgatarVitima (char zona, char area);
+
     
     
     /*
@@ -35,12 +41,7 @@ class Resgate: public Garra {
     protected: 
       
         void irLateralDir ();
-        void irLateralEsq ();
-      
-        void voltar (char zona);
-        void seguirNaSala (char zona);      
-        void resgatarVitima (char zona);
-        void restoDosCantos (char zona);*/
+        void irLateralEsq ();*/
 };
 
 #endif
