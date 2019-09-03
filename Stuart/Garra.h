@@ -16,7 +16,10 @@ class Garra {
         void subir();
         void abrir();
         void fechar();
-        void baixar();     
+        void baixar();
+
+        void fecharGarraMovimento (int valMaior, int valMenor);
+
         
 };
 
