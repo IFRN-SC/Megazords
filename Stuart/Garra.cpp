@@ -17,3 +17,16 @@ void Garra::abrir (){
 void Garra::fechar (){
     robo.acionarServoGarra1 (ANG_MAO_ABIR, ANG_MAO_FECHAR, DELAY);
 }
+
+void Garra::fecharGarraMovimento (int valMaior, int valMenor){
+	  long ant = millis();
+    int angInicial = 2;
+    long t = (millis() -  ant);
+    while(t < valMaior){
+        robo.acionarMotores(40, 38);     
+        if(t > valMenor){
+            robo.acionarServoGarra1(map(t, valMenor, valMaior, ANG_MAO_ABIR, ANG_MAO_FECHAR));  
+        }
+        t = (millis() -  ant);
+    }
+}
