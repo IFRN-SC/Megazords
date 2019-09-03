@@ -19,7 +19,7 @@ void Garra::fechar (){
 }
 
 void Garra::fecharGarraMovimento (int valMaior, int valMenor){
-	  long ant = millis();
+	long ant = millis();
     int angInicial = 2;
     long t = (millis() -  ant);
     while(t < valMaior){
@@ -29,4 +29,17 @@ void Garra::fecharGarraMovimento (int valMaior, int valMenor){
         }
         t = (millis() -  ant);
     }
+
+    /*
+        long ant = millis();
+        int angInicial = 2;
+        long t = (millis() -  ant);
+        int x = 2100;
+        while(t < x){
+          robo.acionarMotores(40, 38);     
+          if(t > (x-800)){
+            robo.acionarServoGarra1(map(t, 1300, 2100, 0, 55));  
+          }
+          t = (millis() -  ant);
+        }*/
 }
