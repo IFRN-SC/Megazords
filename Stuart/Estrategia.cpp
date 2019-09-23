@@ -5,18 +5,18 @@ Estrategia::Estrategia (){
 }
 
 
-void Estrategia::seguirLinha() {
-	  if(sensores.branco_branco_branco_branco()){            //BBBB  
+void Estrategia::seguirLinha() 
+    if(sensores.branco_branco_branco_branco()){            //BBBB  
         robo.desligarTodosLeds();
         robo.ligarLed(2);  
      	  movimento.seguir(); 
          
    	}else if(sensores.preto_branco_branco_branco() || sensores.branco_preto_branco_branco()){ //PBBB//BPBB
-       // robo.acionarMotores(-33,30);
+        // robo.acionarMotores(-33,30);
         movimento.girarParaEsquerda();    
         
    	}else if(sensores.branco_branco_branco_preto() || sensores.branco_branco_preto_branco()){ //BBBP//BBPB
-     	 // robo.acionarMotores(33,-30);
+        // robo.acionarMotores(33,-30);
         movimento.girarParaDireita(); 
          
     }else if(sensores.preto_preto_branco_branco() || sensores.preto_preto_preto_branco()){ //PPBB//PPPB
