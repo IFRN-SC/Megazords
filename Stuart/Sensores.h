@@ -8,7 +8,7 @@ class Sensores: public Calibracao{
         float valor_sensor_esq;
         float valor_sensor_mais_esq;
   
-	  public:
+    public:
         // Sonares      
         bool identificouRampa(){return (robo.lerSensorSonarEsq() < 20 ) && (robo.lerSensorSonarDir() < 20);}
         bool detectouObstaculo(){return (robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1);}
@@ -22,8 +22,7 @@ class Sensores: public Calibracao{
             return (robo.lerSensorLinhaDirSemRuido() > mediaDireito);}
         boolean ehBrancoMaisDireito() {
             return (robo.lerSensorLinhaMaisDirSemRuido() > mediaMaisDireito);}
-        
-
+    
         // Funcoes para condicoes      	
       	boolean branco_branco_branco_branco(){ return (ehBrancoMaisEsquerdo()  && ehBrancoEsquerdo()  && ehBrancoDireito()  && ehBrancoMaisDireito());}  //BBBB
       	boolean preto_branco_branco_branco(){  return (!ehBrancoMaisEsquerdo() && ehBrancoEsquerdo()  && ehBrancoDireito()  && ehBrancoMaisDireito());}  //PBBB
@@ -40,6 +39,5 @@ class Sensores: public Calibracao{
         // PARA O SENSOR DE COR 
         boolean ehVerdeDireito (){ return robo.getHSVDireito().s > cor_direito;}          
         boolean ehVerdeEsquerdo (){ return robo.getHSVEsquerdo().s > cor_esquerdo;}      
-        
          
 };
