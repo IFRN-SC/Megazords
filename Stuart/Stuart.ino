@@ -8,16 +8,12 @@ Estrategia meuRobo;
 void setup (){
     Serial.begin(9600);
     robo.configurar(true);
-
-    // após o roboô esta ligado, iremos levantar a garra
-    robo.acionarServoGarra2(130);
-    robo.acionarServoGarra1(77);
+    robo.acionarServoGarra2(115);
+    robo.acionarServoGarra1(115);
     delay(500);
-    
     robo.habilitaTCS34();
     meuRobo.calibracao();
     robo.desligarTodosLeds();
-
 }
 
 void loop(){
