@@ -5,7 +5,7 @@
 #include "Garra.h"
 
 class Estrategia{
-	  private:
+    private:
         Garra garra;
         Resgate resgate;
         Sensores sensores;
@@ -22,8 +22,8 @@ class Estrategia{
       	void seguirLinha();
       	void desviarObstaculo();
      
-   	public:
+    public:
         Estrategia();
-        void calibracao();
       	void executar();
+        void calibracao();
 };
