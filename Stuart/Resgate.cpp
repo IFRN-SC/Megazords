@@ -101,17 +101,7 @@ char Resgate::identificaZona(){
     
      // seguir um pouco 
 
-    long ant2 = millis();
-    int angInicial2 = 2;
-    long t2 = (millis() -  ant2);
-    int x2 = 800;
-    while(t2 < x2){
-      robo.acionarMotores(40, 38);     
-      if(t2 > (x2-500)){
-        robo.acionarServoGarra1(map(t2, 500, 800, 0, 83 ));  
-      }
-      t2 = (millis() -  ant2);
-    }
+    fecharGarraMovimento(800, 500);
 
     robo.acionarMotores (0,0);
     delay (100);
@@ -191,17 +181,7 @@ char Resgate::identificaZona(){
         delay (100);  
     }
     
-    long ant = millis();
-    int angInicial = 2;
-    long t = (millis() -  ant);
-    int x = 500;
-    while(t < x){
-        robo.acionarMotores(40, 38);     
-        if(t > (x-250)){
-            robo.acionarServoGarra1(map(t, 250, 500, 0, 83));  
-         }
-         t = (millis() -  ant);
-    };
+    fecharGarraMovimento(500, 250);
 
     robo.acionarMotores(0, 0); 
     delay(100);
@@ -225,17 +205,7 @@ char Resgate::identificaZona(){
     
     // seguir um pouco 
     
-    long ant4 = millis();
-    int angInicial4 = 2;
-    long t4 = (millis() -  ant4);
-    int x4 = 1200;
-    while(t4 < x4){
-      robo.acionarMotores(40, 38);     
-      if(t4 > (x4-400)){
-        robo.acionarServoGarra1(map(t4, 800, 1200, 0, 83));  
-      }
-      t4 = (millis() -  ant4);
-    }
+    fecharGarraMovimento(1200, 800);
     
     robo.acionarMotores (0,0);
     delay (100);
@@ -397,17 +367,7 @@ void Resgate::irLateralEsq (){
     robo.acionarMotores (0,0);
     delay (100);
 
-    long ant = millis();
-    int angInicial = 2;
-    long t = (millis() -  ant);
-    int x = 450;
-    while(t < x){
-        robo.acionarMotores(40, 38);     
-        if(t > (x-200)){
-            robo.acionarServoGarra1(map(t, 250, 450, 0, 83));  
-         }
-         t = (millis() -  ant);
-    }
+    fecharGarraMovimento(450, 250);
 
     robo.acionarMotores (0,0);
     delay (100);   
@@ -436,17 +396,7 @@ void Resgate::irLateralDir (){
     robo.acionarMotores (0,0);
     delay (100);
 
-    long ant = millis();
-    int angInicial = 2;
-    long t = (millis() -  ant);
-    int x = 450;
-    while(t < x){
-        robo.acionarMotores(40, 38);     
-        if(t > (x-200)){
-            robo.acionarServoGarra1(map(t, 250, 450, 0, 83));  
-         }
-         t = (millis() -  ant);
-    }
+    fecharGarraMovimento(450, 250);
 
     robo.acionarMotores (0,0);
     delay (100);
@@ -586,17 +536,7 @@ void Resgate::restoDosCantos (char zona){
         }
       
         
-        long ant = millis();
-        int angInicial = 2;
-        long t = (millis() -  ant);
-        int x = 800;
-        while(t < x){
-            robo.acionarMotores(40, 38);     
-            if(t > (x-500)){
-                robo.acionarServoGarra1(map(t, 500, 800, 0, 83));  
-             }
-             t = (millis() -  ant);
-        }
+        fecharGarraMovimento(800, 500);
         
         robo.acionarMotores (0,0);
         delay (100);
@@ -638,17 +578,7 @@ void Resgate::restoDosCantos (char zona){
         robo.acionarMotores (0,0);
         delay (100);
         
-        ant = millis();
-        angInicial = 2;
-        t = (millis() -  ant);
-        x = 1800;
-        while(t < x){
-          robo.acionarMotores(40, 38);     
-          if(t > (x-400)){
-            robo.acionarServoGarra1(map(t, 1400, 1800, 0, 83));  
-          }
-          t = (millis() -  ant);
-        }
+        fecharGarraMovimento(1800, 1400);
 
         robo.acionarMotores (0,0);
         delay (100);
@@ -687,17 +617,7 @@ void Resgate::restoDosCantos (char zona){
             delay (100);  
         }
         
-        long ant = millis();
-        int angInicial = 2;
-        long t = (millis() -  ant);
-        int x = 700;
-        while(t < x){
-            robo.acionarMotores(40, 38);     
-            if(t > (x-300)){
-                robo.acionarServoGarra1(map(t, 400, 700, 0, 83));  
-             }
-             t = (millis() -  ant);
-        }
+        fecharGarraMovimento(700, 400);
         
         robo.acionarMotores (0,0);
         delay (100);
@@ -733,17 +653,7 @@ void Resgate::restoDosCantos (char zona){
             delay (100);  
         }
         
-        ant = millis();
-        angInicial = 2;
-        t = (millis() -  ant);
-        x = 1000;
-        while(t < x){
-          robo.acionarMotores(40, 38);     
-          if(t > (x-300)){
-            robo.acionarServoGarra1(map(t, 700, 1000, 0, 83));  
-          }
-          t = (millis() -  ant);
-        }
+        fecharGarraMovimento(1000, 700);
         
         robo.acionarMotores (0,0);
         delay (100);
@@ -811,18 +721,7 @@ void Resgate::voltarZero(char zona){
     delay (100);  
 
 
-    long ant = millis();
-    int angInicial = 2;
-    long t = (millis() -  ant);
-    int x = 1900;
-
-    while(t < x){
-        robo.acionarMotores(40, 38);     
-        if (t > (x-400)){
-            robo.acionarServoGarra1(map(t, 1500, 1900, 0, 70));  
-        }
-    t = (millis() -  ant);
-    }
+    fecharGarraMovimento(1900, 1500);
   
   
     if (zona == 'a' or zona == 'c'){
@@ -873,30 +772,10 @@ void Resgate::seguirNaSala (char zona){
             }  
                       
             if(i != 3){
-                long ant = millis();
-                int angInicial = 2;
-                long t = (millis() -  ant);
-                int x = 1900;
-                while(t < x){
-                  robo.acionarMotores(40, 38);     
-                  if(t > (x-400)){
-                    robo.acionarServoGarra1(map(t, 1500, 1900, 0, 83));  
-                  }
-                  t = (millis() -  ant);
-                }
+               fecharGarraMovimento(1900, 1500);
             }
             else if(i == 3){
-                long ant = millis();
-                int angInicial = 2;
-                long t = (millis() -  ant);
-                int x = 1400;
-                while(t < x){
-                  robo.acionarMotores(40, 38);     
-                  if(t > (x-400)){
-                    robo.acionarServoGarra1(map(t, 1000, 1400, 0, 83));  
-                  }
-                   t = (millis() -  ant); 
-                }
+                fecharGarraMovimento(1400, 1000);
             }   
             robo.acionarMotores(0,0);
             delay (500);
