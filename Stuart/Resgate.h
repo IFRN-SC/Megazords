@@ -5,6 +5,8 @@
 #include "Garra.h"
 
 class Resgate: public Garra {
+ 
+    #define DISTANCIA_AREA  15
 
     #define DELAY_DIR 480  // constante para o giro 90º para a direita
     #define DELAY_ESQ 480  // constante para o giro 90º para a esquerda    
