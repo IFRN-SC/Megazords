@@ -91,7 +91,7 @@ bool Resgate::verificaVitimaGarra (){
 // método responsável por soltar a bolinha na area de resgate
 // e iremos balançar a mesma ate a bolinha cair 
 void Resgate::soltarBolinha (){
-    robo.acionarMotores (0,0);
+    /*robo.acionarMotores (0,0);
     delay (100);
     robo.acionarServoGarra2 (50);
     robo.acionarMotores (0,0);
@@ -105,7 +105,17 @@ void Resgate::soltarBolinha (){
     robo.acionarServoGarra2 (70,50,5);
     garra.fechar ();
     robo.acionarServoGarra2(50, 135, 5);
-   
+   */
+    robo.acionarMotores (0,0);
+    delay (100);
+    robo.acionarServoGarra2 (50);
+    robo.acionarMotores (0,0);
+    delay (100);
+    robo.acionarServoGarra1 (5);
+    delay (100);  
+    robo.acionarServoGarra2 (50,70,5);
+    robo.acionarServoGarra2 (70,50,5);
+
     robo.acionarMotores (0,0);
     delay (100);    
 }
@@ -172,10 +182,10 @@ char Resgate::identificarZona(char area){
 
     if (area == 'z'){
         robo.acionarMotores (-40,38);
-        delay (220);  
+        delay (DELAY_VERIFICA_ZONA);  
     } else {
         robo.acionarMotores (40,-38);
-        delay (220);
+        delay (DELAY_VERIFICA_ZONA);
     }
     
     robo.acionarMotores (40,38);
@@ -209,18 +219,21 @@ char Resgate::identificarZona(char area){
         return 'a';
     }
 
+    
     // caso não encontre a zona na posição A
     if (area == 'z'){
         robo.acionarMotores (-40,38);
-        delay (200);    
+        delay (DELAY_VERIFICA_ZONA);    
     } else {
         robo.acionarMotores (40,-38);
-        delay (200);  
+        delay (DELAY_VERIFICA_ZONA);  
     }
+
 
     this -> alinhar ();
     robo.acionarMotores (40,38);
     delay (200);
+
 
     if (area == 'z'){
         robo.acionarMotores (40,-38);
@@ -230,6 +243,7 @@ char Resgate::identificarZona(char area){
         delay (460); 
     }
     
+
     robo.acionarMotores (-40,-38);
     delay (200);
     robo.acionarMotores (0,0);
@@ -287,10 +301,10 @@ char Resgate::identificarZona(char area){
 
     if (area == 'z'){
         robo.acionarMotores (-40,38);
-        delay (180);
+        delay (DELAY_VERIFICA_ZONA);
     } else {
         robo.acionarMotores (40,-38);
-        delay (180);
+        delay (DELAY_VERIFICA_ZONA);
     }
     
     robo.acionarMotores (0,0);
@@ -337,10 +351,10 @@ char Resgate::identificarZona(char area){
     
     if (area == 'z'){ 
         robo.acionarMotores (-40,38);
-        delay (250);
+        delay (DELAY_VERIFICA_ZONA);
     } else { 
         robo.acionarMotores (40,-38);
-        delay (250);
+        delay (DELAY_VERIFICA_ZONA);
     }
 
 
@@ -990,11 +1004,6 @@ void Resgate::irLateralDir (char area){
     delay (1000);
     this -> alinhar ();       
 }
-
-
-
-
-
 
 
 /**************************** MÉTODOS RESPONSÁVEIS POR RESGATAR AS VITIMAS ***********************/

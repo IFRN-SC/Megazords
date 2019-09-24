@@ -11,6 +11,8 @@ class Resgate: public Garra {
     #define DELAY_DIR 480  // constante para o giro 90º para a direita
     #define DELAY_ESQ 480  // constante para o giro 90º para a esquerda    
 
+    #define DELAY_VERIFICA_ZONA 220
+
     private :
         Garra garra;
 
