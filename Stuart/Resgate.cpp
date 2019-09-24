@@ -11,9 +11,10 @@ Resgate::Resgate(){
 
 void Resgate::iniciar (){
     char zona, area;
-     
     area = this -> entrar ();                 // vamos entrar corretamente na sala 3
+
     zona = identificarZona (area);            // examina a sala a procura da area de resgate
+
     this -> restoDosCantos (zona, area);      // varre os cantos até chegar na posição 0
     this -> varrerSala (zona, area);          // varre a sala em vertical com a area de resgate 
     
@@ -24,48 +25,53 @@ void Resgate::iniciar (){
  *  area que esta entrando
  */ 
 
+
+// método responsável por fazer o robô entrar a sala de 
+// resgate de forma adquada e identificar o tipo que esta a area
 char Resgate::entrar (){
-    char valorRetorno;
-    
-    while (robo.lerSensorSonarEsq() < 30 or robo.lerSensorSonarDir() < 30){
-        robo.acionarMotores (40,40);
+    // caso a area esteja como padrão da obr
+
+    robo.acionarMotores (20,60);
+    delay (550);
+    robo.acionarMotores (-40,-40);
+    delay (200);
+    while (robo.lerSensorSonarDir() < 20){
+        robo.acionarMotores (-40,38);
+        delay (50);
     }
 
-    // caso seja verdade, identificaremos que a area e Y
-    if (30 < robo.lerSensorSonarDir()){
-        robo.acionarMotores (60,20);
-        delay (550);
-        robo.acionarMotores (-40,-40);
-        delay (200);
-        
-        while (robo.lerSensorSonarEsq() < 20){
-            robo.acionarMotores (40,-38);
-            delay (50);
-        }
-
-        valorRetorno = 'y';    
-    }
-    // caso seja verdade, identificaremos que a area e Z
-    else {
-        robo.acionarMotores (20,60);
-        delay (550);
-        robo.acionarMotores (-40,-40);
-        delay (200);
-
-        while (robo.lerSensorSonarDir() < 20){
-            robo.acionarMotores (-40,38);
-            delay (50);
-        }
-        valorRetorno = 'z';
-    }
-    
-    robo.acionarMotores (-40,40);
+    robo.acionarMotores (-40,38);
     delay (250);
+    
     this -> alinhar ();
 
-    return valorRetorno;
+    robo.acionarMotores (0,0);
+    delay (3000);
+    
+    return 'z';
+
+    /*
+    // caso a area esteja diferente do padrão obr
+
+    robo.acionarMotores (60,20);
+    delay (550);
+    robo.acionarMotores (-40,-40);
+    delay (200);
+    while (robo.lerSensorSonarEsq() < 20){
+        robo.acionarMotores (40,-38);
+        delay (50);
+    }
+
+    robo.acionarMotores (40,-38);
+    delay (250);
+    
+    this -> alinhar ();
+    return 'y';    */
 }
 
+
+// método responsável por fazer o robô piscar os leds
+// de quantas formas quisermos 
 void Resgate::sinalizar (int vezes){
     for(int i = 0; i < vezes; i++){  
         robo.ligarTodosLeds();
@@ -75,13 +81,15 @@ void Resgate::sinalizar (int vezes){
     }
 }
 
-
+// método responsável por verificiar se tem bolinha dentro da garra
+// caso tenha iremos salvar a vitima
 bool Resgate::verificaVitimaGarra (){
     robo.acionarServoGarra1 (65, 83, 10);
     return robo.fimDeCursoPressionado1() or robo.fimDeCursoPressionado2();
 }
 
-
+// método responsável por soltar a bolinha na area de resgate
+// e iremos balançar a mesma ate a bolinha cair 
 void Resgate::soltarBolinha (){
     robo.acionarMotores (0,0);
     delay (100);
@@ -102,14 +110,15 @@ void Resgate::soltarBolinha (){
     delay (100);    
 }
 
-
+// método responsável por alinhar o robo com a 
+// parede da area de resgate
 void Resgate::alinhar (){
     robo.acionarMotores(-40,-40);
     delay (1000);
     robo.acionarMotores(40,40);
-    delay (400);
+    delay (200);
     robo.acionarMotores(-40,-40);
-    delay (1000);
+    delay (800);
     robo.acionarMotores(40,40);
     delay (200);
     robo.acionarMotores(-40,-40);
@@ -118,41 +127,34 @@ void Resgate::alinhar (){
     delay (100);
 }
 
-
+// método responsável por fazer o robô identificar a area de 
+// resgate utilizando o sonar lateral
 bool Resgate::verificaSonarArea (char area){
     robo.acionarMotores (0,0);
     delay (100);
 
     if (area == 'z'){
-        return (robo.lerSensorSonarDir() <= 15);      
-    }
-    else {
-        return (robo.lerSensorSonarEsq() <= 15);  
+        return (robo.lerSensorSonarDir() <= DISTANCIA_AREA);      
+    } else {
+        return (robo.lerSensorSonarEsq() <= DISTANCIA_AREA);  
     }
 }
 
-
-/*  Função: identifica zona
- *  Responsável por fazer o robô identificar a zona de resgate 
- *  ao mesmo tempo que o mesmo procura a vitima
- */
-
+// método responsável por fazer o robô identificar a 
+// area de resgate com a distncia do sonar lateral
 char Resgate::identificarZona(char area){    
     robo.desligarTodosLeds();
     robo.acionarMotores (40,38);
     delay (100);
 
-
-    if (area = 'z'){
+    if (area == 'z'){
         robo.acionarMotores (40,-38); 
         delay (DELAY_DIR);  
-    }
-    else {
+    } else {
         robo.acionarMotores (-40,38); 
         delay (DELAY_ESQ);    
     }
-    
-    
+
     robo.acionarMotores (0,0);
     delay (100);
     garra.abrir ();
@@ -168,13 +170,10 @@ char Resgate::identificarZona(char area){
     robo.acionarMotores (0,0);
     delay (100);
 
-
-    // o robô ira está lateralmente a area de resgate
     if (area == 'z'){
         robo.acionarMotores (-40,38);
         delay (220);  
-    }
-    else {
+    } else {
         robo.acionarMotores (40,-38);
         delay (220);
     }
@@ -184,15 +183,13 @@ char Resgate::identificarZona(char area){
     robo.acionarMotores (0,0);
     delay (100);
 
-    // caso a zona esteja a frente da entrada da sala
+    
     if (verificaSonarArea(area)){
         this -> sinalizar (5);
-
         if (area == 'z'){
             robo.acionarMotores(40,-38);
             delay (520);
-        }
-        else {
+        } else {
             robo.acionarMotores(-40,38);
             delay (520);
         }
@@ -204,9 +201,8 @@ char Resgate::identificarZona(char area){
             robo.ligarLed (1);  
             robo.acionarMotores(40,38);
             delay (200);
-            
+          
             this -> soltarBolinha ();
-            
             robo.acionarMotores(-40,-38);
             delay (100);
         }
@@ -217,24 +213,20 @@ char Resgate::identificarZona(char area){
     if (area == 'z'){
         robo.acionarMotores (-40,38);
         delay (200);    
-    }  
-    else {
+    } else {
         robo.acionarMotores (40,-38);
         delay (200);  
     }
 
-    robo.acionarMotores(0, 0); 
-    delay(100); 
     this -> alinhar ();
-   
     robo.acionarMotores (40,38);
     delay (200);
 
     if (area == 'z'){
-        robo.acionarMotores (-40,38);
+        robo.acionarMotores (40,-38);
         delay (460); 
     }else {
-        robo.acionarMotores (40,-38);
+        robo.acionarMotores (-40,38);
         delay (460); 
     }
     
@@ -247,17 +239,13 @@ char Resgate::identificarZona(char area){
     if (verificaVitimaGarra()){
         garra.baixar ();
         garra.abrir ();
-        robo.acionarMotores (0,0);
-        delay (100); 
-    }
-    else {
+    } else {
         garra.abrir ();
         garra.baixar ();
-        robo.acionarMotores (0,0);
-        delay (100);  
     }
 
-
+    robo.acionarMotores (0,0);
+    delay (100); 
     garra.fecharGarraMovimento(500, 250);
     
     robo.acionarMotores(0, 0); 
@@ -270,8 +258,7 @@ char Resgate::identificarZona(char area){
     if (area == 'z'){
         robo.acionarMotores (-40,38);
         delay (500);
-    }
-    else {
+    } else {
         robo.acionarMotores (40,-38);
         delay (500);  
     }
@@ -282,20 +269,16 @@ char Resgate::identificarZona(char area){
     if (verificaVitimaGarra()){
         garra.baixar ();
         garra.abrir ();
-        robo.acionarMotores (0,0);
-        delay (100); 
-    }
-    else {
+    } else {
         garra.abrir ();
         garra.baixar ();
-        robo.acionarMotores (0,0);
-        delay (100);  
     }
-
+    
+    robo.acionarMotores (0,0);
+    delay (100); 
     
     // seguir um pouco     
     garra.fecharGarraMovimento(1200, 800);
-    
     robo.acionarMotores (0,0);
     delay (100);
     garra.subir (); 
@@ -305,8 +288,7 @@ char Resgate::identificarZona(char area){
     if (area == 'z'){
         robo.acionarMotores (-40,38);
         delay (180);
-    }
-    else {
+    } else {
         robo.acionarMotores (40,-38);
         delay (180);
     }
@@ -325,8 +307,7 @@ char Resgate::identificarZona(char area){
         if (area == 'z'){
             robo.acionarMotores(40,-38);
             delay (520);
-        }
-        else {
+        } else {
             robo.acionarMotores(-40,38);
             delay (520);
         }
@@ -352,14 +333,12 @@ char Resgate::identificarZona(char area){
     
     // caso não tenha encontrado a area de resgate na A or B 
     // so podera esta presente na zona C
-
     // caso não esteja vamos verificar o canto que não foi preenchido
     
     if (area == 'z'){ 
         robo.acionarMotores (-40,38);
         delay (250);
-    }
-    else { 
+    } else { 
         robo.acionarMotores (40,-38);
         delay (250);
     }
@@ -368,25 +347,18 @@ char Resgate::identificarZona(char area){
     robo.acionarMotores (0, 0);
     delay (100);    
     this -> alinhar ();
-    
-    // vamos alinha e fazer a sala
     robo.acionarMotores (40,38);
     delay (200);
     
     if (area == 'z'){
         robo.acionarMotores (40,-38);
         delay (480);
-    }
-    else {
+    } else {
         robo.acionarMotores (-40,38);
         delay (480);
     }
     
-
-    robo.acionarMotores (-40,-38);
-    delay (1000);
     this -> alinhar ();
-    
     return 'c';
 }
 
