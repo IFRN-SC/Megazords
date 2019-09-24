@@ -84,7 +84,7 @@ void Resgate::sinalizar (int vezes){
 // método responsável por verificiar se tem bolinha dentro da garra
 // caso tenha iremos salvar a vitima
 bool Resgate::verificaVitimaGarra (){
-    robo.acionarServoGarra1 (65, 83, 10);
+    //robo.acionarServoGarra1 (65, 83, 10);
     return robo.fimDeCursoPressionado1() or robo.fimDeCursoPressionado2();
 }
 
@@ -216,6 +216,10 @@ char Resgate::identificarZona(char area){
             robo.acionarMotores(-40,-38);
             delay (100);
         }
+ 
+
+        robo.acionarMotores(0,0);
+        delay (1000);
         return 'a';
     }
 

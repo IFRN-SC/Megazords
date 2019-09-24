@@ -5,7 +5,7 @@ Estrategia::Estrategia (){
 }
 
 
-void Estrategia::seguirLinha() 
+void Estrategia::seguirLinha() {
     if(sensores.branco_branco_branco_branco()){            //BBBB  
         robo.desligarTodosLeds();
         robo.ligarLed(2);  

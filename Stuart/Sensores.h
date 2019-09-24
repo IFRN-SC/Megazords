@@ -10,7 +10,7 @@ class Sensores: public Calibracao{
   
     public:
         // Sonares      
-        bool identificouRampa(){return (robo.lerSensorSonarEsq() < 20 ) && (robo.lerSensorSonarDir() < 20);}
+        bool identificouRampa(){return (robo.lerSensorSonarEsq() < 25 ) && (robo.lerSensorSonarDir() < 25);}
         bool detectouObstaculo(){return (robo.lerSensorSonarFrontal() <= 5 && robo.lerSensorSonarFrontal() >= 1);}
 
         // Funcoes para definir o branco
