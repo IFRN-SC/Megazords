@@ -65,7 +65,7 @@ void Resgate::soltarBolinha (){
     robo.acionarServoGarra2 (50,70,5);
     robo.acionarServoGarra2 (70,50,5);
     garra.fechar ();
-    robo.acionarServoGarra2(50, 135, 5);
+    robo.acionarServoGarra2(50, 115, 5);
    
     robo.acionarMotores (0,0);
     delay (100);
@@ -89,7 +89,7 @@ bool Resgate::verificarArea (){
 char Resgate::identificaZona(){
     robo.desligarTodosLeds();
     robo.acionarMotores (40,38);
-    delay (100);
+    delay (200);
     robo.acionarMotores (40,-38); 
     delay (480);
     robo.acionarMotores (0,0);
@@ -117,11 +117,10 @@ char Resgate::identificaZona(){
     delay (700);
     robo.acionarMotores (0,0);
     delay (100);
-    robo.acionarServoGarra1 (65, 83, 10);
 
     // caso a zona esteja a frente da entrada da sala
     if (verificarArea()){
-        for(int i = 0; i < 10; i++){  
+        for(int i = 0; i < 5; i++){  
             robo.ligarTodosLeds();
             delay(400);
             robo.desligarTodosLeds();
@@ -135,7 +134,7 @@ char Resgate::identificaZona(){
 
         // caso o robo esteja com a bolinha dentro da garra
         // ele ira ate a area de resgate usando o sonar
-        if(robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2()){
+        if(garra.pegouVitima()){
             robo.ligarLed (1);  
 
             robo.acionarMotores(40,38);
@@ -501,7 +500,7 @@ void Resgate::restoDosCantos (char zona){
         delay (750);               
         robo.acionarMotores(0,0);
         delay (100);
-        robo.acionarMotores(-40,38);
+        robo.acionarMotores(40,-38);
         delay (250);
         robo.acionarMotores(0,0);
         delay (100); 
@@ -514,7 +513,7 @@ void Resgate::restoDosCantos (char zona){
         delay (200); 
         robo.acionarMotores(0,0);
         delay (100);
-        robo.acionarMotores(40,-38);
+        robo.acionarMotores(-40,38);
         delay (480);               
         robo.acionarMotores(0,0);
         delay (100);         
@@ -522,34 +521,12 @@ void Resgate::restoDosCantos (char zona){
 
     
     if (zona == 'a'){
-        if (robo.fimDeCursoPressionado1() or robo.fimDeCursoPressionado2()){
-            garra.baixar ();
-            garra.abrir ();
-            robo.acionarMotores (0,0);
-            delay (100); 
-        }
-        else {
-            garra.abrir ();
-            garra.baixar ();
-            robo.acionarMotores (0,0);
-            delay (100);  
-        }
-      
         
-        fecharGarraMovimento(800, 500);
-        
-        robo.acionarMotores (0,0);
-        delay (100);
-        
-        garra.subir();
-        
-        robo.acionarMotores (0,0);
-        delay (100);
         robo.acionarMotores(40,38);
-        delay (250);               
+        delay (1000);               
         robo.acionarMotores (0,0);
         delay (100);
-        robo.acionarMotores(-40,38);
+        robo.acionarMotores(40,-38);
         delay (480);               
         robo.acionarMotores(0,0);
         delay (100); 
@@ -559,46 +536,25 @@ void Resgate::restoDosCantos (char zona){
         robo.acionarMotores(0,0);
         delay (100); 
 
-
-        // vamos tentar pegar a bolinha na segunda parte
+        garra.descerGarra(garra.pegouVitima());
         
-        if (robo.fimDeCursoPressionado1() or robo.fimDeCursoPressionado2()){
-            garra.baixar ();
-            garra.abrir ();
-            robo.acionarMotores (0,0);
-            delay (100); 
-        }
-        else {
-            garra.abrir ();
-            garra.baixar ();
-            robo.acionarMotores (0,0);
-            delay (100);  
-        }
+        fecharGarraMovimento(1900, 1500);
         
-        robo.acionarMotores (0,0);
+        robo.acionarMotores(0,0);
         delay (100);
-        
-        fecharGarraMovimento(1800, 1400);
 
-        robo.acionarMotores (0,0);
-        delay (100);
-        
         garra.subir();
         
         robo.acionarMotores (0,0);
         delay (100);
-        robo.acionarMotores(40,38);
-        delay (200);               
+        
+        robo.acionarMotores(40,-30);
+        delay(900);
+
         robo.acionarMotores (0,0);
         delay (100);
-
-        robo.acionarMotores(-40,38);
-        delay (480);               
-        robo.acionarMotores(0,0);
-        delay (100); 
+        
         this -> alinhar ();
-        robo.acionarMotores(0,0);
-        delay (100); 
     }
     
     

@@ -40,6 +40,4 @@ class Sensores: public Calibracao{
         // PARA O SENSOR DE COR 
         boolean ehVerdeDireito (){ return robo.getHSVDireito().s > cor_direito;}          
         boolean ehVerdeEsquerdo (){ return robo.getHSVEsquerdo().s > cor_esquerdo;}      
-        
-         
 };

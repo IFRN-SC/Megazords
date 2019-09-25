@@ -29,17 +29,26 @@ void Garra::fecharGarraMovimento (int valMaior, int valMenor){
         }
         t = (millis() -  ant);
     }
+}
 
-    /*
-        long ant = millis();
-        int angInicial = 2;
-        long t = (millis() -  ant);
-        int x = 2100;
-        while(t < x){
-          robo.acionarMotores(40, 38);     
-          if(t > (x-800)){
-            robo.acionarServoGarra1(map(t, 1300, 2100, 0, 55));  
-          }
-          t = (millis() -  ant);
-        }*/
+void Garra::descerGarra (boolean abrir){
+    // sensor de fim de curso não esta precionado
+    if (abrir == false){
+       robo.acionarMotores (0,0);
+       delay (100);
+       this -> abrir ();
+       this -> baixar ();
+       robo.acionarMotores (0,0);
+       delay (100);
+    }
+    
+    // sensor de fim de curso esta precionado
+    else {
+        robo.acionarMotores (0,0);
+        delay (100);
+        this -> baixar ();
+        this -> abrir ();
+        robo.acionarMotores (0,0);
+        delay (100);
+    }
 }
