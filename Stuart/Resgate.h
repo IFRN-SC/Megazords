@@ -7,11 +7,35 @@
 class Resgate: public Garra {
     private :
         Garra garra;
+
+    public:
+        Resgate ();
+        void iniciar ();
+
+    private:
+        void entrarNaSala ();
+        bool verificarArea ();
+        char identificaZona ();
+        void pontoZero (char area);
+
+
+        void sinalizar (int vezes);
+        
+
+
+
+ 
+        // parte do código referente a movimento
+        void alinhar ();
+        void roboVoltar (int tempo);
+        void roboFrente (int tempo);
+        void roboParar (int tempo);
+
+        /*
     
     protected: 
         void alinhar ();
         void entrarNaSala ();
-        void soltarBolinha ();
         char identificaZona ();
         void voltarZero(char zona);
  
@@ -26,7 +50,7 @@ class Resgate: public Garra {
         
     public :
         Resgate ();
-        void iniciar ();
+        void iniciar ();*/
 };
 
 #endif
