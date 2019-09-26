@@ -5,7 +5,7 @@
 
 class Garra {
     private :
-        #define DELAY 10
+        #define DELAY 5
         #define ANG_MAO_FECHAR 120
         #define ANG_MAO_ABIR 25
         #define ANG_BRACO_SUBIR 115
@@ -21,9 +21,8 @@ class Garra {
         boolean pegouVitima(){ return (robo.fimDeCursoPressionado1() || robo.fimDeCursoPressionado2());}
         
         void fecharGarraMovimento (int valMaior, int valMenor);
+        void soltarBolinha ();
         void descerGarra (boolean abrir);
-
-        
 };
 
 #endif
