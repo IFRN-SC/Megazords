@@ -18,6 +18,30 @@ void Garra::fechar (){
     robo.acionarServoGarra1 (ANG_MAO_ABIR, ANG_MAO_FECHAR, DELAY);
 }
 
+void Garra::soltarBolinha (){
+    robo.acionarMotores (0,0);
+    delay (100);
+    robo.acionarServoGarra2 (50);
+    robo.acionarMotores (0,0);
+    delay (500);
+    robo.acionarServoGarra1 (5);
+    delay (500);  
+
+    robo.acionarServoGarra2 (50,70,5);
+    robo.acionarServoGarra2 (70,50,5);
+    robo.acionarServoGarra2 (50,70,5);
+    robo.acionarServoGarra2 (70,50,5);
+    robo.acionarServoGarra2 (50,70,5);
+    robo.acionarServoGarra2 (70,50,5);
+    robo.acionarServoGarra2 (50,70,5);
+    robo.acionarServoGarra2 (70,50,5);
+    this -> fechar ();
+    robo.acionarServoGarra2(50, 115, 5);
+   
+    robo.acionarMotores (0,0);
+    delay (100);    
+}
+
 void Garra::fecharGarraMovimento (int valMaior, int valMenor){
   long ant = millis();
     int angInicial = 2;
