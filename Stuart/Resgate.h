@@ -12,45 +12,30 @@ class Resgate: public Garra {
         Resgate ();
         void iniciar ();
 
-    private:
+    protected:
         void entrarNaSala ();
         bool verificarArea ();
         char identificaZona ();
         void pontoZero (char area);
-
-
+        void seguirNaSala (char area);
         void sinalizar (int vezes);
-        
+        void resgatarVitima (char area); 
+        void voltarAreaResgate (char area);
+       
+        // falta implementar
+        void aposVarrerSala (char area);
 
 
-
- 
         // parte do código referente a movimento
         void alinhar ();
         void roboVoltar (int tempo);
         void roboFrente (int tempo);
         void roboParar (int tempo);
+        void roboVirarDir (int tempo);
+        void roboVirarEsq (int tempo);
 
-        /*
-    
-    protected: 
-        void alinhar ();
-        void entrarNaSala ();
-        char identificaZona ();
-        void voltarZero(char zona);
- 
-        void irLateralDir ();
-        void irLateralEsq ();
-        bool verificarArea ();
- 
-        void voltar (char zona);
-        void seguirNaSala (char zona);      
-        void resgatarVitima (char zona);
-        void restoDosCantos (char zona);
-        
-    public :
-        Resgate ();
-        void iniciar ();*/
+        void roboIrLateralEsq ();
+        void roboIrLateralDir ();
 };
 
 #endif
