@@ -9,7 +9,7 @@ class Garra {
         #define ANG_MAO_FECHAR 120
         #define ANG_MAO_ABIR 25
         #define ANG_BRACO_SUBIR 115
-        #define ANG_BRACO_BAIXAR 3 
+        #define ANG_BRACO_BAIXAR 2
         
     public :
         Garra ();
