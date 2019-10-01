@@ -1,8 +1,8 @@
 class Movimento{
-        #define PNEU_ANDA_ESQ 44
-        #define PNEU_ANDA_DIR 40
-        #define PNEU_VOLTA_DIR -40
-        #define PNEU_VOLTA_ESQ -44
+        #define PNEU_ANDA_ESQ 40
+        #define PNEU_ANDA_DIR 44
+        #define PNEU_VOLTA_DIR -44
+        #define PNEU_VOLTA_ESQ -40
 
 	  public:
         void seguir (){

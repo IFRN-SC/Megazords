@@ -58,25 +58,25 @@ void Resgate::roboIrLateralDir (){
 
 // método reponsáve por fazer o robô virar para a direita
 void Resgate::roboVirarDir (int tempo){
-    robo.acionarMotores (40,-40);
+    robo.acionarMotores (37,-40);
     delay (tempo);    
 } 
 
 // método reponsáve por fazer o robô virar para a direita
 void Resgate::roboVirarEsq (int tempo){
-    robo.acionarMotores (-40,40);
+    robo.acionarMotores (-37,40);
     delay (tempo);    
 } 
 
 // método responsável por fazer o robô voltar 
 void Resgate::roboVoltar (int tempo){
-    robo.acionarMotores (-40,-40);
+    robo.acionarMotores (-37,-40);
     delay (tempo);
 }
 
 // método responsável por fazer o robô ir pra frente
 void Resgate::roboFrente (int tempo){
-    robo.acionarMotores (40,40);
+    robo.acionarMotores (37,40);
     delay (tempo);    
 }
 
@@ -164,7 +164,7 @@ char Resgate::identificaZona(){
         }
 
         // vamos alinhar com a sala de resgate
-        this -> roboVirarDir (1000);
+        this -> roboVirarDir (800);
         this -> alinhar ();
 
         // retorna a posição A da area de resgate
@@ -230,7 +230,7 @@ char Resgate::identificaZona(){
         }
 
         // vamos alinhar com a sala de resgate
-        this -> roboVirarDir (1000);
+        this -> roboVirarDir (800);
         this -> alinhar ();
 
         // retorna a posição B da area de resgate
@@ -300,7 +300,7 @@ void Resgate::pontoZero (char area){
 void Resgate::resgatarVitima (char area){
     // vamos pra frente com o robô e a bolinha
     this -> roboFrente (1200);
- 
+    this -> roboParar (200);
 
     if (area == 'a' or area == 'c'){
         this -> roboVirarEsq (450);
@@ -311,8 +311,8 @@ void Resgate::resgatarVitima (char area){
     this -> roboParar (100);
     this -> roboVoltar (800);
     this -> alinhar ();      
-    this -> roboFrente (800);
-    this -> roboParar (100);
+    this -> roboFrente (1800);
+    this -> roboParar (300);
     
     // vamos salvar a vitima para o caso A e B
     if (area == 'a' or area == 'c'){
@@ -321,7 +321,6 @@ void Resgate::resgatarVitima (char area){
     else {
         this -> roboVirarDir (630);
     }  
-
 
     this -> roboVoltar (700);
     this -> alinhar ();
@@ -341,18 +340,26 @@ void Resgate::resgatarVitima (char area){
 
 // método responsável por voltar apos resgatar vitima
 void Resgate::voltarAreaResgate (char area){
+    this -> roboFrente (100);
+    this -> roboParar(200);
+    garra.abrir ();
+    garra.baixar ();
     fecharGarraMovimento(2000, 1500); 
     this -> roboParar (100);
-    
-    if(area == 'a' or area == 'c'){
-        this -> roboVirarEsq(550);
-    }else{
-        this -> roboVirarDir(550);
-    }
-
+    garra.subir ();
+    this -> roboParar (100);
+    this -> roboVirarDir(800);
     this -> roboParar (100);
     this -> alinhar();
-    this -> roboParar (100);   
+
+    if (area != 'b'){
+        this -> roboParar (1000);   
+        this -> roboFrente(200);
+        this -> roboVirarDir (480);  
+        this -> alinhar();
+    }
+    
+    
 }
 
 // método responsável por fazer o robô varrer os cantos e voltar para a posição zero
