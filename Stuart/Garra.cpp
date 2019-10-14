@@ -4,11 +4,11 @@
 Garra::Garra(){
 }
 
-void Garra:comecar (){
+void Garra::comecar (){
   robo.acionarMotores (0,0);
   delay (100);
-  robo.acionarServoGarra1 (ANG_MAO_ABIR, ANG_MAO_FECHAR, SUPER_DELAY);
-  robo.acionarServoGarra2(ANG_BRACO_BAIXAR, ANG_BRACO_SUBIR, SUPER_DELAY);
+  robo.acionarServoGarra1 (90, ANG_MAO_FECHAR, SUPER_DELAY);
+  robo.acionarServoGarra2(90, ANG_BRACO_SUBIR, SUPER_DELAY);
   robo.acionarMotores (0,0);
   delay (100);
 }
@@ -57,7 +57,7 @@ void Garra::fecharGarraMovimento (int valMaior, int valMenor){
     int angInicial = 2;
     long t = (millis() -  ant);
     while(t < valMaior){
-        robo.acionarMotores(40, 38);
+        robo.acionarMotores(37, 40);
         if(t > valMenor){
             robo.acionarServoGarra1(map(t, valMenor, valMaior, ANG_MAO_ABIR, ANG_MAO_FECHAR));
         }
