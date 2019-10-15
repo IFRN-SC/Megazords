@@ -3,10 +3,12 @@
 
 #include <robo_hardware2.h>
 #include "Garra.h"
+#include "Movimento.h"
 
 class Resgate: public Garra {
     private :
         Garra garra;
+        Movimento movimento;
 
     public:
         Resgate ();

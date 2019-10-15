@@ -3,12 +3,12 @@
 Resgate::Resgate(){}
 
 void Resgate::iniciar (){
-    this -> entrarNaSala ();
-    char areaResgate = this -> identificaZona ();
-    this -> pontoZero (areaResgate);
+    entrarNaSala ();
+    char areaResgate = identificaZona ();
+    pontoZero (areaResgate);
 
     // podemos varrer a sala 3 com a informação da area de resgate
-    this -> seguirNaSala (areaResgate);
+    seguirNaSala (areaResgate);
 }
 
 
@@ -16,103 +16,73 @@ void Resgate::iniciar (){
 
 // método responsável por procurar bolinha nas laterais esquerdas
 void Resgate::roboIrLateralEsq (){
-    this -> roboFrente (120);
-    this -> roboVirarEsq (480);
+    movimento.roboFrente (200);
+    movimento.roboVirarEsq (480);
 
-    this -> roboParar (100);
+    movimento.roboParar (100);
     garra.abrir ();
     garra.baixar ();
-    this -> roboParar (100);
+    movimento.roboParar (100);
 
     fecharGarraMovimento(450, 250);
 
-    this -> roboParar (100);
+    movimento.roboParar (100);
     garra.subir ();
-    this -> roboParar (100);
+    movimento.roboParar (100);
 
-    this -> roboVirarDir (480);
-    this -> roboParar (100);
-    this -> alinhar ();
+    movimento.roboVirarDir (480);
+    movimento.roboParar (100);
+    alinhar ();
 }
 
 // método responsável por procurar bolinha nas laterais direitas
 void Resgate::roboIrLateralDir (){
-    this -> roboFrente (120);
-    this -> roboVirarDir (480);
+    movimento.roboFrente (200);
+    movimento.roboVirarDir (480);
 
-    this -> roboParar (100);
+    movimento.roboParar (100);
     garra.abrir ();
     garra.baixar ();
-    this -> roboParar (100);
+    movimento.roboParar (100);
 
     fecharGarraMovimento(450, 250);
 
-    this -> roboParar (100);
+    movimento.roboParar (100);
     garra.subir ();
-    this -> roboParar (100);
+    movimento.roboParar (100);
 
-    this -> roboVirarEsq (480);
-    this -> roboParar (100);
-    this -> alinhar ();
-}
-
-// método reponsáve por fazer o robô virar para a direita
-void Resgate::roboVirarDir (int tempo){
-    robo.acionarMotores (37,-40);
-    delay (tempo);
-}
-
-// método reponsáve por fazer o robô virar para a direita
-void Resgate::roboVirarEsq (int tempo){
-    robo.acionarMotores (-37,40);
-    delay (tempo);
-}
-
-// método responsável por fazer o robô voltar
-void Resgate::roboVoltar (int tempo){
-    robo.acionarMotores (-37,-40);
-    delay (tempo);
-}
-
-// método responsável por fazer o robô ir pra frente
-void Resgate::roboFrente (int tempo){
-    robo.acionarMotores (37,40);
-    delay (tempo);
-}
-
-// método responsável por fazer o robô ficar parado
-void Resgate::roboParar (int tempo){
-    robo.acionarMotores (0,0);
-    delay (tempo);
+    movimento.roboVirarEsq (480);
+    movimento.roboParar (100);
+    alinhar ();
 }
 
 // método responsável por fazer o robô alinhar com a sala 3
 void Resgate::alinhar (){
-    this -> roboVoltar(1000);
-    this -> roboFrente (200);
-    this -> roboVoltar (1000);
-    this -> roboFrente (150);
-    this -> roboVoltar (1000);
-    this -> roboParar (100);
+    movimento.roboVoltar(1000);
+    movimento.roboFrente (200);
+    movimento.roboVoltar (1000);
+    movimento.roboFrente (150);
+    movimento.roboVoltar (1000);
+    movimento.roboParar (100);
 }
 
 // método responsável por fazer o robô entrar corretamente na sala
 void Resgate::entrarNaSala (){
     robo.acionarMotores (20,60);
     delay (550);
-    roboVoltar (300);
+    movimento.roboVoltar (300);
 
     while (robo.lerSensorSonarEsq() < 20){
-        this -> roboVirarEsq (50);
+        movimento.roboVirarEsq (50);
     }
 
-    this -> roboVirarEsq (250);
-    this -> alinhar ();
+    movimento.roboVirarEsq (250);
+    alinhar ();
 }
 
 // método responsável por verificar se a area de resgate com o sonar ESQ
 bool Resgate::verificarArea (){
-    this -> roboParar(200);
+    movimento.roboParar(200);
     return (robo.lerSensorSonarDir() <= 15);
 }
 
@@ -129,44 +99,44 @@ void Resgate::sinalizar (int vezes){
 // método responsável por verificar onde esta a area de resgate
 char Resgate::identificaZona(){
     robo.desligarTodosLeds();
-    this -> roboFrente(200);
-    this -> roboVirarDir (480);
+    movimento.roboFrente(300);
+    movimento.roboVirarDir (480);
 
-    this -> roboParar (100);
+    movimento.roboParar (100);
     garra.abrir ();
     garra.baixar ();
-    this -> roboParar (100);
+    movimento.roboParar (100);
 
-    garra.fecharGarraMovimento(900, 500);
-    this -> roboParar (100);
+    garra.fecharGarraMovimento(900, 700);
+    movimento.roboParar (100);
     garra.subir ();
-    this -> roboParar (100);
+    movimento.roboParar (100);
 
 
     // o robô ira está lateralmente a area de resgate
-    this -> roboVirarEsq (250);
-    this -> roboFrente(800);
-    this -> roboParar (100);
+    movimento.roboVirarEsq (270);
+    movimento.roboFrente(800);
+    movimento.roboParar (100);
 
-    if (this -> verificarArea()){
-        this -> sinalizar (3);
+    if (verificarArea()){
+        sinalizar (3);
         robo.ligarLed (1);
 
-        this -> roboVirarDir (500);
-        this -> roboFrente (100);
+        movimento.roboVirarDir (500);
+        movimento.roboFrente (100);
 
         // caso o robo esteja com a bolinha dentro da garra
         // ele ira ate a area de resgate usando o sonar
         if(garra.pegouVitima()){
-            this -> roboFrente (100);
-            this -> soltarBolinha ();
-            this -> roboVoltar(200);
+            movimento.roboFrente (100);
+            soltarBolinha ();
+            movimento.roboVoltar(200);
         }
 
         // vamos alinhar com a sala de resgate
-        this -> roboVoltar (100);
-        this -> roboVirarDir (800);
-        this -> alinhar ();
+        movimento.roboVoltar (100);
+        movimento.roboVirarDir (900);
+        alinhar ();
 
         // retorna a posição A da area de resgate
         return 'a';
@@ -175,63 +145,63 @@ char Resgate::identificaZona(){
 
 
     // caso não esteja vamos verificar o canto que não foi preenchido
-    this -> roboVirarEsq (220);
-    this -> roboParar (100);
-    this -> alinhar ();
-    this -> roboParar (100);
-    this -> roboFrente (200);
-    this -> roboVirarDir (460);
-    this -> roboVoltar (200);
-    this -> roboParar (100);
+    movimento.roboVirarEsq (220);
+    movimento.roboParar (100);
+    alinhar ();
+    movimento.roboParar (100);
+    movimento.roboFrente (300);
+    movimento.roboVirarDir (460);
+    movimento.roboVoltar (200);
+    movimento.roboParar (100);
 
     // verificamos se tem boliha pra descer a garra
     garra.descerGarra (garra.pegouVitima ());
     garra.fecharGarraMovimento(500, 250);
 
-    this -> roboParar(100);
+    movimento.roboParar(100);
     garra.subir ();
 
-    this -> roboFrente (500);
-    this -> roboParar(100);
+    movimento.roboFrente (350);
+    movimento.roboParar(100);
 
     // vamos alinha e verificar a outra zona
-    this -> roboVirarEsq (500);
-    this -> alinhar ();
+    movimento.roboVirarEsq (500);
+    alinhar ();
 
-    this -> roboParar(100);
+    movimento.roboParar(100);
     garra.descerGarra (garra.pegouVitima ());
-    this -> roboParar(100);
+    movimento.roboParar(100);
 
 
     // seguir um pouco até a possivel area B
-    garra.fecharGarraMovimento(1200, 800);
-    this -> roboParar(100);
+    garra.fecharGarraMovimento(1200, 1000);
+    movimento.roboParar(100);
     garra.subir ();
-    this -> roboParar(100);
-    this -> roboVirarEsq (180);
+    movimento.roboParar(100);
+    movimento.roboVirarEsq (180);
 
     // ir lateral com a area B
-    this -> roboParar(100);
-    this -> roboFrente (700);
-    this -> roboParar(100);
+    movimento.roboParar(100);
+    movimento.roboFrente (700);
+    movimento.roboParar(100);
 
 
     // vamos verificar se a area de resgate é B
-    if (this -> verificarArea()){
-        this -> sinalizar (3);
+    if (verificarArea()){
+        sinalizar (3);
         robo.ligarLed (2);
-        this -> roboVirarDir (500);
-        this -> roboFrente (100);
+        movimento.roboVirarDir (500);
+        movimento.roboFrente (100);
 
         if (garra.pegouVitima()){
-            this -> roboFrente (200);
-            this -> soltarBolinha ();
-            this -> roboVoltar(100);
+            movimento.roboFrente (200);
+            soltarBolinha ();
+            movimento.roboVoltar(100);
         }
 
         // vamos alinhar com a sala de resgate
-        this -> roboVirarDir (800);
-        this -> alinhar ();
+        movimento.roboVirarDir (800);
+        alinhar ();
 
         // retorna a posição B da area de resgate
         return 'b';
@@ -242,33 +212,26 @@ char Resgate::identificaZona(){
 
 
     // caso não esteja vamos verificar o canto que não foi preenchido
-    this -> roboVirarEsq (200);
-    this -> roboParar (100);
-    this -> alinhar ();
-    this -> roboParar (100);
-    this -> roboFrente (200);
-    this -> roboVirarDir (460);
-    this -> roboVoltar (200);
-    this -> roboParar (100);
+    movimento.roboVirarEsq (200);
+    movimento.roboParar (100);
+    alinhar ();
+    movimento.roboParar (100);
+    movimento.roboFrente (300);
+    movimento.roboVirarEsq (460);
+    movimento.roboParar (100);
 
     // verificamos se tem boliha pra descer a garra
     garra.descerGarra (garra.pegouVitima ());
-    garra.fecharGarraMovimento(500, 250);
+    garra.fecharGarraMovimento(1000, 800);
 
-    this -> roboParar(100);
+    movimento.roboParar(100);
     garra.subir ();
-
-    this -> roboFrente (300);
-    this -> roboParar(100);
-
-    // vamos alinha e verificar a outra zona
-    this -> roboVirarEsq (500);
-    this -> alinhar ();
-    this -> roboParar(100);
-    garra.baixar ();
-    garra.abrir ();
-    this -> roboParar(100);
-
+    movimento.roboParar(100);
+    
+    movimento.roboVirarEsq (1000);
+    movimento.roboParar(100);
+    alinhar ();
+    
     // retorna a posição C da area de resgate
     return 'c';
 }
@@ -279,17 +242,7 @@ void Resgate::pontoZero (char area){
     // caso a zona seja A ou B, a volta para o ponto zero são quase identicas
     if (area == 'a' or area == 'b'){
         // vamos voltar para o ponto zero
-        this -> voltarAreaResgate (area);
-    }
-
-    // caso a area seja C, apenas faremos o robô voltar de ré
-    // ate a posição vazia de A
-    else {
-        this -> roboFrente (200);
-        this -> roboParar (100);
-        this -> roboVirarDir (480);
-        this -> roboVoltar (1000);
-        this -> alinhar ();
+        voltarAreaResgate (area);
     }
 }
 
@@ -299,43 +252,43 @@ void Resgate::pontoZero (char area){
 // metodo resposável por resgatar a vitima
 void Resgate::resgatarVitima (char area){
     // vamos pra frente com o robô e a bolinha
-    this -> roboFrente (1200);
-    this -> roboParar (200);
+    movimento.roboFrente (1200);
+    movimento.roboParar (200);
 
     if (area == 'a' or area == 'c'){
-        this -> roboVirarEsq (450);
+        movimento.roboVirarEsq (450);
     }else {
-        this -> roboVirarDir (450);
+        movimento.roboVirarDir (450);
     }
 
-    this -> roboParar (100);
-    this -> roboVoltar (800);
-    this -> alinhar ();
-    this -> roboFrente (1800);
-    this -> roboParar (300);
+    movimento.roboParar (100);
+    movimento.roboVoltar (800);
+    alinhar ();
+    movimento.roboFrente (1800);
+    movimento.roboParar (300);
 
     // vamos salvar a vitima para o caso A e B
     if (area == 'a' or area == 'c'){
-        this -> roboVirarEsq (630);
+        movimento.roboVirarEsq (630);
     }
     else {
-        this -> roboVirarDir (630);
+        movimento.roboVirarDir (630);
     }
 
-    this -> roboVoltar (700);
-    this -> alinhar ();
+    movimento.roboVoltar (700);
+    alinhar ();
 
     // giro para ficar de frente com a sala
-    this -> roboFrente (200);
-    this -> roboParar (100);
-    this -> roboVirarDir (880);
-    this -> roboFrente (200);
-    this -> soltarBolinha ();
-    this -> roboParar (100);
-    this -> roboVoltar (200);
-    this -> roboVirarDir (1000);
-    this -> roboParar (100);
-    this -> alinhar();
+    movimento.roboFrente (200);
+    movimento.roboParar (100);
+    movimento.roboVirarDir (880);
+    movimento.roboFrente (200);
+    soltarBolinha ();
+    movimento.roboParar (100);
+    movimento.roboVoltar (200);
+    movimento.roboVirarDir (1000);
+    movimento.roboParar (100);
+    alinhar();
 }
 
 // método responsável por voltar apos resgatar vitima
@@ -343,48 +296,48 @@ void Resgate::voltarAreaResgate (char area){
    if(area != 'b'){
       descerGarra(garra.pegouVitima());
       fecharGarraMovimento(750, 500);
-      this -> roboParar(100);
+      movimento.roboParar(100);
       garra.subir ();
-      this -> roboParar(100);
-      this -> roboVirarEsq(300);
-      this -> roboParar (100);
-      this -> alinhar();
-      this -> roboParar (100);
+      movimento.roboParar(100);
+      movimento.roboVirarEsq(300);
+      movimento.roboParar (100);
+      alinhar();
+      movimento.roboParar (100);
       descerGarra(garra.pegouVitima());
-      fecharGarraMovimento(2000, 1800);
-      this -> roboParar (100);
+      fecharGarraMovimento(1900, 1700);
+      movimento.roboParar (100);
       garra.subir ();
-      this -> roboParar (100);
-      this -> roboVirarDir(1000);
-      this -> roboParar (100);
-      this -> alinhar();
-      this -> roboParar (100);
-      this -> roboFrente(200);
-      this -> roboVirarDir (480);
-      this -> alinhar();
+      movimento.roboParar (100);
+      movimento.roboVirarDir(1000);
+      movimento.roboParar (100);
+      alinhar();
+      movimento.roboParar (100);
+      movimento.roboFrente(300);
+      movimento.roboVirarDir (480);
+      alinhar();
    }
    else{
       descerGarra(garra.pegouVitima());
       fecharGarraMovimento(750, 500);
-      this -> roboParar(100);
+      movimento.roboParar(100);
       garra.subir ();
-      this -> roboParar(100);
-      this -> roboVirarDir(300);
-      this -> roboParar (100);
-      this -> alinhar();
-      this -> roboParar (100);
+      movimento.roboParar(100);
+      movimento.roboVirarDir(300);
+      movimento.roboParar (100);
+      alinhar();
+      movimento.roboParar (100);
       descerGarra(garra.pegouVitima());
-      fecharGarraMovimento(2000, 1800);
-      this -> roboParar (100);
+      fecharGarraMovimento(1900, 1700);
+      movimento.roboParar (100);
       garra.subir ();
-      this -> roboParar (100);
-      this -> roboVirarDir(1000);
-      this -> roboParar (100);
-      this -> alinhar();
-      this -> roboParar (100);
-      this -> roboFrente(200);
-      this -> roboVirarEsq (480);
-      this -> alinhar();
+      movimento.roboParar (100);
+      movimento.roboVirarDir(1000);
+      movimento.roboParar (100);
+      alinhar();
+      movimento.roboParar (100);
+      movimento.roboFrente(300);
+      movimento.roboVirarEsq (480);
+      alinhar();
    }
 
 
@@ -392,7 +345,7 @@ void Resgate::voltarAreaResgate (char area){
 
 // método responsável por fazer o robô varrer os cantos e voltar para a posição zero
 void Resgate::aposVarrerSala (char area){
-    this -> sinalizar (10);
+    sinalizar (10);
 }
 
 
@@ -415,8 +368,8 @@ void Resgate::seguirNaSala (char area){
             // vamos verificar se tem bolinha na garra
             if (garra.pegouVitima()){
                 sinalizar (5);
-                this -> resgatarVitima (area);
-                this -> voltarAreaResgate(area);
+                resgatarVitima (area);
+                voltarAreaResgate(area);
                 resgatouVitima = true;
             }
 
@@ -426,17 +379,17 @@ void Resgate::seguirNaSala (char area){
             }
 
             fecharGarraMovimento(1900, 1500);
-            this -> roboParar (500);
-            this -> roboVoltar (2000);
-            this -> alinhar ();
+            movimento.roboParar (500);
+            movimento.roboVoltar (2000);
+            alinhar ();
             garra.subir();
-            this -> roboParar (100);
+            movimento.roboParar (100);
 
             // vamos verificar se tem bolinha na garra
             if (garra.pegouVitima()){
                 sinalizar (5);
-                this -> resgatarVitima (area);
-                this -> voltarAreaResgate(area);
+                resgatarVitima (area);
+                voltarAreaResgate(area);
                 resgatouVitima = true;
             }
 
@@ -444,20 +397,20 @@ void Resgate::seguirNaSala (char area){
             // caso não conseguirmos pegar bolinha ao varrer
             // vamos seguir lateralmente
             if (area == 'a' or area == 'c'){
-                this -> roboIrLateralEsq ();
+                roboIrLateralEsq ();
             }
 
             // caso a area de resgate seja B, vamos girar
             // para a direita
             else {
-                this -> roboIrLateralDir ();
+                roboIrLateralDir ();
             }
 
             // vamos verificar se tem bolinha na garra
             if (garra.pegouVitima()){
                 sinalizar (5);
-                this -> resgatarVitima (area);
-                this -> voltarAreaResgate(area);
+                resgatarVitima (area);
+                voltarAreaResgate(area);
                 resgatouVitima = true;
             }
         }   // for
@@ -465,6 +418,6 @@ void Resgate::seguirNaSala (char area){
         // vamos esta de frente a sala de resgate após varrer a sala 3 vezes
         // executaremos um metodo pra varrer os cantos e voltar ate o ponto zero
 
-        this -> aposVarrerSala (area);
+        aposVarrerSala (area);
     }       // while
 }

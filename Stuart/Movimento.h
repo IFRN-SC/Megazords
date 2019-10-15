@@ -1,3 +1,5 @@
+#ifndef MOVIMENTO_H
+#define MOVIMENTO_H 
 class Movimento{
         #define PNEU_ANDA_ESQ 40
         #define PNEU_ANDA_DIR 44
@@ -32,4 +34,25 @@ class Movimento{
         void girarParaDireita (){
             robo.acionarMotores(PNEU_ANDA_ESQ, PNEU_VOLTA_DIR);
         }
+        void roboVirarDir (int tempo){
+            robo.acionarMotores (37,-40);
+            delay (tempo);
+        }
+        void roboVirarEsq (int tempo){
+            robo.acionarMotores (-37,40);
+            delay (tempo);
+        }
+        void roboVoltar (int tempo){
+            robo.acionarMotores (-37,-40);
+            delay (tempo);
+        }
+        void roboFrente (int tempo){
+            robo.acionarMotores (37,40);
+            delay (tempo);
+        }
+        void roboParar (int tempo){
+            robo.acionarMotores (0,0);
+            delay (tempo);
+        }
 };
+#endif
