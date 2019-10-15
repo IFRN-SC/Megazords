@@ -227,11 +227,11 @@ char Resgate::identificaZona(){
     movimento.roboParar(100);
     garra.subir ();
     movimento.roboParar(100);
-    
+
     movimento.roboVirarEsq (1000);
     movimento.roboParar(100);
     alinhar ();
-    
+
     // retorna a posição C da area de resgate
     return 'c';
 }
@@ -345,7 +345,52 @@ void Resgate::voltarAreaResgate (char area){
 
 // método responsável por fazer o robô varrer os cantos e voltar para a posição zero
 void Resgate::aposVarrerSala (char area){
+    movimento.roboParar(300);
     sinalizar (10);
+    movimento.roboFrente(300);
+
+    if (area != 'b'){
+        movimento.roboVirarDir (450);
+    } else {
+        movimento.roboVirarEsq (450);
+    }
+
+    this -> alinhar ();
+    movimento.roboFrente(300);
+    if (area != 'b'){
+        movimento.roboVirarEsq (450);
+    } else {
+        movimento.roboVirarDir (450);
+    }
+
+    descerGarra(garra.pegouVitima());
+    garra.fecharGarraMovimento(900, 700);
+    movimento.roboParar (100);
+    garra.subir ();
+    movimento.roboParar (100);
+
+    if (area != 'b'){
+        movimento.roboVirarDir (270);
+    } else {
+        movimento.roboVirarEsq (270);
+    }
+
+    movimento.roboFrente(800);
+    movimento.roboParar (200);
+    movimento.roboVirarDir (500);
+    movimento.roboParar (200);
+    movimento.roboFrente (100);
+
+    if(garra.pegouVitima()){
+        movimento.roboFrente (100);
+        soltarBolinha ();
+        movimento.roboVoltar(200);
+    }
+
+    movimento.roboVoltar (100);
+    movimento.roboVirarDir (900);
+    alinhar ();
+    this -> voltarAreaResgate (area);
 }
 
 
