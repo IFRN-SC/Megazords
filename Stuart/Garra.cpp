@@ -7,8 +7,10 @@ Garra::Garra(){
 void Garra::comecar (){
   robo.acionarMotores (0,0);
   delay (100);
-  robo.acionarServoGarra1 (90, ANG_MAO_FECHAR, SUPER_DELAY);
-  robo.acionarServoGarra2(90, ANG_BRACO_SUBIR, SUPER_DELAY);
+  robo.acionarServoGarra1 (90, ANG_MAO_FECHAR, DELAY);
+  robo.acionarMotores (0,0);
+  delay (100);
+  robo.acionarServoGarra2 (90, ANG_BRACO_SUBIR, DELAY);
   robo.acionarMotores (0,0);
   delay (100);
 }
@@ -31,23 +33,22 @@ void Garra::fechar (){
 void Garra::soltarBolinha (){
     robo.acionarMotores (0,0);
     delay (100);
-    robo.acionarServoGarra2 (50);
+    robo.acionarServoGarra2 (100);
     robo.acionarMotores (0,0);
     delay (500);
     robo.acionarServoGarra1 (5);
     delay (500);
 
-    robo.acionarServoGarra2 (50,70,5);
-    robo.acionarServoGarra2 (70,50,5);
-    robo.acionarServoGarra2 (50,70,5);
-    robo.acionarServoGarra2 (70,50,5);
-    robo.acionarServoGarra2 (50,70,5);
-    robo.acionarServoGarra2 (70,50,5);
-    robo.acionarServoGarra2 (50,70,5);
-    robo.acionarServoGarra2 (70,50,5);
+    robo.acionarServoGarra2 (100,120,5);
+    robo.acionarServoGarra2 (120,100,5);
+    robo.acionarServoGarra2 (100,120,5);
+    robo.acionarServoGarra2 (120,100,5);
+    robo.acionarServoGarra2 (100,120,5);
+    robo.acionarServoGarra2 (120,100,5);
+    robo.acionarServoGarra2 (100,120,5);
+    robo.acionarServoGarra2 (130,100,5);
     this -> fechar ();
-    robo.acionarServoGarra2(50, 115, 5);
-
+    robo.acionarServoGarra2(100, ANG_BRACO_SUBIR, 5);
     robo.acionarMotores (0,0);
     delay (100);
 }

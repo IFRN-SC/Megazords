@@ -6,11 +6,10 @@
 class Garra {
     private :
         #define DELAY 10
-        #define SUPER_DELAY 20
         #define ANG_MAO_FECHAR 120
         #define ANG_MAO_ABIR 25
-        #define ANG_BRACO_SUBIR 115
-        #define ANG_BRACO_BAIXAR 4
+        #define ANG_BRACO_SUBIR 140
+        #define ANG_BRACO_BAIXAR 25
 
     public :
         Garra ();
