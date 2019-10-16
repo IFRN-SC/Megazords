@@ -39,14 +39,14 @@ void Garra::soltarBolinha (){
     robo.acionarServoGarra1 (5);
     delay (500);
 
-    robo.acionarServoGarra2 (100,120,5);
-    robo.acionarServoGarra2 (120,100,5);
-    robo.acionarServoGarra2 (100,120,5);
-    robo.acionarServoGarra2 (120,100,5);
-    robo.acionarServoGarra2 (100,120,5);
-    robo.acionarServoGarra2 (120,100,5);
-    robo.acionarServoGarra2 (100,120,5);
-    robo.acionarServoGarra2 (130,100,5);
+    robo.acionarServoGarra2 (80,100,5);
+    robo.acionarServoGarra2 (100,80,5);
+    robo.acionarServoGarra2 (80,100,5);
+    robo.acionarServoGarra2 (100,80,5);
+    robo.acionarServoGarra2 (80,100,5);
+    robo.acionarServoGarra2 (100,80,5);
+    robo.acionarServoGarra2 (80,100,5);
+    robo.acionarServoGarra2 (100,80,5);
     this -> fechar ();
     robo.acionarServoGarra2(100, ANG_BRACO_SUBIR, 5);
     robo.acionarMotores (0,0);

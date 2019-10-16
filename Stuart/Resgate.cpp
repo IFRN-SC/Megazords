@@ -24,7 +24,7 @@ void Resgate::roboIrLateralEsq (){
     garra.baixar ();
     movimento.roboParar (100);
 
-    fecharGarraMovimento(450, 250);
+    fecharGarraMovimento(500, 300);
 
     movimento.roboParar (100);
     garra.subir ();
@@ -45,7 +45,7 @@ void Resgate::roboIrLateralDir (){
     garra.baixar ();
     movimento.roboParar (100);
 
-    fecharGarraMovimento(450, 250);
+    fecharGarraMovimento(500, 300);
 
     movimento.roboParar (100);
     garra.subir ();
@@ -99,7 +99,7 @@ void Resgate::sinalizar (int vezes){
 // método responsável por verificar onde esta a area de resgate
 char Resgate::identificaZona(){
     robo.desligarTodosLeds();
-    movimento.roboFrente(300);
+    movimento.roboFrente(200);
     movimento.roboVirarDir (480);
 
     movimento.roboParar (100);
@@ -114,7 +114,7 @@ char Resgate::identificaZona(){
 
 
     // o robô ira está lateralmente a area de resgate
-    movimento.roboVirarEsq (270);
+    movimento.roboVirarEsq (250);
     movimento.roboFrente(800);
     movimento.roboParar (100);
 
@@ -149,14 +149,14 @@ char Resgate::identificaZona(){
     movimento.roboParar (100);
     alinhar ();
     movimento.roboParar (100);
-    movimento.roboFrente (300);
+    movimento.roboFrente (200);
     movimento.roboVirarDir (460);
     movimento.roboVoltar (200);
     movimento.roboParar (100);
 
     // verificamos se tem boliha pra descer a garra
     garra.descerGarra (garra.pegouVitima ());
-    garra.fecharGarraMovimento(500, 250);
+    garra.fecharGarraMovimento(300, 150);
 
     movimento.roboParar(100);
     garra.subir ();
@@ -200,7 +200,7 @@ char Resgate::identificaZona(){
         }
 
         // vamos alinhar com a sala de resgate
-        movimento.roboVirarDir (800);
+        movimento.roboVirarDir (900);
         alinhar ();
 
         // retorna a posição B da area de resgate
@@ -216,19 +216,19 @@ char Resgate::identificaZona(){
     movimento.roboParar (100);
     alinhar ();
     movimento.roboParar (100);
-    movimento.roboFrente (300);
+    movimento.roboFrente (200);
     movimento.roboVirarEsq (460);
     movimento.roboParar (100);
 
     // verificamos se tem boliha pra descer a garra
     garra.descerGarra (garra.pegouVitima ());
-    garra.fecharGarraMovimento(1000, 800);
+    garra.fecharGarraMovimento(1100, 900);
 
     movimento.roboParar(100);
     garra.subir ();
     movimento.roboParar(100);
 
-    movimento.roboVirarEsq (1000);
+    movimento.roboVirarEsq (950);
     movimento.roboParar(100);
     alinhar ();
 
@@ -264,7 +264,7 @@ void Resgate::resgatarVitima (char area){
     movimento.roboParar (100);
     movimento.roboVoltar (800);
     alinhar ();
-    movimento.roboFrente (1800);
+    movimento.roboFrente (1700);
     movimento.roboParar (300);
 
     // vamos salvar a vitima para o caso A e B
@@ -279,7 +279,7 @@ void Resgate::resgatarVitima (char area){
     alinhar ();
 
     // giro para ficar de frente com a sala
-    movimento.roboFrente (200);
+    movimento.roboFrente (300);
     movimento.roboParar (100);
     movimento.roboVirarDir (880);
     movimento.roboFrente (200);
@@ -345,40 +345,48 @@ void Resgate::voltarAreaResgate (char area){
 
 // método responsável por fazer o robô varrer os cantos e voltar para a posição zero
 void Resgate::aposVarrerSala (char area){
-    movimento.roboParar(300);
-    sinalizar (10);
-    movimento.roboFrente(300);
+    movimento.roboParar(100);
+    sinalizar (5);
+    movimento.roboFrente(200);
 
+    if (area != 'b'){
+        movimento.roboVirarEsq (450);
+    } else {
+        movimento.roboVirarDir (450);
+    }
+
+    movimento.roboParar(100);
+    movimento.roboFrente(600);
+    movimento.roboParar(100);
     if (area != 'b'){
         movimento.roboVirarDir (450);
     } else {
-        movimento.roboVirarEsq (450);
+        movimento.roboVirarEsq(450);
     }
-
     this -> alinhar ();
-    movimento.roboFrente(300);
-    if (area != 'b'){
-        movimento.roboVirarEsq (450);
-    } else {
-        movimento.roboVirarDir (450);
-    }
 
     descerGarra(garra.pegouVitima());
-    garra.fecharGarraMovimento(900, 700);
+    garra.fecharGarraMovimento(1000, 800);
     movimento.roboParar (100);
     garra.subir ();
     movimento.roboParar (100);
 
     if (area != 'b'){
-        movimento.roboVirarDir (270);
+        movimento.roboVirarDir (200);
     } else {
-        movimento.roboVirarEsq (270);
+        movimento.roboVirarEsq (200);
     }
 
     movimento.roboFrente(800);
-    movimento.roboParar (200);
-    movimento.roboVirarDir (500);
-    movimento.roboParar (200);
+    movimento.roboParar (100);
+
+    if (area != 'b'){
+        movimento.roboVirarEsq (500);
+    } else {
+        movimento.roboVirarDir (500);
+    }
+    
+    movimento.roboParar (100);
     movimento.roboFrente (100);
 
     if(garra.pegouVitima()){
